@@ -1,8 +1,8 @@
-## E-Governance:  Blueprint for Budget Planning and Management System (e-GovBMS).
+## [E-Governance:  Blueprint for Budget Planning and Management System (e-GovBPMS).](#README)
 
 ### Table of Contents:
 
-1. Introduction
+1. [Introduction](#introduction)
    - Purpose of the Document
    - Project Overview
    - Objectives
@@ -73,3 +73,16 @@
     - Contingency Plans
 
 13. Conclusion
+
+introduction[]: # (Introduction)
+
+---
+
+## Introduction <a name="introduction"></a>
+
+### Purpose of the Document
+
+The purpose of this document is to provide a blueprint for the development of a budget planning and management system for the Government of Ebonyi State. The document will provide a detailed overview of the system, including the system architecture, technology stack, user roles and permissions, functional features, user interfaces, security measures, data management, reporting and analytics, deployment and infrastructure, project timeline, and risks and mitigation strategies.
+
+### Project Overview
+
