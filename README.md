@@ -1,94 +1,85 @@
 ## [E-Governance:  Blueprint for Budget-Planning and Management System (e-GovBMS).](#README)
 
 <div style="display: flex;">
-    <div style="flex: 50%; padding-right: 10px;">
-        ### Table of Contents:
+    <div style="flex: 50%; padding-right: 10px; BORDER-RIGHT:1PS DOTTED #000000;">
 
-1. [Introduction](#introduction)
-   - [Purpose of the Document](#purpose-of-the-document)
-   - [Project Overview](#project-overview)
-   - [Objectives](#objectives)
+   1. [Introduction](#introduction)
+      - [Purpose of the Document](#purpose-of-the-document)
+      - [Project Overview](#project-overview)
+      - [Objectives](#objectives)
 
-2. [System Overview](#system-overview)
-   - [System Architecture](#system-architecture)
-   - [Technology Stack](#technology-stack)
-   - [Integration Requirements](#integration-requirements)
+   2. [System Overview](#system-overview)
+      - [System Architecture](#system-architecture)
+      - [Technology Stack](#technology-stack)
+      - [Integration Requirements](#integration-requirements)
 
-3. [User Roles and Permissions](#user-roles-and-permissions)
-   - [Administrator](#administrator)
-   - [Ministry, Departments, and Agencies (MDAs)](#ministry-departments-and-agencies-mdas)
-   - [Finance Head (Accountant General)](#finance-head-accountant-general)
-   - [Approving Authorities](#approving-authorities)
-   - [Governor](#executive-governor)
-   - [National Assembly](#national-assembly)
+   3. [User Roles and Permissions](#user-roles-and-permissions)
+      - [Administrator](#administrator)
+      - [Ministry, Departments, and Agencies (MDAs)](#ministry-departments-and-agencies-mdas)
+      - [Finance Head (Accountant General)](#finance-head-accountant-general)
+      - [Approving Authorities](#approving-authorities)
+      - [Governor](#executive-governor)
+      - [National Assembly](#national-assembly)
 
-4. [Functional Features](#functional-features)
-   - [Budget Upload](#budget-upload)
-   - [Funding/Expenditure Request](#funding-expenditure-request)
-   - [Approval Workflow](#approval-workflow)
-   - [Disbursement Confirmation](#disbursement-confirmation)
-   - [Supplementary Budget Request](#supplementary-budget-request)
-   - [Request to Spend from Other MDAs](#request-to-spend-from-other-mdas)
-   - [Executive Budget Adjustment](#executive-budget-adjustment)
+   4. [Functional Features](#functional-features)
+      - [Budget Upload](#budget-upload)
+      - [Funding/Expenditure Request](#funding-expenditure-request)
+      - [Approval Workflow](#approval-workflow)
+      - [Disbursement Confirmation](#disbursement-confirmation)
+      - [Supplementary Budget Request](#supplementary-budget-request)
+      - [Request to Spend from Other MDAs](#request-to-spend-from-other-mdas)
+      - [Executive Budget Adjustment](#executive-budget-adjustment)
 
-5. [Digital Signing Integration](#digital-signing-integration)
-   - [Authentication Methods](#authentication-methods)
-   - [Hardware Token vs. Software Token](#hardware-token-vs-software-token)
+   5. [Digital Signing Integration](#digital-signing-integration)
+      - [Authentication Methods](#authentication-methods)
+      - [Hardware Token vs. Software Token](#hardware-token-vs-software-token)
 
-6. [User Interfaces](#user-interfaces)
-   - [Dashboard](#dashboard)
-   - [Budget Upload Interface](#budget-upload-interface)
-   - [Funding/Expenditure Request Interface](#funding-expenditure-request-interface)
-   - [Approval Interface](#approval-interface)
-   - [Disbursement Confirmation Interface](#disbursement-confirmation-interface)
-   - [Supplementary Budget Request Interface](#supplementary-budget-request-interface)
-   - [Request to Spend from Other MDAs Interface](#request-to-spend-from-other-mdas-interface)
-   - [Executive Budget Adjustment Interface](#executive-budget-adjustment-interface)
+   6. [User Interfaces](#user-interfaces)
+      - [Dashboard](#dashboard)
+      - [Budget Upload Interface](#budget-upload-interface)
+      - [Funding/Expenditure Request Interface](#funding-expenditure-request-interface)
+      - [Approval Interface](#approval-interface)
+      - [Disbursement Confirmation Interface](#disbursement-confirmation-interface)
+      - [Supplementary Budget Request Interface](#supplementary-budget-request-interface)
+      - [Request to Spend from Other MDAs Interface](#request-to-spend-from-other-mdas-interface)
+      - [Executive Budget Adjustment Interface](#executive-budget-adjustment-interface)
 
-7. [Security Measures](#security-measures)
-   - [User Authentication and Authorization](#user-authentication-and-authorization)
-   - [Data Encryption](#data-encryption)
-   - [Audit Logs and Trail](#audit-logs-and-trail)
-   - [Penetration Testing and Vulnerability Assessments](#penetration-testing-and-vulnerability-assessments)
+   7. [Security Measures](#security-measures)
+      - [User Authentication and Authorization](#user-authentication-and-authorization)
+      - [Data Encryption](#data-encryption)
+      - [Audit Logs and Trail](#audit-logs-and-trail)
+      - [Penetration Testing and Vulnerability Assessments](#penetration-testing-and-vulnerability-assessments)
 
-8. [Data Management](#data-management)
-   - [Database Design](#database-design)
-   - [Data Storage and Retrieval](#data-storage-and-retrieval)
-   - [Backup and Recovery](#backup-and-recovery)
+   8. [Data Management](#data-management)
+      - [Database Design](#database-design)
+      - [Data Storage and Retrieval](#data-storage-and-retrieval)
+      - [Backup and Recovery](#backup-and-recovery)
 
-9. [Reporting and Analytics](#reporting-and-analytics)
-   - [Financial Reports](#financial-reports)
-   - [Budget Analysis](#budget-analysis)
-   - [Data Visualization](#data-visualization)
+   9. [Reporting and Analytics](#reporting-and-analytics)
+      - [Financial Reports](#financial-reports)
+      - [Budget Analysis](#budget-analysis)
+      - [Data Visualization](#data-visualization)
 
-10. [Deployment and Infrastructure](#deployment-and-infrastructure)
-    - [Hosting Environment](#hosting-environment)
-    - [Scalability and Performance Considerations](#scalability-and-performance-considerations)
+   10. [Deployment and Infrastructure](#deployment-and-infrastructure)
+      - [Hosting Environment](#hosting-environment)
+      - [Scalability and Performance Considerations](#scalability-and-performance-considerations)
 
-11. [Project Timeline](#project-timeline)
-    - [Milestones](#milestones)
-    - [Deliverables](#deliverables)
-    - [Resource Allocation](#resource-allocation)
+   11. [Project Timeline](#project-timeline)
+      - [Milestones](#milestones)
+      - [Deliverables](#deliverables)
+      - [Resource Allocation](#resource-allocation)
 
-12. [Risks and Mitigation Strategies](#risks-and-mitigation-strategies)
-    - [Potential Risks](#potential-risks)
-    - [Contingency Plans](#contingency-plans)
+   12. [Risks and Mitigation Strategies](#risks-and-mitigation-strategies)
+      - [Potential Risks](#potential-risks)
+      - [Contingency Plans](#contingency-plans)
 
-13. [Conclusion](#conclusion)
+   13. [Conclusion](#conclusion)
 
-14. [References](#references)
+   14. [References](#references)
 
     </div>
     <div style="flex: 50%; padding-left: 10px;">
-        Column 2 content goes here.
-    </div>
-</div>
-
-
-
----
-
-## Introduction <a name="introduction"></a>
+       ## Introduction <a name="introduction"></a>
 
 ### Purpose of the Document <a name="purpose-of-the-document"></a>
 
@@ -648,6 +639,8 @@ By adhering to the project plan outlined in this blueprint, the Government Budge
 - African Governance Architecture
 
 These references cover a range of topics related to E-Governance, including best practices, case studies, research, and resources from various international organizations and government bodies.
+    </div>
+</div>
 
 
 
