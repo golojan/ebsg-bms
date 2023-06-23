@@ -80,17 +80,17 @@
 
 ## Introduction <a name="introduction"></a>
 
-### Purpose of the Document
+### Purpose of the Document <a name="purpose-of-the-document"></a>
 
 The purpose of this document is to provide a blueprint for the development of a Government Budget Management System for the Government of Ebonyi State with the aim to provide a comprehensive plan for the system's design, functionality, and implementation. The document will provide a detailed overview of the system, including the system architecture, technology stack, user roles and permissions, functional features, user interfaces, security measures, data management, reporting and analytics, deployment and infrastructure, project timeline, and risks and mitigation strategies.
 
-### Project Overview
+### Project Overview <a name="project-overview"></a>
 
 The Government Budget Management System is a web-based application that focuses on finance and budget flow for every Ministry, Department, and Agency (MDA) of the government. It aims to streamline the budget management process, from budget upload to expenditure requests, approvals, disbursements, and supplementary budget handling.
 
 The system will serve as a centralized platform for MDAs to manage their budgets, request funding or expenditures, track approvals, and ensure proper financial management. It will provide transparency, efficiency, and accountability in the government's financial operations.
 
-### Objectives
+### Objectives <a name="objectives"></a>
 
 The main objectives of the Government Budget Management System are as follows:
 
@@ -116,7 +116,7 @@ The Government Budget Management System aims to improve financial management, en
 
 The system overview section provides an understanding of the overall architecture, technology stack, and integration requirements of the Government Budget Management System.
 
-### System Architecture
+### System Architecture <a name="system-architecture"></a>
 
 The Government Budget Management System will follow a web-based client-server architecture. The key components of the system architecture include:
 
@@ -151,7 +151,7 @@ Next.js API serverless functionality will serve as the server-side runtime envir
 6. **Deployment:** Vercel, Docker, Kubernetes
 
 
-### Integration Requirements
+### Integration Requirements  <a name="integration-requirements"></a>
 
 The Government Budget Management System may require integration with various external systems and services. Some of the integration requirements include:
 
@@ -171,7 +171,7 @@ The specific integration requirements will be further analyzed during the system
 
 The Government Budget Management System will have different user roles with specific permissions and responsibilities. This section outlines the various user roles involved in the system.
 
-### Administrator
+### Administrator <a name="administrator"></a>
 
 The administrator will be responsible for managing the system, including user management, system configurations, and other administrative tasks. The administrator will have the following permissions:
 
@@ -181,7 +181,7 @@ The administrator will be responsible for managing the system, including user ma
 - Handling system maintenance and upgrades.
 - Resolving any technical issues or errors.
 
-### Ministry, Departments, and Agencies (MDAs)
+### Ministry, Departments, and Agencies (MDAs)  <a name="ministry-departments-and-agencies-mdas"></a>
 
 MDAs represent the different ministries, departments, and agencies of the government. Each MDA will have their own user accounts and will be responsible for managing their budgets within the system. Their key responsibilities include:
 
@@ -192,7 +192,7 @@ MDAs represent the different ministries, departments, and agencies of the govern
 - Requesting supplementary budgets or spending from other MDAs, subject to approval.
 - Requesting an executive budget adjustment and submitting details to the National Assembly for deliberation and approval.
 
-### Finance Head (Accountant General)
+### Finance Head (Accountant General)  <a name="finance-head-accountant-general"></a>    
 
 The Finance Head role is responsible for overseeing the financial management of the government budget. Their main responsibilities include:
 
@@ -202,7 +202,7 @@ The Finance Head role is responsible for overseeing the financial management of 
 - Monitoring disbursement confirmations made by MDAs.
 - Collaborating with other approving authorities for budget adjustments and supplementary requests.
 
-### Approving Authorities
+### Approving Authorities  <a name="approving-authorities"></a>
 
 The approving authorities represent the different units and heads involved in the approval process. They will be responsible for reviewing and approving funding or expenditure requests initiated by MDAs. They can include department heads, directors, or other relevant officials. Their responsibilities include:
 
@@ -210,7 +210,7 @@ The approving authorities represent the different units and heads involved in th
 - Adding notes or minutes to the request during the approval process.
 - Collaborating with higher-level authorities for final decision-making.
 
-### Executive Governor
+### Executive Governor  <a name="executive-governor"></a>
 
 The Executive Governor (H.E) will be responsible for approving or rejecting funding or expenditure requests escalated to their level. They will also be responsible for approving supplementary budget requests and executive budget adjustments. Their responsibilities include:
 
@@ -218,7 +218,7 @@ The Executive Governor (H.E) will be responsible for approving or rejecting fund
 - Approving or rejecting supplementary budget requests or spending from other MDAs.
 - Collaborating with the National Assembly for executive budget adjustment requests.
 
-### National Assembly
+### National Assembly   <a name="national-assembly"></a>
 
 The National Assembly represents the legislative body responsible for budget deliberation and approval. Their role includes:
 
@@ -234,31 +234,31 @@ Each user role within the Government Budget Management System will have specific
 
 The Government Budget Management System encompasses several functional features that facilitate efficient budget management and financial processes. This section outlines the key features of the system.
 
-### Budget Upload
+### Budget Upload <a name="budget-upload"></a>
 
 The Budget Upload feature allows Ministry, Departments, and Agencies (MDAs) to upload their budgets into the system. This feature enables MDAs to provide detailed information about planned allocations and expenditures, ensuring accurate budget management.
 
-### Funding/Expenditure Request
+### Funding/Expenditure Request  <a name="funding-expenditure-request"></a>
 
 The Funding/Expenditure Request feature enables MDAs to request funding or expenditures through the system's back-end. MDAs can initiate requests, specifying the amount, purpose, and supporting documents for the funds needed. The request code/file number will be generated for tracking and reference purposes.
 
-### Approval Workflow
+### Approval Workflow   <a name="approval-workflow"></a>
 
 The Approval Workflow feature streamlines the process of obtaining approvals for funding or expenditure requests. The system implements an automated workflow that escalates the requests to the appropriate units and heads for review and approval. Each approving authority can add notes or minutes to the request during the approval process, creating a transparent and auditable trail.
 
-### Disbursement Confirmation
+### Disbursement Confirmation <a name="disbursement-confirmation"></a>
 
 The Disbursement Confirmation feature ensures that funds disbursed by the finance head are properly acknowledged and deducted from the respective MDA's overall budget. Once the finance head disburses the funds, a disbursement number is created and attached to reference the request and approvals. The receiving MDA must confirm the disbursement through their back-end, signaling the deduction of funds from their initial budget.
 
-### Supplementary Budget Request
+### Supplementary Budget Request <a name="supplementary-budget-request"></a>
 
 The Supplementary Budget Request feature allows an MDA to request additional funds if they exhaust their allocated budget. The request goes through the standard approval workflow, starting from the relevant units and heads and escalating to higher-level approving authorities. The request will be evaluated, and if approved, the supplementary budget will be allocated to the requesting MDA.
 
-### Request to Spend from Other MDAs
+### Request to Spend from Other MDAs   <a name="request-to-spend-from-other-mdas"></a>
 
 The Request to Spend from Other MDAs feature enables an MDA to request permission to spend from the budget of another MDA. This request follows the established approval workflow, including review and approval from the respective approving authorities. The purpose of this feature is to facilitate efficient allocation and utilization of funds across different MDAs while ensuring proper oversight and accountability.
 
-### Executive Budget Adjustment
+### Executive Budget Adjustment  <a name="executive-budget-adjustment"></a>
 
 The Executive Budget Adjustment feature allows MDAs to request an increase in their overall budget. If approved, the MDA must submit the necessary details to the National Assembly for deliberation and final approval. This feature ensures a systematic and transparent process for adjusting the budget based on evolving needs and priorities.
 
@@ -270,15 +270,15 @@ The Government Budget Management System incorporates these functional features t
 
 The Government Budget Management System will incorporate digital signing capabilities to authenticate and validate approvals, notes, updates, and other relevant documents. This section focuses on the integration of digital signing into the system.
 
-### Authentication Methods
+### Authentication Methods <a name="authentication-methods"></a>
 
 The system will offer two authentication methods for digital signing: hardware tokens and software tokens. These methods provide secure and reliable means of verifying the authenticity and integrity of digital signatures.
 
-### Hardware Token
+### Hardware Token   <a name="hardware-token"></a>
 
 A hardware token is a physical device that stores cryptographic keys and generates digital signatures. It provides an additional layer of security by keeping the private keys offline, protecting them from unauthorized access. Users will need to insert the hardware token into their device and provide the necessary authentication credentials to access and use the digital signing functionality.
 
-### Software Token
+### Software Token   <a name="software-token"></a>
 
 A software token, on the other hand, is a digital representation of a token stored on a user's device. It leverages cryptographic algorithms to generate and verify digital signatures. The software token is typically protected by a password or PIN to ensure secure access. Users can install the software token application on their devices and use it to generate digital signatures when required.
 
@@ -292,35 +292,35 @@ The integration of digital signing will enhance the authenticity, integrity, and
 
 The Government Budget Management System will feature various user interfaces that provide intuitive and user-friendly interactions for different tasks and operations. This section describes the key user interfaces within the system.
 
-### Dashboard
+### Dashboard  <a name="dashboard"></a>
 
 The Dashboard interface serves as the central hub for users to access important information and perform various actions. It provides an overview of budget-related activities, pending approvals, disbursements, and other relevant updates. The Dashboard interface may include visualizations, charts, and notifications to facilitate quick and informed decision-making.
 
-### Budget Upload Interface
+### Budget Upload Interface   <a name="budget-upload-interface"></a>
 
 The Budget Upload Interface allows Ministry, Departments, and Agencies (MDAs) to upload their budgets into the system. This interface provides a form or file upload functionality to capture budget details, such as allocations, expenditures, and supporting documents. It may include validation checks to ensure the accuracy and completeness of the uploaded budget data.
 
-### Funding/Expenditure Request Interface
+### Funding/Expenditure Request Interface  <a name="funding-expenditure-request-interface"></a>
 
 The Funding/Expenditure Request Interface enables MDAs to initiate funding or expenditure requests. This interface allows users to provide details such as the requested amount, purpose, supporting documents, and any additional information required for the request. Users can submit the request through a user-friendly form, ensuring clarity and completeness of the information provided.
 
-### Approval Interface
+### Approval Interface  <a name="approval-interface"></a>
 
 The Approval Interface is designed for approving authorities to review and provide their approval or rejection of funding or expenditure requests. This interface displays the relevant request details, including attached documents and notes from previous approvers. Approvers can add their own notes or minutes to the request, make a decision, and submit their approval or rejection through the interface.
 
-### Disbursement Confirmation Interface
+### Disbursement Confirmation Interface   <a name="disbursement-confirmation-interface"></a>
 
 The Disbursement Confirmation Interface facilitates the confirmation of fund disbursements by the receiving Ministry, Department, or Agency (MDA). This interface allows the MDA to verify the disbursement made by the finance head, confirm the receipt of funds, and update the status of the disbursement. It may include options to indicate partial or complete disbursement and provide relevant documentation.
 
-### Supplementary Budget Request Interface
+### Supplementary Budget Request Interface   <a name="supplementary-budget-request-interface"></a>
 
 The Supplementary Budget Request Interface enables MDAs to request additional funds when they exhaust their allocated budget. This interface allows users to specify the reasons for the request, the amount needed, and any supporting documentation. The interface guides users through the process of submitting the request and provides updates on its status as it progresses through the approval workflow.
 
-### Request to Spend from Other MDAs Interface
+### Request to Spend from Other MDAs Interface  <a name="request-to-spend-from-other-mdas-interface"></a>
 
 The Request to Spend from Other MDAs Interface allows an MDA to request permission to spend from the budget of another MDA. This interface presents a form or request template for specifying the purpose, amount, and justification for the spending. Users can provide supporting documents and submit the request, which will undergo the standard approval workflow for review and decision-making.
 
-### Executive Budget Adjustment Interface
+### Executive Budget Adjustment Interface <a name="executive-budget-adjustment-interface"></a>
 
 The Executive Budget Adjustment Interface is designed for MDAs to request an increase in their overall budget. This interface guides users through the process of submitting the request, providing necessary details such as the reasons for the adjustment and supporting documentation. Once submitted, the interface provides updates on the request's progress, including notifications when it reaches the National Assembly for deliberation and approval.
 
@@ -332,19 +332,19 @@ These user interfaces ensure a seamless and user-friendly experience within the 
 
 The Government Budget Management System incorporates robust security measures to safeguard sensitive data, protect against unauthorized access, and ensure the integrity of the system. This section outlines the key security measures implemented within the system.
 
-### User Authentication and Authorization
+### User Authentication and Authorization <a name="user-authentication-and-authorization"></a>
 
 User Authentication and Authorization mechanisms are employed to verify the identity of users and control their access to system functionalities and data. The system will require users to provide unique login credentials, such as usernames and passwords, to authenticate their identity. Additionally, role-based access control (RBAC) will be implemented to enforce appropriate authorization levels for each user role, granting access only to the functionalities and data necessary for their responsibilities.
 
-### Data Encryption
+### Data Encryption  <a name="data-encryption"></a>
 
 Data Encryption is utilized to secure sensitive information within the Government Budget Management System. Encryption algorithms will be employed to convert data into an unreadable format, ensuring that even if the data is intercepted, it remains unintelligible without the proper decryption keys. Encryption will be applied to data at rest, stored in databases or files, as well as data transmitted over networks to provide end-to-end protection.
 
-### Audit Logs and Trail
+### Audit Logs and Trail   <a name="audit-logs-and-trail"></a>
 
 Audit Logs and Trails will be implemented to record and monitor system activities, user actions, and critical events. These logs capture information such as user logins, data access, modifications, and administrative activities. By maintaining detailed audit trails, the system can track user actions, detect any suspicious or unauthorized activities, and provide a means for investigation and forensic analysis if required.
 
-### Penetration Testing and Vulnerability Assessments
+### Penetration Testing and Vulnerability Assessments  <a name="penetration-testing-and-vulnerability-assessments"></a>
 
 Regular Penetration Testing and Vulnerability Assessments will be conducted to identify and address potential security weaknesses within the Government Budget Management System. Penetration testing involves simulating real-world attacks on the system to identify vulnerabilities that could be exploited by malicious actors. Vulnerability assessments focus on scanning and assessing the system for known vulnerabilities and applying appropriate patches and fixes to mitigate them. These proactive measures ensure that the system remains secure and resistant to potential threats.
 
@@ -356,15 +356,15 @@ These security measures collectively enhance the security posture of the Governm
 
 Efficient data management is crucial for the Government Budget Management System to ensure reliable storage, retrieval, and protection of critical information. This section discusses the key aspects of data management within the system.
 
-### Database Design
+### Database Design  <a name="database-design"></a>
 
 The system will employ a well-designed and optimized database schema to store and manage budget-related data. The database design will be based on industry best practices and adhere to standard normalization principles to ensure data integrity, minimize redundancy, and facilitate efficient data retrieval and manipulation. The chosen database management system, such as PostgreSQL, will be utilized to implement the database schema effectively.
 
-### Data Storage and Retrieval
+### Data Storage and Retrieval   <a name="data-storage-and-retrieval"></a>
 
 Data storage and retrieval mechanisms will be implemented to manage the budget-related data efficiently. The system will employ appropriate data structures and indexing techniques to optimize data retrieval performance. Additionally, caching mechanisms, such as Redis, can be utilized to enhance the speed and responsiveness of data retrieval, particularly for frequently accessed or computationally intensive operations.
 
-### Backup and Recovery
+### Backup and Recovery <a name="backup-and-recovery"></a>
 
 A robust backup and recovery strategy will be implemented to safeguard against data loss and ensure business continuity. Regular automated backups of the database will be performed to create redundant copies of the data. These backups will be securely stored in separate locations, and a retention policy will be defined to manage backup versions. In the event of data loss or system failure, the system will have mechanisms in place to restore the data from the backups and minimize downtime.
 
