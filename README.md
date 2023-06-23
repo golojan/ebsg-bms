@@ -1,6 +1,8 @@
 ## [E-Governance:  Blueprint for Budget-Planning and Management System (e-GovBMS).](#README)
 
-### Table of Contents:
+<div style="display: flex;">
+    <div style="flex: 50%; padding-right: 10px;">
+        ### Table of Contents:
 
 1. [Introduction](#introduction)
    - [Purpose of the Document](#purpose-of-the-document)
@@ -75,6 +77,14 @@
 13. [Conclusion](#conclusion)
 
 14. [References](#references)
+
+    </div>
+    <div style="flex: 50%; padding-left: 10px;">
+        Column 2 content goes here.
+    </div>
+</div>
+
+
 
 ---
 
