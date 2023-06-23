@@ -1,4 +1,4 @@
-## E-Governance:  Blueprint for Budget Planning and Management System (e-GovBPMS).
+## E-Governance:  Blueprint for Budget Planning and Management System (e-GovBMS).
 
 ### Table of Contents:
 
