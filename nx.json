@@ -50,6 +50,9 @@
     "@nx/react": {
       "application": {
         "babel": true
+      },
+      "library": {
+        "unitTestRunner": "none"
       }
     },
     "@nx/next": {

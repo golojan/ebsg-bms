@@ -1,14 +1,20 @@
+import React from 'react';
+import { Row, Col } from 'react-bootstrap';
+import AddBox from 'all/add-box/add-box';
 
 export function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.scss file.
-   */
   return (
-    <div className="app">
-      <h1 className="tw-text-green-400 tw-text-5xl">Ready to Go</h1>
-    </div>
+    <Row>
+      <Col className="tw-bg-red-500" xs={12} md={6} lg={6}>
+        <h1>Index</h1>
+        <p> This is a test page for EBSG Portal </p>
+        <AddBox />
+      </Col>
+      <Col className="tw-bg-green-500" xs={12} md={6} lg={6}>
+        <h1>Index</h1>
+        <p> This is a test page for EBSG Portal </p>
+      </Col>
+    </Row>
   );
 }
 

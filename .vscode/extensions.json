@@ -3,6 +3,9 @@
     "nrwl.angular-console",
     "esbenp.prettier-vscode",
     "firsttris.vscode-jest-runner",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "Prisma.prisma-insider",
+    "Prisma.prisma",
+    "docker.vscode-docker"
   ]
 }

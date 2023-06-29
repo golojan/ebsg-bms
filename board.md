@@ -1,15 +1,50 @@
 npm i nx -g
 
 # Create a new workspace
+
 nx init
 
 # Create a new application NextJs
+
 npx nx generate @nx/next:application bmsapp --directory=apps --no-appDir --e2eTestRunner=none --style=scss --unitTestRunner=none --no-interactive
 
-# nx g @nx/reaxt:component --name=board --project=board --directory=board --style=scss --export
+# Create a new React Component 
+nx g @nx/reaxt:component --name=board --project=board --directory=board --style=scss --export
+
 # nx g @nx/next:page --name=board --project=board --directory=board --style=scss --export
 
 # nx g @nx/next:app --name=ebsgbms --style=scss --linter=eslint --unitTestRunner=jest --e2eTestRunner=cypress --tags=scope:board --directory=board --routing --strict
 
+# Because we need a good intutive UI that will be appealing to the eye, we will use the following UI libraries
+
+daisyui = to give us the ability to switch themes easily
+checkout: https://daisyui.com/docs/themes/
+
+bootstrap = to give us the ability to use the bootstrap components
+tailwindcss = to give us the ability to use the tailwindcss components
+
+== WE WILL BE USING JOTAI FOR STATE MANAGEMENT ==
+npm i jotai
+npm i jotai/utils
+npm i jotai/query
+npm i jotai/optics
+npm i jotai/devtools
+npm i jotai/undux
+npm i jotai/zustand
+npm i jotai/xstate
+npm i jotai/immer
+npm i jotai/async
+npm i jotai/worker
+
+# Created Libray for UI components
+<!-- nx g @nx/react:lib bms-ui --directory=libs --style=scss --export -->
+
+nx g @nx/react:component --name=button-ui --project=bms-ui --directory=buttons --style=scss --export --dry-run
+
+# without dry-run
+nx g @nx/react:component --name=button-ui --project=bms-ui --directory=buttons --style=scss --export
+nx g @nx/react:component --name=add-box --project=bmsapp --directory=all --style=scss --export
 
 
+I decided to add (NextTopLoader ) https://www.npmjs.com/package/nextjs-toploader
+to add interractivity to the top when app is loading
