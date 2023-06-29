@@ -1,7 +1,6 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import '../style/global.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { getDefaultStore, Provider } from 'jotai';
 import NextTopLoader from 'nextjs-toploader';
 
@@ -21,7 +20,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>.</title>
+        <title>Budget Management System | Ebonyi State</title>
       </Head>
       <NextTopLoader />
       <Provider store={store}>

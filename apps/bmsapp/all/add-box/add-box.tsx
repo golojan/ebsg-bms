@@ -12,6 +12,9 @@ export function AddBox(props: AddBoxProps) {
   return (
     <div className={styles['container']}>
       {busy ? <div>Loading...</div> : <>{JSON.stringify(logs?.data)}</>}
+      <hr />
+      <span className="loading loading-spinner loading-xs"></span>
+      <button className="btn btn-primary w-64 rounded-full ">Button</button>
     </div>
   );
 }

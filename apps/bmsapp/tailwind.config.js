@@ -11,21 +11,6 @@ module.exports = {
     ),
     ...createGlobPatternsForDependencies(__dirname),
   ],
-  theme: {
-    screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px',
-    },
-    fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
-    },
-    extend: {},
-  },
-  daisyui: {
-    themes: ['dark', 'light'],
-  },
-  plugins: [require('daisyui')],
+  variants: {},
+  plugins: [require('@tailwindcss/typography')],
 };
