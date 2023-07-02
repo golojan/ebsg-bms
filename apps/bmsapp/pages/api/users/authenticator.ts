@@ -12,13 +12,13 @@ export default withSessionRoute(async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const qrcode = Number(req.session.qrcode);
+  const qrcode = req.session.qrcode;
   if (!qrcode)
     return res.status(200).send({ status: ApiStatus.QRCODE_NOT_FOUND });
   await prisma.user
     .findUnique({
       where: {
-        id: accid,
+        qrcode: qrcode,
       },
       select: {
         id: true,
