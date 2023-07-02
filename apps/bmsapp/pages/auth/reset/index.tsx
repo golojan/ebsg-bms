@@ -82,7 +82,7 @@ export const Reset: NextPage<resetProps> = (props) => {
               </Form.Group>
 
               <button
-                className="btn btn-primary tw-w-full btn-block"
+                className="btn btn-primary tw-w-full btn-block tw-mt-5"
                 type="submit"
                 ref={resetButtonRef}
               >
