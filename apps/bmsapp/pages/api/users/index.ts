@@ -11,14 +11,14 @@ export default async function handler(
   res: NextApiResponse<TApiResult>
 ) {
   const { page, limit } = req.query;
-  
+
   await prisma.mda
     .findMany()
     .then((mdas) => {
       return res.status(200).json({
         status: ApiStatus.MDA_FOUND,
         data: mdas,
-        error: `USERS_FOUND:${ApiStatus.USER_FOUND}`,
+        error: `USER_FOUND:${ApiStatus.USER_FOUND}`,
       });
     })
     .catch((error) => {

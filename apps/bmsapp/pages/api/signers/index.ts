@@ -14,8 +14,8 @@ export default function handler(
   res: NextApiResponse<TApiResult>
 ) {
   return res.status(200).json({
-    status: ApiStatus.USERS_FOUND,
+    status: ApiStatus.USER_FOUND,
     data: users,
-    error: `USERS_FOUND:${ApiStatus.USERS_FOUND}`,
+    error: `USER_FOUND:${ApiStatus.USER_FOUND}`,
   });
 }
