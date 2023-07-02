@@ -26,6 +26,7 @@ model User {
   lastName  String?
   email     String?   @unique
   password  String?
+  qrcode    String?   @unique
   Role      Role?     @relation(fields: [roleId], references: [id])
   roleId    Int?
   Mda       Mda?      @relation(fields: [mdaId], references: [id])

@@ -24,4 +24,6 @@ export enum ApiStatus {
   USER_NOT_RESET = 21,
   USER_CREATED = 22,
   USER_NOT_CREATED = 23,
+  QRCODE_FOUND = 24,
+  QRCODE_NOT_FOUND = 25,
 }
