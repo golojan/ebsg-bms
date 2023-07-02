@@ -10,17 +10,41 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TApiResult>
 ) {
-  await prisma.mda
-    .findMany()
-    .then((mdas) => {
-      return res.status(200).json({
-        status: ApiStatus.MDA_FOUND,
-        data: mdas,
-        error: `USER_FOUND:${ApiStatus.USER_FOUND}`,
-      });
+  const { firstName, lastName, email, Mda } = req.body;
+  await prisma.user
+    .create({
+      data: {
+        firstName,
+        lastName,
+        email,
+        Mda: {
+          connect: {
+            id: Mda,
+          },
+        },
+      },
+      select: {
+        id: true,
+      },
+    })
+    .then((user) => {
+      console.log(user);
+      if (!user || !user.id) {
+        return res.status(500).json({
+          status: ApiStatus.USER_NOT_CREATED,
+          error: `USER_NOT_CREATED:${ApiStatus.USER_NOT_CREATED}`,
+        });
+      } else {
+        return res.status(200).json({
+          status: ApiStatus.USER_CREATED,
+          data: user,
+        });
+      }
     })
     .catch((error) => {
-      return res.status(500).json({ status: ApiStatus.MDA_NOT_FOUND });
+      return res
+        .status(500)
+        .json({ status: ApiStatus.USER_NOT_CREATED, error: error });
     })
     .finally(() => {
       prisma.$disconnect();

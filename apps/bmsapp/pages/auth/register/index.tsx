@@ -13,24 +13,34 @@ import { useUser } from 'services/use-user';
 import validator from 'validator';
 import { refRun, refStop } from 'libs/formrunnner';
 import { useRouter } from 'next/router';
+import useSWR from 'swr';
+import { fetcher } from 'libs';
 
 /* eslint-disable-next-line */
 export type loginProps = {};
 
 export const Login: NextPage<loginProps> = (props) => {
+  const { data: result, error } = useSWR('/api/mdas', fetcher);
+
   const { register } = useUser();
   const [signup, setSignup] = useState<{
+    firstName: string;
+    firstNameError: string;
+    lastName: string;
+    lastNameError: string;
     email: string;
     emailError: string;
-    password: string;
-    passwordError: string;
-    remember: boolean;
+    Mda: number;
+    MdaError: string;
   }>({
+    firstName: '',
+    firstNameError: '',
+    lastName: '',
+    lastNameError: '',
     email: '',
     emailError: '',
-    password: '',
-    passwordError: '',
-    remember: false,
+    Mda: Number(null),
+    MdaError: '',
   });
 
   const router = useRouter();
@@ -45,19 +55,12 @@ export const Login: NextPage<loginProps> = (props) => {
       });
       return;
     }
-
-    if (signup.password.length < 4) {
-      setSignup({
-        ...signup,
-        passwordError: 'Password must be at least 6 characters',
-      });
-      return;
-    }
-
     refRun(registerButtonRef, 'Please wait...');
     register({
+      firstName: signup.firstName,
+      lastName: signup.lastName,
+      Mda: signup.Mda,
       email: signup.email,
-      password: signup.password,
     }).then((res) => {
       if (res) {
         router.push('/auth/verify');
@@ -67,6 +70,7 @@ export const Login: NextPage<loginProps> = (props) => {
     });
     refStop(registerButtonRef, 'Login to Dashboard');
   };
+
   return (
     <div className={style.auth}>
       <Image
@@ -80,8 +84,76 @@ export const Login: NextPage<loginProps> = (props) => {
         <Form onSubmit={handleRegister}>
           <Row>
             <Col lg={12} md={12} sm={12} xl={12} className="p-5">
-              <h3 className="text-center mb-3">Request MDA Profile</h3>
-              <Form.Group controlId="formBasicEmail">
+              <h3 className="text-center mb-5">Request Profile</h3>
+
+              <Form.Group controlId="firstName" className="mb-3">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  required
+                  autoComplete="off"
+                  placeholder="First Name"
+                  value={signup.firstName}
+                  onChange={(e) =>
+                    setSignup({ ...signup, firstName: e.target.value })
+                  }
+                />
+                {signup.emailError && (
+                  <Form.Text className="text-danger">
+                    {signup.emailError}
+                  </Form.Text>
+                )}
+              </Form.Group>
+
+              <Form.Group controlId="lastName" className="mb-3">
+                <Form.Label>Surname</Form.Label>
+                <Form.Control
+                  type="text"
+                  required
+                  autoComplete="off"
+                  placeholder="Last Name"
+                  value={signup.lastName}
+                  onChange={(e) =>
+                    setSignup({ ...signup, lastName: e.target.value })
+                  }
+                />
+                {signup.lastNameError && (
+                  <Form.Text className="text-danger">
+                    {signup.lastNameError}
+                  </Form.Text>
+                )}
+              </Form.Group>
+
+              {/* Select Department */}
+              <Form.Group controlId="department" className="mb-3">
+                <Form.Label>Department</Form.Label>
+                <Form.Select
+                  aria-label="Select Department"
+                  value={signup.Mda}
+                  onChange={(e) =>
+                    setSignup({ ...signup, Mda: Number(e.target.value) })
+                  }
+                >
+                  <option value="">Select MDA</option>
+                  {result &&
+                    result.data &&
+                    !error &&
+                    result.data.map((mda: any, index: number) => (
+                      <option key={index} value={mda.id}>
+                        {mda.name}
+                      </option>
+                    ))}
+                </Form.Select>
+                {signup.MdaError && (
+                  <Form.Text className="text-danger">
+                    {signup.MdaError}
+                  </Form.Text>
+                )}
+              </Form.Group>
+
+              <hr className="tw-block" />
+
+              <Form.Group controlId="formBasicEmail" className="mb-3">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
@@ -93,28 +165,11 @@ export const Login: NextPage<loginProps> = (props) => {
                     setSignup({ ...signup, email: e.target.value })
                   }
                 />
-              </Form.Group>
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  required
-                  placeholder="Enter password"
-                  value={signup.password}
-                  onChange={(e) =>
-                    setSignup({ ...signup, password: e.target.value })
-                  }
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicCheckbox">
-                <Form.Check
-                  type="checkbox"
-                  label="Remember me"
-                  checked={signup.remember}
-                  onChange={(e) =>
-                    setSignup({ ...signup, remember: e.target.checked })
-                  }
-                />
+                {signup.lastNameError && (
+                  <Form.Text className="text-danger">
+                    {signup.lastNameError}
+                  </Form.Text>
+                )}
               </Form.Group>
 
               <button
@@ -122,7 +177,7 @@ export const Login: NextPage<loginProps> = (props) => {
                 type="submit"
                 ref={registerButtonRef}
               >
-                Login to Dashboard
+                Request New Profile
               </button>
 
               <div className="text-center tw-mt-5 tw-block">

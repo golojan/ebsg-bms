@@ -4,9 +4,11 @@ export const refStop = async (
   ref: MutableRefObject<HTMLButtonElement>,
   text: string
 ) => {
-  const thisButton = ref.current;
-  thisButton.disabled = false;
-  thisButton.textContent = text;
+  window.setTimeout(() => {
+    const thisButton = ref.current;
+    thisButton.disabled = false;
+    thisButton.textContent = text;
+  }, 2000);
 };
 
 export const refRun = async (

@@ -38,8 +38,10 @@ export const useUser = ({ redirectTo, redirectIfFound }: IProps = {}) => {
   };
 
   const register = async (registerData: {
+    firstName: string;
+    lastName: string;
     email: string;
-    password: string;
+    Mda: number;
   }): Promise<number | null> => {
     const result = await fetch('/api/users/create', {
       method: 'POST',

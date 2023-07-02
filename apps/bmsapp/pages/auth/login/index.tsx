@@ -93,6 +93,11 @@ export const Login: NextPage<loginProps> = (props) => {
                     setLogon({ ...logon, email: e.target.value })
                   }
                 />
+                {logon.emailError && (
+                  <Form.Text className="text-danger">
+                    {logon.emailError}
+                  </Form.Text>
+                )}
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
@@ -105,6 +110,11 @@ export const Login: NextPage<loginProps> = (props) => {
                     setLogon({ ...logon, password: e.target.value })
                   }
                 />
+                {logon.emailError && (
+                  <Form.Text className="text-danger">
+                    {logon.emailError}
+                  </Form.Text>
+                )}
               </Form.Group>
               <Form.Group controlId="formBasicCheckbox">
                 <Form.Check
@@ -116,7 +126,6 @@ export const Login: NextPage<loginProps> = (props) => {
                   }
                 />
               </Form.Group>
-              
 
               <button
                 className="btn btn-primary tw-w-full btn-block"

@@ -26,7 +26,7 @@ model User {
   lastName  String?
   email     String?   @unique
   password  String?
-  role      Role?     @relation(fields: [roleId], references: [id])
+  Role      Role?     @relation(fields: [roleId], references: [id])
   roleId    Int?
   Mda       Mda?      @relation(fields: [mdaId], references: [id])
   mdaId     Int?

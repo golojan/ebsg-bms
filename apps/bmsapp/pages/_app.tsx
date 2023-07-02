@@ -3,6 +3,7 @@ import Head from 'next/head';
 import '../style/global.scss';
 import { getDefaultStore, Provider } from 'jotai';
 import NextTopLoader from 'nextjs-toploader';
+import { IconContext } from 'react-icons';
 
 const store = getDefaultStore();
 export const CustomApp = ({ Component, pageProps }: AppProps) => {
@@ -23,7 +24,11 @@ export const CustomApp = ({ Component, pageProps }: AppProps) => {
         shadow="0 0 10px #28753a,0 0 5px #B6DC81"
       />
       <Provider store={store}>
-        <Component {...pageProps} />
+        <IconContext.Provider
+          value={{ color: 'blue', className: 'global-class-name' }}
+        >
+          <Component {...pageProps} />
+        </IconContext.Provider>
       </Provider>
     </>
   );
