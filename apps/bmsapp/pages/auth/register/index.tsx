@@ -116,12 +116,13 @@ export const Login: NextPage<loginProps> = (props) => {
                   }
                 />
               </Form.Group>
-              <div className="text-center tw-mt-5">
+              <div className="text-center tw-mt-5 tw-block">
+                Profiled? -{' '}
                 <Link
                   href="/auth/login"
-                  className="tw-text-blue-500 tw-text-sm tw-font-semibold tw-mb-3 tw-block"
+                  className="tw-text-blue-500 tw-text-sm tw-font-semibold tw-mb-3"
                 >
-                  Profiled? - Login to Dashboard
+                  Login to Dashboard
                 </Link>
               </div>
 
