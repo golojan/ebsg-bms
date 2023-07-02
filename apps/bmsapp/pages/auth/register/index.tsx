@@ -116,6 +116,15 @@ export const Login: NextPage<loginProps> = (props) => {
                   }
                 />
               </Form.Group>
+
+              <button
+                className="btn btn-primary tw-w-full btn-block"
+                type="submit"
+                ref={registerButtonRef}
+              >
+                Login to Dashboard
+              </button>
+
               <div className="text-center tw-mt-5 tw-block">
                 Profiled? -{' '}
                 <Link
@@ -125,14 +134,6 @@ export const Login: NextPage<loginProps> = (props) => {
                   Login to Dashboard
                 </Link>
               </div>
-
-              <button
-                className="btn btn-primary tw-w-full btn-block"
-                type="submit"
-                ref={registerButtonRef}
-              >
-                Login to Dashboard
-              </button>
             </Col>
           </Row>
         </Form>

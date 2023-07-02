@@ -80,6 +80,15 @@ export const Reset: NextPage<resetProps> = (props) => {
                   </Form.Text>
                 )}
               </Form.Group>
+
+              <button
+                className="btn btn-primary tw-w-full btn-block"
+                type="submit"
+                ref={resetButtonRef}
+              >
+                Reset Password
+              </button>
+
               <div className="text-center tw-mt-5">
                 <Link
                   href="/auth/register"
@@ -95,13 +104,6 @@ export const Reset: NextPage<resetProps> = (props) => {
                   Login to MDA
                 </Link>
               </div>
-              <button
-                className="btn btn-primary tw-w-full btn-block"
-                type="submit"
-                ref={resetButtonRef}
-              >
-                Reset Password
-              </button>
             </Col>
           </Row>
         </Form>

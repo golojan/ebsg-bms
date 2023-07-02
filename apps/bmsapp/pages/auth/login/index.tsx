@@ -116,6 +116,16 @@ export const Login: NextPage<loginProps> = (props) => {
                   }
                 />
               </Form.Group>
+              
+
+              <button
+                className="btn btn-primary tw-w-full btn-block"
+                type="submit"
+                ref={loginButtonRef}
+              >
+                Login to Dashboard
+              </button>
+
               <div className="text-center tw-mt-5">
                 <Link
                   href="/auth/register"
@@ -131,14 +141,6 @@ export const Login: NextPage<loginProps> = (props) => {
                   Reset password
                 </Link>
               </div>
-
-              <button
-                className="btn btn-primary tw-w-full btn-block"
-                type="submit"
-                ref={loginButtonRef}
-              >
-                Login to Dashboard
-              </button>
             </Col>
           </Row>
         </Form>
