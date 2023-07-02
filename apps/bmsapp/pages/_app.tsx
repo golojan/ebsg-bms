@@ -4,31 +4,29 @@ import '../style/global.scss';
 import { getDefaultStore, Provider } from 'jotai';
 import NextTopLoader from 'nextjs-toploader';
 
-// This is the only to monitor the store
-// dev-time only: check app's left-bottom
-
-import { DevTools } from 'jotai-devtools';
-/** We need a fool proof store for
- * 1. state management
- * 2. state persistence
- * 3. state sharing
- * 4. state monitoring
- * 5. state debugging
- */
 const store = getDefaultStore();
-function CustomApp({ Component, pageProps }: AppProps) {
+export const CustomApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
         <title>Budget Management System | Ebonyi State</title>
       </Head>
-      <NextTopLoader />
+      <NextTopLoader
+        color="#28753a"
+        initialPosition={0.08}
+        crawlSpeed={200}
+        height={5}
+        crawl={true}
+        showSpinner={true}
+        easing="ease"
+        speed={200}
+        shadow="0 0 10px #28753a,0 0 5px #B6DC81"
+      />
       <Provider store={store}>
-        <DevTools store={store} />
         <Component {...pageProps} />
       </Provider>
     </>
   );
-}
+};
 
 export default CustomApp;

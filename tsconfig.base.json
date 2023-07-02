@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ebsg/bmsapp": ["./apps/bmsapp"]
+      "@ebsg/bmsapp": ["./apps/bmsapp"],
+      "@ebsg/prisma": ["./prisma/prisma"]
     }
   },
   "exclude": [

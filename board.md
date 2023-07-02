@@ -48,3 +48,33 @@ nx g @nx/react:component --name=add-box --project=bmsapp --directory=all --style
 
 I decided to add (NextTopLoader ) https://www.npmjs.com/package/nextjs-toploader
 to add interractivity to the top when app is loading
+
+
+# API Definition
+
+/api/model
+/api/model/create
+/api/model/{id}
+/api/model/{id}/update
+/api/model/{id}/delete
+
+# logs
+/api/logs = list all logs (unsigned)
+/api/logs/{id} = get log by id (unsigned)
+/api/logs/{id}/update = update log by id (unsigned)
+/api/logs/create = create log (unsigned)
+
+
+
+
+# Push Notifications
+https://www.npmjs.com/package/react-push-notification
+
+
+cake
+
+https://www.goodto.com/recipes/basic-cupcake-recipe
+https://lianaskitchen.co.uk/cupcake-recipe/
+https://www.allrecipes.com/recipe/157877/vanilla-cupcake/
+
+

@@ -3,19 +3,30 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ApiStatus } from 'types/api-status';
 
-// sample list of 100 users
-const users = [
-  { id: 1, name: 'John Doe' },
-  { id: 2, name: 'Jane Doe' },
-];
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
 
-export default function handler(
+import { withSessionRoute } from 'libs/session';
+
+export default withSessionRoute(async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TApiResult>
 ) {
-  return res.status(200).json({
-    status: ApiStatus.USERS_FOUND,
-    data: users,
-    error: `USERS_FOUND:${ApiStatus.USERS_FOUND}`,
-  });
-}
+  await prisma.log
+    .findMany()
+    .then((logs) => {
+      return res.status(200).json({
+        status: ApiStatus.LOG_FOUND,
+        data: logs,
+      });
+    })
+    .catch((error) => {
+      return res.status(500).json({
+        status: ApiStatus.LOG_NOT_FOUND,
+        error: error,
+      });
+    })
+    .finally(() => {
+      prisma.$disconnect();
+    });
+});

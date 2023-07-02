@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import AddBox from './add-box';
+import AddBox from '.';
 
 describe('AddBox', () => {
   it('should render successfully', () => {

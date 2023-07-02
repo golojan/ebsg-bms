@@ -16,18 +16,11 @@
         "name": "next"
       }
     ],
-    "types": [
-      "jest",
-      "node"
-    ],
+    "types": ["jest", "node"],
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "/*"
-      ],
-      "types/*": [
-        "types/*"
-      ]
+      "@/*": ["/*"],
+      "types/*": ["types/*"]
     }
   },
   "include": [
