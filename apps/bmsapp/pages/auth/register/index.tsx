@@ -121,7 +121,7 @@ export const Login: NextPage<loginProps> = (props) => {
                   href="/auth/login"
                   className="tw-text-blue-500 tw-text-sm tw-font-semibold tw-mb-3 tw-block"
                 >
-                  Profile? Login to Dashboard
+                  Profiled? - Login to Dashboard
                 </Link>
               </div>
 

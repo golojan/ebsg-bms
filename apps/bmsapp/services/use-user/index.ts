@@ -10,7 +10,7 @@ interface IProps {
 }
 
 export const useUser = ({ redirectTo, redirectIfFound }: IProps = {}) => {
-  const { data: result, error } = useSWR('/api/users/user', fetcher);
+  const { data: result } = useSWR('/api/users/user', fetcher);
 
   const user: UserInfo = result?.data;
   const finished = Boolean(result);

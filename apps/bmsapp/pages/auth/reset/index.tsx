@@ -83,14 +83,14 @@ export const Reset: NextPage<resetProps> = (props) => {
               <div className="text-center tw-mt-5">
                 <Link
                   href="/auth/register"
-                  className="tw-text-blue-500 tw-text-sm tw-font-semibold tw-mb-3 tw-block"
+                  className="tw-text-blue-500 tw-text-sm tw-font-semibold tw-mb-3"
                 >
                   Request Profile
                 </Link>
                 <span> | </span>
                 <Link
                   href="/auth/login"
-                  className="tw-text-blue-500 tw-text-sm tw-font-semibold tw-mb-3 tw-block"
+                  className="tw-text-blue-500 tw-text-sm tw-font-semibold tw-mb-3"
                 >
                   Login to MDA
                 </Link>
