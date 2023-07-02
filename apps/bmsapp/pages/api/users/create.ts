@@ -17,7 +17,7 @@ export default async function handler(
       error: `USER_NOT_CREATED:${ApiStatus.USER_NOT_CREATED}`,
     });
   }
-  const qrcode = authenticator.generate(email);
+  const qrcode = authenticator.generateSecret();
   await prisma.user
     .create({
       data: {
