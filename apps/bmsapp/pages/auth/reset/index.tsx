@@ -82,6 +82,13 @@ export const Reset: NextPage<resetProps> = (props) => {
               </Form.Group>
               <div className="text-center tw-mt-5">
                 <Link
+                  href="/auth/register"
+                  className="tw-text-blue-500 tw-text-sm tw-font-semibold tw-mb-3 tw-block"
+                >
+                  Request Profile
+                </Link>
+                <span> | </span>
+                <Link
                   href="/auth/login"
                   className="tw-text-blue-500 tw-text-sm tw-font-semibold tw-mb-3 tw-block"
                 >

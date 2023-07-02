@@ -22,4 +22,6 @@ export enum ApiStatus {
   USER_LOGGED_OUT = 19,
   USER_RESET = 20,
   USER_NOT_RESET = 21,
+  USER_CREATED = 22,
+  USER_NOT_CREATED = 23,
 }

@@ -18,8 +18,8 @@ import { useRouter } from 'next/router';
 export type loginProps = {};
 
 export const Login: NextPage<loginProps> = (props) => {
-  const { login } = useUser();
-  const [logon, setLogon] = useState<{
+  const { register } = useUser();
+  const [signup, setSignup] = useState<{
     email: string;
     emailError: string;
     password: string;
@@ -34,38 +34,38 @@ export const Login: NextPage<loginProps> = (props) => {
   });
 
   const router = useRouter();
-  const loginButtonRef = useRef() as MutableRefObject<HTMLButtonElement>;
+  const registerButtonRef = useRef() as MutableRefObject<HTMLButtonElement>;
 
-  const handleLogin = (e: SyntheticEvent) => {
+  const handleRegister = (e: SyntheticEvent) => {
     e.preventDefault();
-    if (!validator.isEmail(logon.email)) {
-      setLogon({
-        ...logon,
+    if (!validator.isEmail(signup.email)) {
+      setSignup({
+        ...signup,
         emailError: 'Please enter a valid email address',
       });
       return;
     }
 
-    if (logon.password.length < 4) {
-      setLogon({
-        ...logon,
+    if (signup.password.length < 4) {
+      setSignup({
+        ...signup,
         passwordError: 'Password must be at least 6 characters',
       });
       return;
     }
 
-    refRun(loginButtonRef, 'Please wait...');
-    login({
-      email: logon.email,
-      password: logon.password,
+    refRun(registerButtonRef, 'Please wait...');
+    register({
+      email: signup.email,
+      password: signup.password,
     }).then((res) => {
       if (res) {
-        router.push('/dashboard');
+        router.push('/auth/verify');
       } else {
         alert('Something went wrong, please try again');
       }
     });
-    refStop(loginButtonRef, 'Login to Dashboard');
+    refStop(registerButtonRef, 'Login to Dashboard');
   };
   return (
     <div className={style.auth}>
@@ -77,10 +77,10 @@ export const Login: NextPage<loginProps> = (props) => {
         height={120}
       />
       <Card className="card tw-w-[400px]">
-        <Form onSubmit={handleLogin}>
+        <Form onSubmit={handleRegister}>
           <Row>
             <Col lg={12} md={12} sm={12} xl={12} className="p-5">
-              <h3 className="text-center mb-3">MDA Login</h3>
+              <h3 className="text-center mb-3">Request MDA Profile</h3>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
@@ -88,9 +88,9 @@ export const Login: NextPage<loginProps> = (props) => {
                   required
                   autoComplete="off"
                   placeholder="Enter email address"
-                  value={logon.email}
+                  value={signup.email}
                   onChange={(e) =>
-                    setLogon({ ...logon, email: e.target.value })
+                    setSignup({ ...signup, email: e.target.value })
                   }
                 />
               </Form.Group>
@@ -100,9 +100,9 @@ export const Login: NextPage<loginProps> = (props) => {
                   type="password"
                   required
                   placeholder="Enter password"
-                  value={logon.password}
+                  value={signup.password}
                   onChange={(e) =>
-                    setLogon({ ...logon, password: e.target.value })
+                    setSignup({ ...signup, password: e.target.value })
                   }
                 />
               </Form.Group>
@@ -110,32 +110,25 @@ export const Login: NextPage<loginProps> = (props) => {
                 <Form.Check
                   type="checkbox"
                   label="Remember me"
-                  checked={logon.remember}
+                  checked={signup.remember}
                   onChange={(e) =>
-                    setLogon({ ...logon, remember: e.target.checked })
+                    setSignup({ ...signup, remember: e.target.checked })
                   }
                 />
               </Form.Group>
               <div className="text-center tw-mt-5">
                 <Link
-                  href="/auth/register"
+                  href="/auth/login"
                   className="tw-text-blue-500 tw-text-sm tw-font-semibold tw-mb-3 tw-block"
                 >
-                  Request Profile
-                </Link>
-                <span> | </span>
-                <Link
-                  href="/auth/reset"
-                  className="tw-text-blue-500 tw-text-sm tw-font-semibold tw-mb-3 tw-block"
-                >
-                  Forgot password?
+                  Profile? Login to Dashboard
                 </Link>
               </div>
 
               <button
                 className="btn btn-primary tw-w-full btn-block"
                 type="submit"
-                ref={loginButtonRef}
+                ref={registerButtonRef}
               >
                 Login to Dashboard
               </button>

@@ -37,6 +37,21 @@ export const useUser = ({ redirectTo, redirectIfFound }: IProps = {}) => {
     return status === ApiStatus.USER_FOUND ? data.id : null;
   };
 
+  const register = async (registerData: {
+    email: string;
+    password: string;
+  }): Promise<number | null> => {
+    const result = await fetch('/api/users/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(registerData),
+    });
+    const { status, data }: TApiResult = await result.json();
+    return status === ApiStatus.USER_CREATED ? data.id : null;
+  };
+
   const reset = async (email: string): Promise<number | null> => {
     const result = await fetch('/api/users/reset', {
       method: 'POST',
@@ -73,6 +88,7 @@ export const useUser = ({ redirectTo, redirectIfFound }: IProps = {}) => {
   return {
     hasUser,
     user,
+    register,
     login,
     reset,
     logout,
