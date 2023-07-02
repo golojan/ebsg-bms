@@ -13,6 +13,7 @@ import { useUser } from 'services/use-user';
 import validator from 'validator';
 import { refRun, refStop } from 'libs/formrunnner';
 import { useRouter } from 'next/router';
+import { ApiStatus } from 'types/api-status';
 
 /* eslint-disable-next-line */
 export type loginProps = {};
@@ -60,7 +61,17 @@ export const Login: NextPage<loginProps> = (props) => {
       password: logon.password,
     }).then((res) => {
       if (res) {
-        router.push('/dashboard');
+        const { status, enableOtp } = res;
+        const otp = Boolean(enableOtp);
+        if (status === ApiStatus.USER_FOUND) {
+          if (otp) {
+            router.push('/auth/otp');
+          } else {
+            router.push('/dashboard');
+          }
+        } else if (status === ApiStatus.USER_NOT_FOUND) {
+          //
+        }
       } else {
         alert('Something went wrong, please try again');
       }

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Router, { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { fetcher } from 'libs';
@@ -25,7 +25,11 @@ export const useUser = ({ redirectTo, redirectIfFound }: IProps = {}) => {
   const login = async (loginData: {
     email: string;
     password: string;
-  }): Promise<number | null> => {
+  }): Promise<{
+    accid: number;
+    status: ApiStatus;
+    enableOtp: boolean;
+  } | null> => {
     const result = await fetch('/api/users/login', {
       method: 'POST',
       headers: {
@@ -34,7 +38,15 @@ export const useUser = ({ redirectTo, redirectIfFound }: IProps = {}) => {
       body: JSON.stringify(loginData),
     });
     const { status, data }: TApiResult = await result.json();
-    return status === ApiStatus.USER_FOUND ? data.id : null;
+    if (status === ApiStatus.USER_FOUND) {
+      return {
+        accid: data.id,
+        status: status,
+        enableOtp: data.enableOtp,
+      };
+    } else {
+      return null;
+    }
   };
 
   const register = async (registerData: {
@@ -66,6 +78,34 @@ export const useUser = ({ redirectTo, redirectIfFound }: IProps = {}) => {
     return status === ApiStatus.USER_RESET ? data.id : null;
   };
 
+  const qrImage = async (email: string): Promise<number | null> => {
+    const result = await fetch('/api/users/otp-setup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    });
+    const { status, data }: TApiResult = await result.json();
+    return status === ApiStatus.QRCODE_FOUND ? data.id : null;
+  };
+
+  const qrVerify = async (token: string): Promise<number> => {
+    const result = await fetch('/api/users/otp-verify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token,
+      }),
+    });
+    const { status }: TApiResult = await result.json();
+    return status;
+  };
+
   const logout = async (): Promise<boolean> => {
     const result = await fetch('/api/users/logout');
     const { status }: TApiResult = await result.json();
@@ -94,5 +134,7 @@ export const useUser = ({ redirectTo, redirectIfFound }: IProps = {}) => {
     login,
     reset,
     logout,
+    qrImage,
+    qrVerify,
   };
 };

@@ -78,3 +78,9 @@ https://lianaskitchen.co.uk/cupcake-recipe/
 https://www.allrecipes.com/recipe/157877/vanilla-cupcake/
 
 
+# For google 2FA
+https://github.com/yeojz/otplib/blob/master/README.md#google-authenticator
+https://otplib.yeojz.dev/
+
+# For QR Code Genrator
+https://www.npmjs.com/package/qrcode.react

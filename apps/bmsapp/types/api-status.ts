@@ -26,4 +26,6 @@ export enum ApiStatus {
   USER_NOT_CREATED = 23,
   QRCODE_FOUND = 24,
   QRCODE_NOT_FOUND = 25,
+  QRCODE_VALID = 26,
+  QRCODE_INVALID = 27,
 }

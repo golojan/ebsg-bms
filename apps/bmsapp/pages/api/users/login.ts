@@ -1,8 +1,8 @@
 //Next APi
-import bcryptjs from 'bcryptjs';
 import { withSessionRoute } from 'libs/session';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ApiStatus } from 'types/api-status';
+import bcryptjs from 'bcryptjs';
 
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
@@ -21,6 +21,8 @@ export default withSessionRoute(async function handler(
         id: true,
         email: true,
         password: true,
+        qrcode: true,
+        enableOtp: true,
       },
     })
     .then(async (user) => {
@@ -31,19 +33,25 @@ export default withSessionRoute(async function handler(
           error: `USER_NOT_FOUND:${ApiStatus.USER_NOT_FOUND}`,
         });
       } else {
-        const isPasswordValid = Boolean(password === user.password);
-        console.log(isPasswordValid);
-        // const isPasswordValid = bcryptjs.compareSync(password, user.password);
+        // const isPasswordValid = Boolean(password === user.password);
+        // console.log(isPasswordValid);
+        const isPasswordValid = bcryptjs.compareSync(
+          password,
+          user.password as string
+        );
         if (isPasswordValid) {
-          // save session
+          const enableOtp = Boolean(user.enableOtp);
           req.session.accid = user.id;
-          req.session.mdas = [];
+          if (enableOtp) {
+            req.session.qrcode = user.qrcode as string;
+          }
           await req.session.save();
           return res.status(200).json({
             status: ApiStatus.USER_FOUND,
             data: {
               id: user.id,
               email: user.email,
+              enableOtp: enableOtp,
             },
             error: `USER_FOUND:${ApiStatus.USER_FOUND}`,
           });
