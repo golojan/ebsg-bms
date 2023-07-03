@@ -22,7 +22,7 @@ export default withSessionRoute(async function handler(
         email: true,
       },
     })
-    .then(async (user: any) => {
+    .then(async (user) => {
       if (!user || user === null) {
         return res.status(404).json({
           status: ApiStatus.USER_NOT_FOUND,

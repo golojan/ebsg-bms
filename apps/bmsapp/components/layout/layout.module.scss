@@ -1,0 +1,27 @@
+.container {
+  overflow-x: hidden;
+  display: flex;
+  position: relative;
+  min-height: 100vh;
+  background-color: #e4e2f5;
+  .main {
+    flex: 1;
+    padding: 2.1rem 2rem 2rem 2.2rem;
+    color: #1f2027;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+    .copyright {
+      margin-top: auto;
+      font-size: 1.1rem;
+      span {
+        color: var(--main-color);
+        font-weight: 500;
+        cursor: pointer;
+      }
+    }
+  }
+}

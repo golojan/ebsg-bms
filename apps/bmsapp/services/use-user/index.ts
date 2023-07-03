@@ -109,10 +109,11 @@ export const useUser = ({ redirectTo, redirectIfFound }: IProps = {}) => {
   const logout = async (): Promise<boolean> => {
     const result = await fetch('/api/users/logout');
     const { status }: TApiResult = await result.json();
-    if (result.status === ApiStatus.USER_LOGGED_OUT) {
+    if (status === ApiStatus.USER_LOGGED_OUT) {
       router.push('/auth');
+      return true;
     }
-    return status === ApiStatus.USER_LOGGED_OUT;
+    return false;
   };
 
   useEffect(() => {

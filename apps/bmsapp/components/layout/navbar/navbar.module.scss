@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+// scss-docs-start gray-color-variables
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+// scss-docs-end gray-color-variables
+
+.nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: #3d5af1;
+  width: 20rem;
+  padding: 1.8rem 0.85rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.5s ease-in-out;
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 2rem;
+    height: 100%;
+    top: 0;
+    left: 100%;
+  }
+
+  &:hover {
+    width: 20rem;
+
+    .shrink-btn,
+    .shrink-btn.hovered {
+      transform: translateY(-50%) translateX(0px);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  .shrinkbtn {
+    position: absolute;
+    top: 50%;
+    height: 27px;
+    padding: 0 0.3rem;
+    background-color: #3d5af1;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px -3px rgba(70, 46, 118, 0.3);
+    right: -2.65rem;
+    transform: translateY(-50%) translateX(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+
+    i {
+      line-height: 27px;
+      transition: 0.3s;
+    }
+
+    &:hover {
+      background-color: #3651d4;
+    }
+  }
+
+  .sidebarlinks {
+    ul {
+      position: relative;
+    }
+
+    li {
+      position: relative;
+      padding: 1.5px 0;
+    }
+
+    a {
+      color: #cfcde7;
+      font-weight: 500;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      min-height: 1.6rem;
+      line-height: 1.2rem;
+
+      &:hover {
+        color: #fff;
+      }
+      .active {
+        color: #fff;
+      }
+
+      .link {
+        transition: opacity 0.3s 0.2s, color 0.3s;
+      }
+
+      i {
+        &:first-child {
+          opacity: 0;
+        }
+
+        &:last-child {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .search {
+    min-height: 2.7rem;
+    background-color: #5872f5;
+    margin: 2rem 0.5rem 1.7rem;
+    display: grid;
+    grid-template-columns: 2.7rem 1fr;
+    align-items: center;
+    text-align: center;
+    border-radius: 50px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #3651d4;
+    }
+
+    i {
+      font-size: 1.3rem;
+      color: #cfcde7;
+    }
+
+    input {
+      height: 100%;
+      border: none;
+      background: none;
+      outline: none;
+      color: #fff;
+      caret-color: #fff;
+      font-family: inherit;
+
+      &::placeholder {
+        color: #cfcde7;
+      }
+
+      &:focus {
+        &::placeholder {
+          color: transparent;
+        }
+      }
+
+      &:focus + i {
+        opacity: 0;
+      }
+    }
+  }
+
+  .sidebartop {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .logo {
+      width: 2.5rem;
+      margin: 0 0.8rem;
+    }
+
+    h3 {
+      padding-left: 0.5rem;
+      font-weight: 600;
+      font-size: 1.9rem;
+    }
+  }
+
+  .active {
+    width: 100%;
+    height: 53px;
+    background-color: #3d5af1;
+    border-radius: 10px;
+    position: absolute;
+    top: 2.5px;
+    left: 0;
+    transition: top 0.3s;
+  }
+
+  .sidebarfooter {
+    position: relative;
+    margin-top: auto;
+    .account {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #cfcde7;
+      background-color: red;
+      height: 53px;
+      width: 3.7rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s 0s, color 0.3s 0s;
+
+      FaTachometerAlt {
+        margin-right: 0.5rem;
+        color: #cfcde7;
+      }
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
