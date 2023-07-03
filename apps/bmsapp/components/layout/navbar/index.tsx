@@ -14,7 +14,7 @@ export const LayoutNavBar = () => {
         <div className={style.sidebartop}>
           <Link
             href={'#'}
-            className="tw-absolute tw-top-[0] -tw-right-[45px] tw-bg-[#3d5af1] tw-rounded-full tw-text-white tw-text-center tw-cursor-pointer tw-z-50 tw-p-4 hover:tw-bg-[#5872f5]"
+            className="tw-absolute tw-top-[0] -tw-right-[45px] tw-bg-[#3d5af1] tw-rounded-full tw-text-white tw-text-center tw-cursor-pointer tw-z-50 tw-p-4 hover:tw-bg-[#5872f5] hover:tw-shadow-xl hover:tw-text-white"
             onClick={(e) => {
               e.preventDefault();
             }}

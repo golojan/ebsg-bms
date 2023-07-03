@@ -1,12 +1,12 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import '../style/global.scss';
+import '../styles/global.scss';
 import { getDefaultStore, Provider } from 'jotai';
 import NextTopLoader from 'nextjs-toploader';
 import { IconContext } from 'react-icons';
 
 const store = getDefaultStore();
-export const CustomApp = ({ Component, pageProps }: AppProps) => {
+export const CustomApp = ({ Component, pageProps }:AppProps) => {
   return (
     <>
       <Head>

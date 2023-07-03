@@ -43,7 +43,7 @@ export default withSessionRoute(async function handler(
           const enableOtp = Boolean(user.enableOtp);
           req.session.accid = user.id;
           if (enableOtp) {
-            req.session.qrcode = user.qrcode as string;
+            req.session.hasOtp = true;
           }
           await req.session.save();
           return res.status(200).json({

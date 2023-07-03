@@ -1,5 +1,5 @@
 import style from '../auth.module.scss';
-import React, { MutableRefObject, useRef, useState } from 'react';
+import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { Row, Col, Form, Card } from 'react-bootstrap';
 import Image from 'next/image';
 import { NextPage } from 'next';
@@ -12,11 +12,17 @@ import { useRouter } from 'next/router';
 /* eslint-disable-next-line */
 export type resetProps = {};
 export const Reset: NextPage<resetProps> = (props) => {
-  const { qrVerify } = useUser();
+  const { qrVerify, user } = useUser();
   const [token, setToken] = useState('');
   const [tokenError, setTokenError] = useState('');
+  const { isReady, push } = useRouter();
 
-  const router = useRouter();
+  useEffect(() => {
+    if (!isReady || !user) return;
+    if (!user.hasOtp) {
+      push('/auth/login');
+    }
+  }, [user, isReady]);
 
   const tokenButtonRef = useRef() as MutableRefObject<HTMLButtonElement>;
 
@@ -29,7 +35,7 @@ export const Reset: NextPage<resetProps> = (props) => {
     refRun(tokenButtonRef, 'Please wait...');
     qrVerify(token).then((status) => {
       if (Number(status) === ApiStatus.QRCODE_VALID) {
-        router.push('/dashboard');
+        push('/dashboard');
       } else {
         setTokenError('The token you entered is invalid');
       }
@@ -74,7 +80,10 @@ export const Reset: NextPage<resetProps> = (props) => {
                     autoComplete="off"
                     placeholder="* * * * * *"
                     value={token}
-                    onChange={(e) => setToken(e.target.value)}
+                    onChange={(e) => {
+                      setToken(e.target.value);
+                      setTokenError('');
+                    }}
                   />
                   {tokenError && (
                     <Form.Text className="text-danger">{tokenError}</Form.Text>

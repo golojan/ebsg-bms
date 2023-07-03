@@ -8,7 +8,29 @@ type TApiResult = {
 
 type UserInfo = {
   id: number;
+  hasOtp: boolean;
   email?: string;
-  password?: string;
+  firstName?: string;
+  lastName?: string;
   name?: string;
+};
+
+type UserHook = {
+  user: UserInfo | null;
+  hasUser: boolean;
+  login: (loginData: { email: string; password: string }) => Promise<{
+    accid: number;
+    status: ApiStatus;
+    enableOtp: boolean;
+  } | null>;
+  register: (registerData: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    Mda: number;
+  }) => Promise<number | null>;
+  reset: (email: string) => Promise<number | null>;
+  logout: () => Promise<boolean>;
+  qrVerify: (token: string) => Promise<number>;
+  qrImage: (email: string) => Promise<number | null>;
 };

@@ -31,10 +31,9 @@ export default withSessionRoute(async function handler(
       }
       const secret = String(userData.qrcode);
       const isValid = Boolean(authenticator.check(token, secret));
-      console.log('isValid', isValid);
       if (isValid) {
         // remove session qrcode
-        req.session.qrcode = null;
+        req.session.hasOtp = false;
         await req.session.save();
 
         return res.status(200).send({

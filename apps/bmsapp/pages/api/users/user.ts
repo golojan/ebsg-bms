@@ -14,6 +14,8 @@ export default withSessionRoute(async function handler(
 ) {
   const accid = Number(req.session.accid);
   if (!accid) return res.status(200).send({ status: ApiStatus.USER_NOT_FOUND });
+  const hasOtp = Boolean(req.session.hasOtp) || false;
+
   await prisma.user
     .findUnique({
       where: {
@@ -29,9 +31,10 @@ export default withSessionRoute(async function handler(
       },
     })
     .then((userData) => {
-      return res
-        .status(200)
-        .send({ data: userData, status: ApiStatus.USER_FOUND });
+      return res.status(200).send({
+        data: { ...userData, hasOtp },
+        status: ApiStatus.USER_FOUND,
+      });
     })
     .catch((error) => {
       return res.status(200).send({

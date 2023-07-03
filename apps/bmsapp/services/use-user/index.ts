@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { fetcher } from 'libs';
@@ -9,11 +9,14 @@ interface IProps {
   redirectIfFound?: boolean;
 }
 
-export const useUser = ({ redirectTo, redirectIfFound }: IProps = {}) => {
+export const useUser = ({
+  redirectTo,
+  redirectIfFound,
+}: IProps = {}): UserHook => {
   const { data: result } = useSWR('/api/users/user', fetcher);
 
-  const user: UserInfo = result?.data;
   const finished = Boolean(result);
+  const user: UserInfo = finished ? result?.data : null;
   const hasUser = Boolean(user);
 
   useEffect(() => {
