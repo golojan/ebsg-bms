@@ -12,7 +12,9 @@ export default withSessionRoute(async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TApiResult>
 ) {
-  const accid = Number(req.session.accid);
+  const user = req.session.user;
+  const accid = Number(user.accid);
+
   const { level, log } = req.body;
   if (!accid)
     return res.status(200).send({

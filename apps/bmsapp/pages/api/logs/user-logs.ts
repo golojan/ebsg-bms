@@ -10,8 +10,11 @@ export default withSessionRoute(async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const accid = Number(req.session.accid);
+  const user = req.session.user;
+  const accid = Number(user.accid);
+
   if (!accid) return res.status(200).send({ status: ApiStatus.LOG_NOT_FOUND });
+
   await prisma.log
     .findMany({
       where: {
