@@ -12,12 +12,13 @@ export default withSessionRoute(async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const accid = Number(req.session.accid);
-  if (!accid) return res.status(200).send({ status: ApiStatus.USER_NOT_FOUND });
+  const user = req.session.user;
+  if (!user) return res.status(200).send({ status: ApiStatus.USER_NOT_FOUND });
+
   await prisma.user
     .findUnique({
       where: {
-        id: accid,
+        id: Number(user?.accid),
       },
       select: {
         id: true,

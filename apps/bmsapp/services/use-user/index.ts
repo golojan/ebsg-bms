@@ -13,15 +13,16 @@ export const useUser = ({
   redirectTo,
   redirectIfFound,
 }: IProps = {}): UserHook => {
-  const { data: result } = useSWR('/api/users/user', fetcher);
+  const {
+    data: result,
+    isLoading,
+    isValidating,
+  } = useSWR('/api/users/user', fetcher);
 
   const finished = Boolean(result);
   const user: UserInfo = finished ? result?.data : null;
   const hasUser = Boolean(user);
-
-  useEffect(() => {
-    if (!finished) return;
-  }, [finished]);
+  const busy = Boolean(isLoading || isValidating);
 
   const router = useRouter();
 
@@ -132,6 +133,7 @@ export const useUser = ({
   }, [redirectTo, redirectIfFound, finished, hasUser]);
 
   return {
+    busy,
     hasUser,
     user,
     register,

@@ -16,6 +16,7 @@ type UserInfo = {
 };
 
 type UserHook = {
+  busy: boolean;
   user: UserInfo | null;
   hasUser: boolean;
   login: (loginData: { email: string; password: string }) => Promise<{

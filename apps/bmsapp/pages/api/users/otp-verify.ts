@@ -11,12 +11,12 @@ export default withSessionRoute(async function handler(
   res: NextApiResponse
 ) {
   const { token } = req.body;
-  const accid = Number(req.session.accid);
-  if (!accid) return res.status(200).send({ status: ApiStatus.USER_NOT_FOUND });
+  const user = req.session.user;
+  if (!user) return res.status(200).send({ status: ApiStatus.USER_NOT_FOUND });
   await prisma.user
     .findUnique({
       where: {
-        id: accid,
+        id: Number(user?.accid),
       },
       select: {
         id: true,
@@ -32,10 +32,12 @@ export default withSessionRoute(async function handler(
       const secret = String(userData.qrcode);
       const isValid = Boolean(authenticator.check(token, secret));
       if (isValid) {
-        // remove session qrcode
-        req.session.hasOtp = false;
+        // remove session qrcode|hasOtp
+        req.session.user = {
+          ...user,
+          hasOtp: false,
+        };
         await req.session.save();
-
         return res.status(200).send({
           status: ApiStatus.QRCODE_VALID,
           data: userData,

@@ -7,6 +7,5 @@ export default withSessionRoute(async function handler(
   res: NextApiResponse
 ) {
   await req.session.destroy();
-  await req.session.save();
   return res.send({ status: ApiStatus.USER_LOGGED_OUT });
 });

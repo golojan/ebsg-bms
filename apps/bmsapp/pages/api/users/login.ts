@@ -1,4 +1,3 @@
-//Next APi
 import { withSessionRoute } from 'libs/session';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ApiStatus } from 'types/api-status';
@@ -26,7 +25,6 @@ export default withSessionRoute(async function handler(
       },
     })
     .then(async (user) => {
-      console.log(user);
       if (!user || user === null) {
         return res.status(404).json({
           status: ApiStatus.USER_NOT_FOUND,
@@ -41,10 +39,17 @@ export default withSessionRoute(async function handler(
         );
         if (isPasswordValid) {
           const enableOtp = Boolean(user.enableOtp);
-          req.session.accid = user.id;
+          let new_user = {
+            accid: user.id,
+            hasOtp: false,
+          };
           if (enableOtp) {
-            req.session.hasOtp = true;
+            new_user = {
+              ...new_user,
+              hasOtp: true,
+            };
           }
+          req.session.user = new_user;
           await req.session.save();
           return res.status(200).json({
             status: ApiStatus.USER_FOUND,

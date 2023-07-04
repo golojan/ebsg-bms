@@ -14,21 +14,23 @@ type LayoutProps = {
 };
 export const Layout = ({ children }: LayoutProps) => {
   const { isReady, push } = useRouter();
-  const { user } = useUser();
+  const { user, hasUser, busy } = useUser();
 
   useEffect(() => {
-    if (isReady && user) {
-      // if (user.hasotp) {
-      //   push('/auth/login');
-      // }
+    if (busy || !isReady) return;
+    if (!hasUser) {
+      push('/auth/login');
     }
-  }, [user, isReady]);
+    if (hasUser && user?.hasOtp) {
+      push('/auth/otp');
+    }
+  }, [isReady, busy, hasUser, user]);
 
   return (
     <div className={styles.container}>
       <LayoutNavBar />
       <main className={styles.main}>
-        <h1>My Dashboard {JSON.stringify(user)}</h1>
+        <h1>My Dashboard</h1>
 
         <p className="text">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur
