@@ -20,7 +20,8 @@ $black: #000 !default;
   left: 0;
   height: 100vh;
   background-color: #3d5af1;
-  width: 20rem;
+  width: 17rem;
+  max-width: 17rem;
   padding: 1.8rem 0.85rem;
   color: #fff;
   display: flex;
@@ -91,18 +92,19 @@ $black: #000 !default;
 
     a {
       color: #cfcde7;
-      font-weight: 500;
       font-size: 1.1rem;
       display: flex;
       align-items: center;
-      min-height: 1.6rem;
-      line-height: 1.2rem;
+      min-height: 1.9rem;
+      line-height: 1.9rem;
 
       &:hover {
         color: #fff;
+        font-weight: 500;
       }
       .active {
         color: #fff;
+        font-weight: 500;
       }
 
       .link {

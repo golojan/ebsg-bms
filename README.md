@@ -639,8 +639,6 @@ By adhering to the project plan outlined in this blueprint, the Government Budge
 
 These references cover a range of topics related to E-Governance, including best practices, case studies, research, and resources from various international organizations and government bodies.
 
-
-
-
-
+# Multiple Middleware
+https://reacthustle.com/blog/how-to-chain-multiple-middleware-functions-in-nextjs#google_vignette
 

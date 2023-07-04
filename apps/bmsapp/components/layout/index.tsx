@@ -15,17 +15,6 @@ type LayoutProps = {
 export const Layout = ({ children }: LayoutProps) => {
   const { isReady, push } = useRouter();
   const { user, hasUser, busy } = useUser();
-
-  useEffect(() => {
-    if (busy || !isReady) return;
-    if (!hasUser) {
-      push('/auth/login');
-    }
-    if (hasUser && user?.hasOtp) {
-      push('/auth/otp');
-    }
-  }, [isReady, busy, hasUser, user]);
-
   return (
     <div className={styles.container}>
       <LayoutNavBar />

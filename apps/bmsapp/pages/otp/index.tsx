@@ -1,5 +1,5 @@
-import style from '../auth.module.scss';
-import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
+import style from './otp.module.scss';
+import React, { MutableRefObject, useRef, useState } from 'react';
 import { Row, Col, Form, Card } from 'react-bootstrap';
 import Image from 'next/image';
 import { NextPage } from 'next';
@@ -13,17 +13,10 @@ import AuthLayout from 'components/layout/auth';
 /* eslint-disable-next-line */
 export type resetProps = {};
 export const Reset: NextPage<resetProps> = (props) => {
-  const { qrVerify, hasUser, user, busy } = useUser();
+  const { qrVerify } = useUser();
   const [token, setToken] = useState('');
   const [tokenError, setTokenError] = useState('');
-  const { isReady, push } = useRouter();
-
-  useEffect(() => {
-    if (busy || !isReady) return;
-    if (!hasUser || !user?.hasOtp) {
-      push('/auth/login');
-    }
-  }, [isReady, busy, hasUser, user]);
+  const { push } = useRouter();
 
   const tokenButtonRef = useRef() as MutableRefObject<HTMLButtonElement>;
 

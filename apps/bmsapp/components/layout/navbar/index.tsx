@@ -1,5 +1,5 @@
 import style from './navbar.module.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { _IMAGES } from 'constants/images';
 import { FaTachometerAlt, FaListAlt } from 'react-icons/fa';
@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 export const LayoutNavBar = () => {
   const { logout } = useUser();
+  const [showNav, setShowNav] = useState(false);
   return (
     <>
       <nav className={style.nav}>
@@ -34,46 +35,45 @@ export const LayoutNavBar = () => {
           <ul>
             <div className="active-tab" />
             <li>
-              <a href="#">
+              <Link href="#">
                 <span className="link hide">Dashboard</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link href="#">
                 <span className="link hide">Accounts & Roles</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link href="#">
                 <span className="link hide">Manage MDAs</span>
-              </a>
+              </Link>
             </li>
           </ul>
           <h4 className="hide">Portal Settings</h4>
           <ul>
             <div className="active-tab" />
             <li>
-              <a href="#">
-                <span className="link hide">Dashboard</span>
-              </a>
+              <Link href="/dashbaord">
+                <span className="link">Dashboard</span>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link href="#">
                 <span className="link hide">Accounts & Roles</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link href="#">
                 <span className="link hide">Manage MDAs</span>
-              </a>
+              </Link>
             </li>
           </ul>
-          <h4 className="hide">Portal Settings</h4>
+          <h4 className="hide">Activities</h4>
           <ul>
             <div className="active-tab" />
-
             <li>
-              <a
+              <Link
                 href="#"
                 onClick={(e) => {
                   e.preventDefault();
@@ -81,16 +81,16 @@ export const LayoutNavBar = () => {
                 }}
               >
                 <span className="link hide">Exit & Logout</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
         <div className={style.sidebarfooter}>
           <div className="account">
-            <a href="#">
+            <Link href="#">
               <FaTachometerAlt size={50} color="#FFFFFF" />
-            </a>
+            </Link>
           </div>
 
           {/* <div className="admin-user tooltip-element" data-tooltip={1}>

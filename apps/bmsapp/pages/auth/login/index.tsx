@@ -47,7 +47,6 @@ export const Login: NextPage<loginProps> = (props) => {
       });
       return;
     }
-
     if (logon.password.length < 4) {
       setLogon({
         ...logon,
@@ -55,7 +54,6 @@ export const Login: NextPage<loginProps> = (props) => {
       });
       return;
     }
-
     refRun(loginButtonRef, 'Please wait...');
     login({
       email: logon.email,
@@ -66,7 +64,7 @@ export const Login: NextPage<loginProps> = (props) => {
         const otp = Boolean(enableOtp);
         if (status === ApiStatus.USER_FOUND) {
           if (otp) {
-            router.push('/auth/otp');
+            router.push('/otp');
           } else {
             router.push('/dashboard');
           }
@@ -79,6 +77,7 @@ export const Login: NextPage<loginProps> = (props) => {
     });
     refStop(loginButtonRef, 'Login to Dashboard');
   };
+
   return (
     <AuthLayout>
       <div className={style.auth}>
