@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { FaTerminal } from 'react-icons/fa';
 import { useUser } from 'services/use-user';
 import { useRouter } from 'next/router';
+import ModuleNavBar from './module';
 
 type LayoutProps = {
   children?: React.ReactNode;
@@ -18,6 +19,7 @@ export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className={styles.container}>
       <LayoutNavBar />
+      <ModuleNavBar />
       <main className={styles.main}>
         <h1>My Dashboard</h1>
 

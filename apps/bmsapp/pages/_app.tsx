@@ -6,17 +6,17 @@ import NextTopLoader from 'nextjs-toploader';
 import { IconContext } from 'react-icons';
 
 const store = getDefaultStore();
-export const CustomApp = ({ Component, pageProps }:AppProps) => {
+export const CustomApp = ({ Component, pageProps } : AppProps) => {
   return (
     <>
       <Head>
         <title>Budget Management System | Ebonyi State</title>
       </Head>
       <NextTopLoader
-        color="#28753a"
+        color="#414549"
         initialPosition={0.08}
         crawlSpeed={200}
-        height={5}
+        height={3}
         crawl={true}
         showSpinner={true}
         easing="ease"

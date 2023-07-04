@@ -1,8 +1,8 @@
-import { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+import { Html, Head, Main, NextScript } from 'next/document';
 
 // props: DocumentContext
 
-const MyDocument = (ctx: DocumentContext) => {
+const MyDocument = () => {
   return (
     <Html lang="en-US" data-theme={'dark'} className="no-js">
       <Head />
@@ -91,6 +91,11 @@ const MyDocument = (ctx: DocumentContext) => {
       <body>
         <Main />
         <NextScript />
+        <script
+          async
+          custom-element="amp-ad"
+          src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
+        ></script>
       </body>
     </Html>
   );
