@@ -30,6 +30,7 @@ export const withLogging: MiddlewareFactory = (next) => {
         if (hasOtp) {
           const url = new URL(`/otp`, request.url);
           url.searchParams.set('callbackUrl', encodeURI(request.url));
+          
           return NextResponse.redirect(url);
         }
       } else {

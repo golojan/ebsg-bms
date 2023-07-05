@@ -68,3 +68,13 @@ model Module {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Document {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  storageName String   @unique
+  mimeType    String?
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

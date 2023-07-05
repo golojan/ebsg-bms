@@ -1,5 +1,4 @@
 import { atom } from 'jotai';
 
-export const currentButtonRefAtom = atom<HTMLButtonElement>(
-  new HTMLButtonElement()
-);
+import { atomWithStorage } from 'jotai/utils';
+export const crudAtom = atom<TCrud>({});

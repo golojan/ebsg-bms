@@ -1,14 +1,24 @@
 import style from './navbar.module.scss';
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { _IMAGES } from 'constants/images';
-import { FaTachometerAlt, FaListAlt } from 'react-icons/fa';
+import { FaTachometerAlt, FaListAlt, FaUserCircle } from 'react-icons/fa';
 import { useUser } from 'services/use-user';
 import Link from 'next/link';
+import { crudAtom } from 'store';
+import { useAtom } from 'jotai';
 
 export const LayoutNavBar = () => {
-  const { logout } = useUser();
-  const [showNav, setShowNav] = useState(false);
+  const { user, logout } = useUser();
+  const [crud, setCrud] = useAtom(crudAtom);
+
+  const processMenu = (e: any, role: string) => {
+    e.preventDefault();
+    setCrud({ ...crud, accid: user?.id, role: role });
+
+    console.log('processMenu');
+  };
+
   return (
     <>
       <nav className={style.nav}>
@@ -35,43 +45,112 @@ export const LayoutNavBar = () => {
           <ul>
             <div className="active-tab" />
             <li>
-              <Link href="#">
+              <Link
+                href="#dashboard"
+                onClick={(e) => processMenu(e, 'dashboard')}
+              >
                 <span className="link hide">Dashboard</span>
               </Link>
             </li>
             <li>
-              <Link href="#">
-                <span className="link hide">Accounts & Roles</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
+              <Link href="#mdas" onClick={(e) => processMenu(e, 'mdas')}>
                 <span className="link hide">Manage MDAs</span>
               </Link>
             </li>
+            <li>
+              <Link
+                href="#accounts"
+                onClick={(e) => processMenu(e, 'accounts')}
+              >
+                <span className="link hide">Users & Accounts</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#roles" onClick={(e) => processMenu(e, 'roles')}>
+                <span className="link hide">Access & Roles</span>
+              </Link>
+            </li>
           </ul>
-          <h4 className="hide">Portal Settings</h4>
+          <h4 className="hide">Documents</h4>
           <ul>
             <div className="active-tab" />
             <li>
-              <Link href="/dashbaord">
-                <span className="link">Dashboard</span>
+              <Link
+                href="#documents"
+                onClick={(e) => processMenu(e, 'documents')}
+              >
+                <span className="link">My Documents</span>
               </Link>
             </li>
             <li>
-              <Link href="#">
-                <span className="link hide">Accounts & Roles</span>
+              <Link
+                href="#templates"
+                onClick={(e) => processMenu(e, 'templates')}
+              >
+                <span className="link">Document Templates</span>
               </Link>
             </li>
             <li>
-              <Link href="#">
-                <span className="link hide">Manage MDAs</span>
+              <Link href="#files" onClick={(e) => processMenu(e, 'files')}>
+                <span className="link">Files & Uploads</span>
               </Link>
             </li>
           </ul>
+          <h4 className="hide">Budgets & Reports</h4>
+          <ul>
+            <div className="active-tab" />
+            <li>
+              <Link href="#budgets" onClick={(e) => processMenu(e, 'budgets')}>
+                <span className="link hide">Manage Budgets</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#reports" onClick={(e) => processMenu(e, 'reports')}>
+                <span className="link">Manage Reports</span>
+              </Link>
+            </li>
+          </ul>
+          <h4 className="hide">Settings</h4>
+          <ul>
+            <div className="active-tab" />
+            <li>
+              <Link href="#profile" onClick={(e) => processMenu(e, 'profile')}>
+                <span className="link">Profile Manage</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="#settings"
+                onClick={(e) => processMenu(e, 'settings')}
+              >
+                <span className="link hide">App Settings</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="#security"
+                onClick={(e) => processMenu(e, 'security')}
+              >
+                <span className="link hide">Securities</span>
+              </Link>
+            </li>
+          </ul>
+
           <h4 className="hide">Activities</h4>
           <ul>
-            <div className="active-tab" />
+            <li>
+              <Link
+                href="#conversations"
+                onClick={(e) => processMenu(e, 'conversations')}
+              >
+                <span className="link hide">Chats & Conversations</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#ai" onClick={(e) => processMenu(e, 'ai')}>
+                <span className="link hide">AI Tools</span>
+              </Link>
+            </li>
             <li>
               <Link
                 href="#"
@@ -87,24 +166,14 @@ export const LayoutNavBar = () => {
         </div>
 
         <div className={style.sidebarfooter}>
-          <div className="account">
+          <div className="account tw-flex">
+            <Link href="#" className="tw-mr-3">
+              <FaUserCircle size={30} color="#FFFFFF" />
+            </Link>
             <Link href="#">
-              <FaTachometerAlt size={50} color="#FFFFFF" />
+              <h3 className="tw-m-0 tw-m-t-[2px] tw-text-white">Logout</h3>
             </Link>
           </div>
-
-          {/* <div className="admin-user tooltip-element" data-tooltip={1}>
-            <div className="admin-profile hide">
-              <img src="img/face-1.png" alt="" />
-              <div className="admin-info">
-                <h3>John Doe</h3>
-                <h5>Admin</h5>
-              </div>
-            </div>
-            <a href="#" className="log-out">
-              <i className="bx bx-log-out" />
-            </a>
-          </div> */}
         </div>
       </nav>
     </>

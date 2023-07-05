@@ -35,3 +35,15 @@ type UserHook = {
   qrVerify: (token: string) => Promise<number>;
   qrImage: (email: string) => Promise<number | null>;
 };
+
+type TCrud = {
+  accid?: number;
+  role?: string | null;
+  module?: string | null;
+  crud?: {
+    create?: boolean;
+    read?: boolean;
+    update?: boolean;
+    delete?: boolean;
+  };
+};

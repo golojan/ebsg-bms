@@ -29,6 +29,7 @@
     "@ctrl/react-adsense": "^1.7.0",
     "@emotion/react": "^11.11.1",
     "@nx/next": "^16.4.0",
+    "@pdftron/webviewer": "^10.2.3",
     "@prisma/client": "^4.16.1",
     "@swc/helpers": "~0.5.0",
     "@types/formidable": "^3.4.0",
