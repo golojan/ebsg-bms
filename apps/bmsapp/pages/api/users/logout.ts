@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ApiStatus } from 'types/api-status';
+
 import { withSessionRoute } from 'libs/session';
 
 export default withSessionRoute(async function handler(

@@ -3,7 +3,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "strict": true,
-    "rootDir": ".",
     "sourceMap": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -14,11 +13,26 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "noEmitOnError": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@ebsg/bmsapp": ["apps/bmsapp/"]
+      "@/*": ["/*"]
     }
   },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "next-env.d.ts",
+    "**/*.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "tmp",

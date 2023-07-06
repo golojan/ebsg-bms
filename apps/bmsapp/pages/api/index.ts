@@ -1,7 +1,6 @@
 //Next APi
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ApiStatus } from 'types/api-status';
 
 export default function handler(
   req: NextApiRequest,

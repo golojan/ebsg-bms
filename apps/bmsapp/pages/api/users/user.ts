@@ -3,7 +3,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { withSessionRoute } from 'libs/session';
-import { ApiStatus } from 'types/api-status';
 
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();

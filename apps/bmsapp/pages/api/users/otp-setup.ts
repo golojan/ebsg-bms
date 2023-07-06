@@ -3,14 +3,13 @@ import qrcode from 'qrcode';
 import { authenticator } from 'otplib';
 
 import { withSessionRoute } from 'libs/session';
-import { ApiStatus } from 'types/api-status';
 
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default withSessionRoute(async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<TApiResult>
 ) {
   const user = req.session.user;
   if (!user) return res.status(200).send({ status: ApiStatus.USER_NOT_FOUND });

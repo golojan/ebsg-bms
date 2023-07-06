@@ -1,6 +1,6 @@
 import { withSessionRoute } from 'libs/session';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ApiStatus } from 'types/api-status';
+
 import bcryptjs from 'bcryptjs';
 
 import { PrismaClient } from '@prisma/client';

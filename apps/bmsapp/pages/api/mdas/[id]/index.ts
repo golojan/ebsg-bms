@@ -1,11 +1,9 @@
 //Next APi
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ApiStatus } from 'types/api-status';
 
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
-
 
 export default async function handler(
   req: NextApiRequest,

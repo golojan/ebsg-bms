@@ -6,7 +6,7 @@ import { NextPage } from 'next';
 import { FaLock } from 'react-icons/fa';
 import { refRun, refStop } from 'libs/formrunnner';
 import { useUser } from 'services/use-user';
-import { ApiStatus } from 'types/api-status';
+
 import { useRouter } from 'next/router';
 import AuthLayout from 'components/layout/auth';
 

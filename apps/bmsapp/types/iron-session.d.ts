@@ -1,5 +1,4 @@
-import { IronSession, IronSessionData } from 'iron-session';
-
+import 'iron-session';
 declare module 'iron-session' {
   interface IronSessionData {
     user: {

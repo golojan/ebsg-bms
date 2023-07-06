@@ -1,7 +1,6 @@
 //Next APi
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ApiStatus } from 'types/api-status';
 import { authenticator } from 'otplib';
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();

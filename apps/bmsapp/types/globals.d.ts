@@ -1,4 +1,3 @@
-import { Role } from '@prisma/client';
 type Theme = 'light' | 'dark';
 
 type TApiResult = {
