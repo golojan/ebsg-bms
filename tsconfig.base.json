@@ -1,11 +1,10 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compileOnSave": false,
   "compilerOptions": {
     "strict": true,
     "rootDir": ".",
     "sourceMap": true,
-    // "declaration": false,
-    // "declarationDir": "./apps/bmsapp/.next/types",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -17,7 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ebsg/bmsapp/*": ["apps/bmsapp/*"]
+      "@ebsg/bmsapp": ["apps/bmsapp/"]
     }
   },
   "exclude": [
