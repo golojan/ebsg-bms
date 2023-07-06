@@ -28,19 +28,19 @@ export const ModuleNavBar = () => {
             <div className={style.nav_box}>
               <div className={style.sidebartop}></div>
               <div className={style.sidebarlinks}>
-                {module.name === 'mdas' && <CrudMda />}
-                {module.name === 'accounts' && <CrudAccount />}
-                {module.name === 'roles' && <CrudRole />}
-                {module.name === 'documents' && <CrudDocument />}
-                {module.name === 'templates' && <CrudTemplate />}
-                {module.name === 'files' && <CrudFile />}
-                {module.name === 'budgets' && <CrudBudget />}
-                {module.name === 'reports' && <CrudReport />}
-                {module.name === 'profile' && <CrudProfile />}
-                {module.name === 'settings' && <CrudSetting />}
-                {module.name === 'securities' && <CrudSecurity />}
-                {module.name === 'conversations' && <CrudConversation />}
-                {module.name === 'ai' && <CrudAi />}
+                {module === 'mdas' && <CrudMda />}
+                {module === 'accounts' && <CrudAccount />}
+                {module === 'roles' && <CrudRole />}
+                {module === 'documents' && <CrudDocument />}
+                {module === 'templates' && <CrudTemplate />}
+                {module === 'files' && <CrudFile />}
+                {module === 'budgets' && <CrudBudget />}
+                {module === 'reports' && <CrudReport />}
+                {module === 'profile' && <CrudProfile />}
+                {module === 'settings' && <CrudSetting />}
+                {module === 'securities' && <CrudSecurity />}
+                {module === 'conversations' && <CrudConversation />}
+                {module === 'ai' && <CrudAi />}
               </div>
             </div>
           </nav>
