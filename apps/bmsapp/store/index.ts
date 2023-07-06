@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { atom } from 'jotai';
-import { atomWithStorage } from 'jotai/utils';
 
 export const store = configureStore({
   reducer: {

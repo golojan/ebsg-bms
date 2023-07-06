@@ -3,7 +3,7 @@ type Theme = 'light' | 'dark';
 type TApiResult = {
   status: ApiStatus;
   data?: object | object[] | null | any;
-  error?: string;
+  error?: object | string | object[];
 };
 
 type UserInfo = {
