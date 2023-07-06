@@ -144,3 +144,5 @@ export const useUser = ({
     qrVerify,
   };
 };
+
+export default useUser;

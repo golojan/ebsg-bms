@@ -1,24 +1,13 @@
 import style from './navbar.module.scss';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { _IMAGES } from 'constants/images';
-import { FaTachometerAlt, FaListAlt, FaUserCircle } from 'react-icons/fa';
+import { FaListAlt, FaUserCircle } from 'react-icons/fa';
 import { useUser } from 'services/use-user';
 import Link from 'next/link';
-import { crudAtom } from 'store';
-import { useAtom } from 'jotai';
 
 export const LayoutNavBar = () => {
-  const { user, logout } = useUser();
-  const [crud, setCrud] = useAtom(crudAtom);
-
-  const processMenu = (e: any, role: string) => {
-    e.preventDefault();
-    setCrud({ ...crud, accid: user?.id, role: role });
-
-    console.log('processMenu');
-  };
-
+  const { logout } = useUser();
   return (
     <>
       <nav className={style.nav}>
@@ -45,28 +34,22 @@ export const LayoutNavBar = () => {
           <ul>
             <div className="active-tab" />
             <li>
-              <Link
-                href="#dashboard"
-                onClick={(e) => processMenu(e, 'dashboard')}
-              >
+              <Link href="/dashboard">
                 <span className="link hide">Dashboard</span>
               </Link>
             </li>
             <li>
-              <Link href="#mdas" onClick={(e) => processMenu(e, 'mdas')}>
+              <Link href="/dashboard/mdas">
                 <span className="link hide">Manage MDAs</span>
               </Link>
             </li>
             <li>
-              <Link
-                href="#accounts"
-                onClick={(e) => processMenu(e, 'accounts')}
-              >
+              <Link href="/dashboard/accounts">
                 <span className="link hide">Users & Accounts</span>
               </Link>
             </li>
             <li>
-              <Link href="#roles" onClick={(e) => processMenu(e, 'roles')}>
+              <Link href="/dashboard/roles">
                 <span className="link hide">Access & Roles</span>
               </Link>
             </li>
@@ -75,23 +58,17 @@ export const LayoutNavBar = () => {
           <ul>
             <div className="active-tab" />
             <li>
-              <Link
-                href="#documents"
-                onClick={(e) => processMenu(e, 'documents')}
-              >
+              <Link href="/dashboard/documents">
                 <span className="link">My Documents</span>
               </Link>
             </li>
             <li>
-              <Link
-                href="#templates"
-                onClick={(e) => processMenu(e, 'templates')}
-              >
+              <Link href="/dashboard/templates">
                 <span className="link">Document Templates</span>
               </Link>
             </li>
             <li>
-              <Link href="#files" onClick={(e) => processMenu(e, 'files')}>
+              <Link href="/dashboard/files">
                 <span className="link">Files & Uploads</span>
               </Link>
             </li>
@@ -100,12 +77,12 @@ export const LayoutNavBar = () => {
           <ul>
             <div className="active-tab" />
             <li>
-              <Link href="#budgets" onClick={(e) => processMenu(e, 'budgets')}>
+              <Link href="/dashboard/budgets">
                 <span className="link hide">Manage Budgets</span>
               </Link>
             </li>
             <li>
-              <Link href="#reports" onClick={(e) => processMenu(e, 'reports')}>
+              <Link href="/dashboard/reports">
                 <span className="link">Manage Reports</span>
               </Link>
             </li>
@@ -114,23 +91,17 @@ export const LayoutNavBar = () => {
           <ul>
             <div className="active-tab" />
             <li>
-              <Link href="#profile" onClick={(e) => processMenu(e, 'profile')}>
+              <Link href="/dashboard/profile">
                 <span className="link">Profile Manage</span>
               </Link>
             </li>
             <li>
-              <Link
-                href="#settings"
-                onClick={(e) => processMenu(e, 'settings')}
-              >
+              <Link href="/dashboard/settings">
                 <span className="link hide">App Settings</span>
               </Link>
             </li>
             <li>
-              <Link
-                href="#security"
-                onClick={(e) => processMenu(e, 'security')}
-              >
+              <Link href="/dashboard/security">
                 <span className="link hide">Securities</span>
               </Link>
             </li>
@@ -139,15 +110,12 @@ export const LayoutNavBar = () => {
           <h4 className="hide">Activities</h4>
           <ul>
             <li>
-              <Link
-                href="#conversations"
-                onClick={(e) => processMenu(e, 'conversations')}
-              >
+              <Link href="/dashboard/conversations">
                 <span className="link hide">Chats & Conversations</span>
               </Link>
             </li>
             <li>
-              <Link href="#ai" onClick={(e) => processMenu(e, 'ai')}>
+              <Link href="#ai">
                 <span className="link hide">AI Tools</span>
               </Link>
             </li>
@@ -170,7 +138,13 @@ export const LayoutNavBar = () => {
             <Link href="#" className="tw-mr-3">
               <FaUserCircle size={30} color="#FFFFFF" />
             </Link>
-            <Link href="#">
+            <Link
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                logout();
+              }}
+            >
               <h3 className="tw-m-0 tw-m-t-[2px] tw-text-white">Logout</h3>
             </Link>
           </div>

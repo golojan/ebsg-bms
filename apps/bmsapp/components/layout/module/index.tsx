@@ -1,55 +1,46 @@
 import style from './navbar.module.scss';
 import React from 'react';
-import Link from 'next/link';
 import { crudAtom } from 'store';
 import { useAtom } from 'jotai';
+import {
+  CrudAccount,
+  CrudAi,
+  CrudBudget,
+  CrudConversation,
+  CrudDocument,
+  CrudFile,
+  CrudMda,
+  CrudProfile,
+  CrudReport,
+  CrudRole,
+  CrudSecurity,
+  CrudSetting,
+  CrudTemplate,
+} from './cruds';
 
 export const ModuleNavBar = () => {
-  const [{ accid, module, role }] = useAtom(crudAtom);
+  const [{ module }] = useAtom(crudAtom);
   return (
     <>
-      {accid ? (
+      {module ? (
         <>
           <nav className={style.nav}>
             <div className={style.nav_box}>
               <div className={style.sidebartop}></div>
               <div className={style.sidebarlinks}>
-                <ul>
-                  <div className="active-tab" />
-                  <li>
-                    <Link href="#">
-                      <span className="link hide">Dashboard</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#">
-                      <span className="link hide">Accounts & Roles</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#">
-                      <span className="link hide">Manage MDAs</span>
-                    </Link>
-                  </li>
-                </ul>
-                <ul>
-                  <div className="active-tab" />
-                  <li>
-                    <Link href="/dashbaord">
-                      <span className="link">Dashboard</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#">
-                      <span className="link hide">Accounts & Roles</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#">
-                      <span className="link hide">Manage MDAs</span>
-                    </Link>
-                  </li>
-                </ul>
+                {module.name === 'mdas' && <CrudMda />}
+                {module.name === 'accounts' && <CrudAccount />}
+                {module.name === 'roles' && <CrudRole />}
+                {module.name === 'documents' && <CrudDocument />}
+                {module.name === 'templates' && <CrudTemplate />}
+                {module.name === 'files' && <CrudFile />}
+                {module.name === 'budgets' && <CrudBudget />}
+                {module.name === 'reports' && <CrudReport />}
+                {module.name === 'profile' && <CrudProfile />}
+                {module.name === 'settings' && <CrudSetting />}
+                {module.name === 'securities' && <CrudSecurity />}
+                {module.name === 'conversations' && <CrudConversation />}
+                {module.name === 'ai' && <CrudAi />}
               </div>
             </div>
           </nav>

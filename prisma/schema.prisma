@@ -26,6 +26,7 @@ model User {
   lastName  String?
   email     String?   @unique
   password  String?
+  role      Role      @default(user)
   qrcode    String?   @unique
   enableOtp Boolean?  @default(true)
   Mda       Mda?      @relation(fields: [mdaId], references: [id])
@@ -55,10 +56,10 @@ model RolePermissions {
 }
 
 enum Role {
-  ADMIN
-  USER
-  SUPERADMIN
-  DEVELOPER
+  user
+  admin
+  superAdmin
+  developer
 }
 
 model Module {

@@ -84,3 +84,7 @@ https://otplib.yeojz.dev/
 
 # For QR Code Genrator
 https://www.npmjs.com/package/qrcode.react
+
+
+# Role based Menu Access
+https://medium.com/@nikitinal.nal/next-js-with-postgresql-role-based-access-control-implementation-ca024fd6d471

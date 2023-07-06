@@ -1,3 +1,4 @@
+import { Role } from '@prisma/client';
 type Theme = 'light' | 'dark';
 
 type TApiResult = {
@@ -13,6 +14,7 @@ type UserInfo = {
   firstName?: string;
   lastName?: string;
   name?: string;
+  role?: Role;
 };
 
 type UserHook = {
@@ -37,9 +39,9 @@ type UserHook = {
 };
 
 type TCrud = {
+  module?: string;
   accid?: number;
-  role?: string | null;
-  module?: string | null;
+  role?: string;
   crud?: {
     create?: boolean;
     read?: boolean;
