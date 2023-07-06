@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -30,7 +31,6 @@
     "**/*.jsx",
     "next-env.d.ts",
     "types/**/*.ts",
-    "../../apps/bmsapp/.next/types/**/*.ts",
     "styles/**/*.scss",
     "styles/**/*.css"
   ],
