@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { FaTerminal } from 'react-icons/fa';
 import ModuleNavBar from './module';
 import useModule from 'services/use-module';
+import { ClipLoader, DotLoader } from 'react-spinners';
 
 type LayoutProps = {
   children?: React.ReactNode;
@@ -21,9 +22,13 @@ export const Layout = ({ children }: LayoutProps) => {
         <LayoutNavBar />
         <ModuleNavBar />
         <main className={styles.main}>
-          <h1>{busy ? 'Loading...' : <>
-          {hasModule ? appmodule?.description : 'My Dashboard'}
-          </>}</h1>
+          <h1>
+            {busy ? (
+              <DotLoader size={30} color="#495057" />
+            ) : (
+              <>{hasModule ? appmodule?.description : 'My Dashboard'}</>
+            )}
+          </h1>
 
           <p className="text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
