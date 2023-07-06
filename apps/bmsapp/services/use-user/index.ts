@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { fetcher } from 'libs';
+import { ApiStatus } from 'types/api-status';
 
 interface IProps {
   redirectTo?: string;

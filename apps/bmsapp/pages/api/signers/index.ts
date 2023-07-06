@@ -1,7 +1,7 @@
 //Next APi
 
 import { NextApiRequest, NextApiResponse } from 'next';
-
+import { ApiStatus } from 'types/api-status';
 // sample list of 100 users
 const users = [
   { id: 1, name: 'John Doe' },

@@ -91,3 +91,6 @@ https://medium.com/@nikitinal.nal/next-js-with-postgresql-role-based-access-cont
 
 # Redux Toolkit
 https://www.youtube.com/watch?v=ss-_S1Vyxa0
+
+# Document viewer 
+https://codesandbox.io/s/docxtemplater-with-nextjs-o1nqo?file=/pages/index.js

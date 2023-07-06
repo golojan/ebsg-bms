@@ -2,11 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "es2018",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "preserve",
     "allowJs": true,
     "esModuleInterop": true,
@@ -22,15 +18,11 @@
         "name": "next"
       }
     ],
-    "types": [
-      "jest",
-      "node"
-    ],
+    "types": ["jest", "node"],
     "baseUrl": ".",
+    "rootDir": ".",
     "paths": {
-      "@/*": [
-        "/*"
-      ]
+      "@/*": ["/*"]
     }
   },
   "include": [
@@ -43,10 +35,5 @@
     "./types/*",
     "../../apps/bmsapp/.next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "jest.config.ts",
-    "**/*.spec.ts",
-    "**/*.test.ts"
-  ]
+  "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }

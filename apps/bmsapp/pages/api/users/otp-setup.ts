@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import qrcode from 'qrcode';
 import { authenticator } from 'otplib';
-
+import { ApiStatus } from 'types/api-status';
 import { withSessionRoute } from 'libs/session';
 
 import { PrismaClient } from '@prisma/client';

@@ -1,5 +1,5 @@
 // API Fetcher
-
+import { ApiStatus } from 'types/api-status';
 export const fetcher = async (url: string): Promise<TApiResult> =>
   await fetch(url)
     .then((r) => r.json())

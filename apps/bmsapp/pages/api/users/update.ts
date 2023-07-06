@@ -1,12 +1,12 @@
 // pages/api/users/user.ts
 
 import { NextApiRequest, NextApiResponse } from 'next';
+import { ApiStatus } from 'types/api-status';
 
 import { withSessionRoute } from 'libs/session';
 
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
-
 export default withSessionRoute(async function handler(
   req: NextApiRequest,
   res: NextApiResponse

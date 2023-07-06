@@ -1,4 +1,4 @@
-enum ApiStatus {
+export enum ApiStatus {
   API_FAIL = 0,
   API_SUCCESS = 1,
   USER_FOUND = 2,

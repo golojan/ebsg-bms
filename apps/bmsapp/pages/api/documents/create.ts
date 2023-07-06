@@ -3,6 +3,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { authenticator } from 'otplib';
 import { PrismaClient } from '@prisma/client';
+import { ApiStatus } from 'types/api-status';
 const prisma = new PrismaClient();
 import bcryptjs from 'bcryptjs';
 

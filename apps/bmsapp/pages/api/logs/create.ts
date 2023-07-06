@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 import { withSessionRoute } from 'libs/session';
-
+import { ApiStatus } from 'types/api-status';
 export default withSessionRoute(async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TApiResult>
