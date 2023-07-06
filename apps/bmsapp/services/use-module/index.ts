@@ -19,11 +19,7 @@ export const useModule = () => {
 
   const finished = Boolean(result);
 
-  const appmodule: {
-    id: number;
-    name: string;
-    description: string;
-  } = finished ? result?.data : null;
+  const appmodule: TModule = finished ? result?.data : null;
 
   const hasModule = Boolean(appmodule);
   const busy = Boolean(isLoading || isValidating);

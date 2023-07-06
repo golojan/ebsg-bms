@@ -37,8 +37,14 @@ type UserHook = {
   qrImage: (email: string) => Promise<number | null>;
 };
 
+type TModule = {
+  id?: number;
+  name?: string;
+  description?: string;
+};
+
 type TCrud = {
-  module?: string;
+  module?: TModule | null;
   accid?: number;
   role?: string;
   crud?: {
