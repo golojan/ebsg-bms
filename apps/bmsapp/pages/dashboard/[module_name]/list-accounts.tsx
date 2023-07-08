@@ -4,15 +4,11 @@ import Layout from 'components/layout';
 import { NextPage } from 'next';
 import useSWR from 'swr';
 import { fetcher } from 'libs';
-import { ListAccountsTable } from 'components/datatables/user';
+import { ListAccountsTable } from 'components/modules/datatables/user/ListAccountsTable';
 
 export const ListAccounts: NextPage = (props) => {
-  const {
-    data: result,
-    isLoading,
-    isValidating,
-  } = useSWR<TApiResult>('/api/users', fetcher);
-  const busy = isLoading || isValidating;
+  const { data: result, isLoading } = useSWR<TApiResult>('/api/users', fetcher);
+  const busy = isLoading;
 
   return (
     <Layout>

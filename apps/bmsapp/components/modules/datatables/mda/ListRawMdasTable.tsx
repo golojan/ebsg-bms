@@ -19,8 +19,6 @@ import {
   FaListAlt as ViewColumn,
 } from 'react-icons/fa';
 
-import ViewModal from 'components/modals';
-
 const tableIcons: Icons<MdaInfo> = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
   Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -45,21 +43,25 @@ const tableIcons: Icons<MdaInfo> = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
+import ViewModal from 'components/modals';
+import ModuleRegisterMda from 'components/modules/mdas/register-mda';
+
 type Props = {
   title: string;
   data: MdaInfo[];
   loading: boolean;
 };
 
-export const ListMdasTable = (props: Props) => {
+export const ListRawMdasTable = (props: Props) => {
   const { title, data, loading } = props;
+  // Modal Settings
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [selectedComponent, setSelectedComponent] = useState<string>('view');
   const toggleModal = () => {
     setShowModal(!showModal);
   };
-
   const [mda, setMDA] = useState<string | null>(null);
+  // Modal Settings
+
   const columns: Column<MdaInfo>[] = [
     {
       title: 'MDA Code',
@@ -75,24 +77,16 @@ export const ListMdasTable = (props: Props) => {
       render: (rowData: MdaInfo) => (
         <div className="tw-w-full tw-flex tw-justify-end">
           <button
-            className="btn btn-primary tw-mx-1"
+            className="btn btn-primary tw-mx-1 tw-float-right"
             onClick={() => {
               setShowModal(true);
             }}
           >
-            Unregister
+            Register this MDA
           </button>
-          <button className="btn btn-primary tw-mx-1">Edit</button>
-          <ViewModal
-            show={showModal}
-            toggleModal={toggleModal}
-            title="Edit MDA"
-          >
-            <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-p-5">
-         
-            </div>
+          <ViewModal show={showModal} toggleModal={toggleModal}>
+            <ModuleRegisterMda mda={rowData} toggleModal={toggleModal} />
           </ViewModal>
-          ;
         </div>
       ),
     },
@@ -129,6 +123,9 @@ export const ListMdasTable = (props: Props) => {
       backgroundColor: '#495057',
       color: '#ffffff',
     },
+    HTMLTableRowElement: {
+      cursor: 'pointer',
+    },
     rowStyle: (rowData: MdaInfo) => ({
       backgroundColor: mda === rowData.mdaCode ? '#e4e2f5' : '#ffffff',
     }),
@@ -161,14 +158,9 @@ export const ListMdasTable = (props: Props) => {
       onRowClick={(evt, row) => {
         setMDA(row?.mdaCode ?? null);
       }}
-      onRowDoubleClick={(evt, row) => {
-        const rowData = row as MdaInfo;
-        const mda = rowData.mdaCode;
-        setMDA(mda ?? null);
-      }}
       localization={localization}
     />
   );
 };
 
-export default ListMdasTable;
+export default ListRawMdasTable;

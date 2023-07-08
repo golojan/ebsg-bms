@@ -1,0 +1,61 @@
+[
+  {
+    "name": "dashboard",
+    "description": "Dashboard"
+  },
+  {
+    "name": "mdas",
+    "description": "Manage MDAs"
+  },
+  {
+    "name": "accounts",
+    "description": "Users & Accounts"
+  },
+  {
+    "name": "roles",
+    "description": "Access & Roles"
+  },
+
+  {
+    "name": "documents",
+    "description": "My Documents"
+  },
+  {
+    "name": "templates",
+    "description": "Document Templates"
+  },
+  {
+    "name": "files",
+    "description": "Files & Uploads"
+  },
+  {
+    "name": "budgets",
+    "description": "Manage Budgets"
+  },
+  {
+    "name": "reports",
+    "description": "Manage Reports"
+  },
+
+  {
+    "name": "profile",
+    "description": "Profile Manage"
+  },
+  {
+    "name": "settings",
+    "description": "App Settings"
+  },
+  {
+    "name": "securities",
+    "description": "Securities"
+  },
+
+  {
+    "name": "conversations",
+    "description": "Chats & Conversations"
+  },
+  {
+    "name": "ai",
+    "description": "AI Tools"
+  }
+]

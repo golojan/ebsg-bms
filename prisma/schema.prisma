@@ -27,7 +27,7 @@ model User {
   email     String?   @unique
   mobile    String?   @unique
   password  String?
-  role      Role      @default(user)
+  role      Role      @default(USER)
   qrcode    String?   @unique
   enableOtp Boolean?  @default(true)
   Mda       Mda?      @relation(fields: [mdaId], references: [id])
@@ -40,9 +40,17 @@ model User {
 }
 
 model Mda {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  mdaCode   String   @unique
+  id         Int     @id @default(autoincrement())
+  name       String  @unique
+  mdaCode    String  @unique
+  registered Boolean @default(false)
+
+  personalTotal    Float @default(0)
+  overheadTotal    Float @default(0)
+  capitalTotal     Float @default(0)
+  recurrentTotal   Float @default(0)
+  expenditureTotal Float @default(0)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   User      User[]
@@ -57,10 +65,10 @@ model RolePermissions {
 }
 
 enum Role {
-  user
-  admin
-  superAdmin
-  developer
+  USER
+  ADMIN
+  SUPERADMIN
+  DEVELOPER
 }
 
 model Module {

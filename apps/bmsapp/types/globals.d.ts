@@ -59,3 +59,9 @@ type TCrud = {
     delete?: boolean;
   };
 };
+
+type ModalProps = {
+  show: boolean;
+  toggleModal: () => void;
+  children: React.ReactNode;
+};

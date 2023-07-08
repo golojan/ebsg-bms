@@ -5,31 +5,26 @@ import { ApiStatus } from 'types/api-status';
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
+import moduleData from 'data/modules.json';
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TApiResult>
 ) {
-  const { registered } = req.query;
-  const isRegistered = registered === 'true' ? true : false;
-  await prisma.mda
-    .findMany({
-      where: {
-        registered: isRegistered,
-      },
+  await prisma.module
+    .createMany({
+      data: moduleData,
+      skipDuplicates: true,
     })
     .then((mdas) => {
       return res.status(200).json({
-        status: ApiStatus.MDA_FOUND,
+        status: ApiStatus.MODULE_FOUND,
         data: mdas,
-        error: `MDA_FOUND:${ApiStatus.MDA_FOUND}`,
+        error: `MODULE_FOUND:${ApiStatus.MODULE_FOUND}`,
       });
     })
     .catch((error) => {
-      return res.status(500).json({
-        status: ApiStatus.MDA_NOT_FOUND,
-        data: null,
-        error: `MDA_NOT_FOUND:${ApiStatus.MDA_NOT_FOUND}`,
-      });
+      return res.status(500).json({ status: ApiStatus.MODULE_NOT_FOUND });
     })
     .finally(() => {
       prisma.$disconnect();

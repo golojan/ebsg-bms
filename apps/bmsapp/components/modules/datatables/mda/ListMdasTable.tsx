@@ -1,6 +1,11 @@
 /* eslint-disable react/display-name */
 import React, { forwardRef, useState } from 'react';
-import MaterialTable, { Icons, Column } from '@material-table/core';
+import MaterialTable, {
+  Icons,
+  Column,
+  MTableToolbar,
+  MTableBodyRow,
+} from '@material-table/core';
 import {
   FaPlus as AddBox,
   FaCheck as Check,
@@ -18,8 +23,6 @@ import {
   FaFirstdraft as LastPage,
   FaListAlt as ViewColumn,
 } from 'react-icons/fa';
-
-import Link from 'next/link';
 
 const tableIcons: Icons<MdaInfo> = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -51,9 +54,19 @@ type Props = {
   loading: boolean;
 };
 
-export const ListRawMdasTable = (props: Props) => {
+import ViewModal from 'components/modals';
+import ModuleEditMda from 'components/modules/mdas/edit-mda';
+import ModuleUnregisterMda from 'components/modules/mdas/unregister-mda';
+
+export const ListMdasTable = (props: Props) => {
   const { title, data, loading } = props;
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
   const [mda, setMDA] = useState<string | null>(null);
+  const [view, setView] = useState<string>('edit-mda');
+
   const columns: Column<MdaInfo>[] = [
     {
       title: 'MDA Code',
@@ -64,13 +77,44 @@ export const ListRawMdasTable = (props: Props) => {
       field: 'name',
     },
     {
+      title: 'Total.Recurrent',
+      field: 'recurrentTotal',
+    },
+    {
+      title: 'Total.Expenditure',
+      field: 'expenditureTotal',
+    },
+    {
       title: '-',
       field: 'action',
       render: (rowData: MdaInfo) => (
         <div className="tw-w-full tw-flex tw-justify-end">
-          <button className="btn btn-primary tw-mx-1 tw-float-right">
-            Register this MDA
+          <button
+            className="btn btn-primary tw-mx-1"
+            onClick={() => {
+              setView('unregister-mda');
+              setShowModal(true);
+            }}
+          >
+            Unregister
           </button>
+          <button
+            className="btn btn-primary tw-mx-1"
+            onClick={() => {
+              setView('edit-mda');
+              setShowModal(true);
+            }}
+          >
+            Edit
+          </button>
+          <ViewModal show={showModal} toggleModal={toggleModal}>
+            {view === 'edit-mda' && (
+              <ModuleEditMda mda={rowData} toggleModal={toggleModal} />
+            )}
+            {view === 'unregister-mda' && (
+              <ModuleUnregisterMda mda={rowData} toggleModal={toggleModal} />
+            )}
+          </ViewModal>
         </div>
       ),
     },
@@ -110,22 +154,6 @@ export const ListRawMdasTable = (props: Props) => {
     rowStyle: (rowData: MdaInfo) => ({
       backgroundColor: mda === rowData.mdaCode ? '#e4e2f5' : '#ffffff',
     }),
-    exportCsv: (columns: Column<MdaInfo>[], data: MdaInfo[]) => {
-      const csvData = data.map((item) => {
-        return {
-          mdaCode: item.mdaCode,
-          name: item.name,
-        };
-      });
-      const csvColumns = columns.map((item) => {
-        return {
-          title: item.title,
-          field: item.field,
-        };
-      });
-      const csv = [csvColumns, ...csvData];
-      return csv;
-    },
   };
 
   return (
@@ -139,12 +167,23 @@ export const ListRawMdasTable = (props: Props) => {
       onRowClick={(evt, row) => {
         setMDA(row?.mdaCode ?? null);
       }}
-      onRowDoubleClick={(evt, row) => {
-        alert('You double clicked on ' + row?.mdaCode ?? null);
-      }}
       localization={localization}
+      components={{
+        Toolbar: (props) => (
+          <div>
+            <MTableToolbar {...props} />
+          </div>
+        ),
+        Row: (props) => (
+          <MTableBodyRow
+            id={props.index}
+            {...props}
+            className={props.index % 2 === 0 ? 'row-even' : 'row-odd'}
+          />
+        ),
+      }}
     />
   );
 };
 
-export default ListRawMdasTable;
+export default ListMdasTable;
