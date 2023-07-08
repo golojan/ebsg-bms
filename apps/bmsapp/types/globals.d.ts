@@ -12,8 +12,13 @@ type UserInfo = {
   email?: string;
   firstName?: string;
   lastName?: string;
-  name?: string;
   role?: Role;
+};
+
+type MdaInfo = {
+  id?: number;
+  mdaCode?: string;
+  name?: string;
 };
 
 type UserHook = {

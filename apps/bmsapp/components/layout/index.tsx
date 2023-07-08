@@ -7,8 +7,9 @@ import LayoutNavBar from './navbar';
 import Link from 'next/link';
 import { FaTerminal } from 'react-icons/fa';
 import ModuleNavBar from './module';
+import TerminalNavBar from './terminal';
 import useModule from 'services/use-module';
-import { ClipLoader, DotLoader } from 'react-spinners';
+import { DotLoader } from 'react-spinners';
 
 type LayoutProps = {
   children?: React.ReactNode;
@@ -24,39 +25,31 @@ export const Layout = ({ children }: LayoutProps) => {
         <main className={styles.main}>
           <h1>
             {busy ? (
-              <DotLoader size={30} color="#495057" />
+              <DotLoader size={35} color="#414549" />
             ) : (
-              <>{hasModule ? appmodule?.description : 'My Dashboard'}</>
+              <>
+                {hasModule ? appmodule?.description : 'My Dashboard'}
+                <h5 className="tw-my-2 p-0 tw-text-gray-600 tw-backdrop-grayscale-0">
+                  Access Rights:
+                </h5>
+              </>
             )}
           </h1>
-
-          <p className="text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Consequatur animi voluptatibus cum maxime distinctio iste quod
-            deleniti eius, autem voluptates cumque suscipit iure quasi eligendi
-            ullam. Sapiente eligendi porro reprehenderit corrupti error facilis
-            quo, fugiat fugit? Maiores aliquam ad, molestiae iste nihil, commodi
-            doloremque tempore excepturi aut id ducimus unde?
-          </p>
+          <div className="text tw-mb-5 tw-w-full alert alert-primary tw-text-xl">
+            <strong>NOTICE:</strong> This portal is in demo mode. Do not present
+            for official use. All data used during this demo are dummy data,
+            secure and might be deleted by the end of the demo.
+          </div>
           <Row>
-            <Col lg={4} md={6} sm={12} xl={4} className="tw-mb-5">
+            <Col xs={12} md={12} lg={12} xl={12} xxl={12} className="tw-mb-5">
               {children}
             </Col>
           </Row>
           <p className={styles.copyright}>
-            &copy; 2021 - <span>Ebonyi State Government</span> - All Rights
-            Reserved | <span>https://golojan.co.uk</span>
+            &copy; 2021 - <span>Ebonyi State Government</span>
           </p>
-          <Link
-            href={'#'}
-            className="text-white tw-absolute tw-bottom-5 tw-right-5 tw-bg-[#3d5af1] tw-rounded-full tw-text-white tw-text-center tw-cursor-pointer tw-z-50 tw-p-4 hover:tw-bg-[#5872f5]  hover:tw-shadow-xl hover:tw-text-white"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <FaTerminal color="#fffff" size={35} />
-          </Link>
         </main>
+        {/* <TerminalNavBar /> */}
       </div>
     </>
   );

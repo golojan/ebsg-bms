@@ -6,10 +6,5 @@ export interface ModalLayoutProps {
 }
 
 export function ModalLayout(props: ModalLayoutProps) {
-  return (
-    <div className={styles.modal}>
-      <div className={styles.modal_content}>{props.children}</div>
-    </div>
-  );
+  return <div className={styles.modal}>{props.children}</div>;
 }
-

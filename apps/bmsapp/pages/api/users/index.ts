@@ -9,22 +9,20 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TApiResult>
 ) {
-  const { page, limit } = req.query;
-
-  await prisma.mda
+  await prisma.user
     .findMany()
-    .then((mdas) => {
+    .then((users) => {
       return res.status(200).json({
-        status: ApiStatus.MDA_FOUND,
-        data: mdas,
+        status: ApiStatus.USER_FOUND,
+        data: users,
         error: `USER_FOUND:${ApiStatus.USER_FOUND}`,
       });
     })
     .catch((error) => {
       return res.status(500).json({
-        status: ApiStatus.MDA_NOT_FOUND,
+        status: ApiStatus.USER_NOT_FOUND,
         data: null,
-        error: `MDA_NOT_FOUND:${ApiStatus.MDA_NOT_FOUND}`,
+        error: `USER_NOT_FOUND:${ApiStatus.USER_NOT_FOUND}`,
       });
     })
     .finally(() => {

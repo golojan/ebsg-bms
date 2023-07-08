@@ -1,0 +1,564 @@
+[
+  {
+    "mdaCode": "010000000000",
+    "name": "Administration Sector"
+  },
+  {
+    "mdaCode": "011100000000",
+    "name": "Governors Office"
+  },
+  {
+    "mdaCode": "011100100100",
+    "name": "Office of the Executive Governor"
+  },
+  {
+    "mdaCode": "011100100200",
+    "name": "Office of the Deputy Governor"
+  },
+  {
+    "mdaCode": "011100500100",
+    "name": "Sustainable Development Goals  (SDG's) (PSU)"
+  },
+  {
+    "mdaCode": "011100800100",
+    "name": "Ebonyi State Emergency Mgt. Agency (SEMA)"
+  },
+  {
+    "mdaCode": "011101000100",
+    "name": "Ebonyi State Bureau of Public Procurement"
+  },
+  {
+    "mdaCode": "011103200200",
+    "name": "Department of Small and Medium Scale Enterprise"
+  },
+  {
+    "mdaCode": "011103300100",
+    "name": "Ebonyi State Agency for Control of AIDS"
+  },
+  {
+    "mdaCode": "011106700100",
+    "name": "Office of SSA on Higher Education"
+  },
+  {
+    "mdaCode": "011107100100",
+    "name": "Office of SA on Inter Party & Labour Affairs"
+  },
+  {
+    "mdaCode": "011110900100",
+    "name": "Ebonyi State Community and Social Development Agency (EB-CSDA)"
+  },
+  {
+    "mdaCode": "011119100100",
+    "name": "Office of Religious and Welfare Matters"
+  },
+  {
+    "mdaCode": "016100000000",
+    "name": "Office of Secretary the State Government"
+  },
+  {
+    "mdaCode": "016100100100",
+    "name": "Office of Secretary the State Government"
+  },
+  {
+    "mdaCode": "016100200100",
+    "name": "Economic Affairs Department"
+  },
+  {
+    "mdaCode": "016100300100",
+    "name": "Executive Council (EXCO) Department"
+  },
+  {
+    "mdaCode": "016100500100",
+    "name": "Department of General Services"
+  },
+  {
+    "mdaCode": "016100700100",
+    "name": "Political and Social Services Department (PSSD)"
+  },
+  {
+    "mdaCode": "016102100100",
+    "name": "Liaison Office, Lagos"
+  },
+  {
+    "mdaCode": "016102100200",
+    "name": "Liaison Office, Abuja"
+  },
+  {
+    "mdaCode": "011200000000",
+    "name": "Ebonyi State House of Assembly"
+  },
+  {
+    "mdaCode": "011200300100",
+    "name": "Ebonyi State House of Assembly"
+  },
+  {
+    "mdaCode": "011200400100",
+    "name": "Ebonyi State House of Assembly Service Commission"
+  },
+  {
+    "mdaCode": "012300000000",
+    "name": "Ministry of Information and State Orientation"
+  },
+  {
+    "mdaCode": "012300100100",
+    "name": "Ministry of Information and State Orientation"
+  },
+  {
+    "mdaCode": "012300300100",
+    "name": "Ebonyi State Broadcasting Corporation (EBBC)"
+  },
+  {
+    "mdaCode": "012301300100",
+    "name": "Government Printing and Stationery Department"
+  },
+  {
+    "mdaCode": "012305500100",
+    "name": "Ebonyi State Newspaper and Publishing Corporation"
+  },
+  {
+    "mdaCode": "012500000000",
+    "name": "Office of the Head of Service"
+  },
+  {
+    "mdaCode": "012500100100",
+    "name": "Office of the Head of Service"
+  },
+  {
+    "mdaCode": "012500500100",
+    "name": "Establishment. Pension and Management Services"
+  },
+  {
+    "mdaCode": "012500600100",
+    "name": "Administration and General Services"
+  },
+  {
+    "mdaCode": "012500700100",
+    "name": "Public Service Manpower "
+  },
+  {
+    "mdaCode": "014000000000",
+    "name": "Office of Auditor General"
+  },
+  {
+    "mdaCode": "014000100100",
+    "name": "Office of Auditor General - State"
+  },
+  {
+    "mdaCode": "014700000000",
+    "name": "Civil Service Commission"
+  },
+  {
+    "mdaCode": "014700100100",
+    "name": "Civil Service Commission"
+  },
+  {
+    "mdaCode": "014900000000",
+    "name": "Local Government Service Commission"
+  },
+  {
+    "mdaCode": "014900100100",
+    "name": "Local Government Service Commission"
+  },
+  {
+    "mdaCode": "014800000000",
+    "name": "Ebonyi State Independent Electoral Commission"
+  },
+  {
+    "mdaCode": "014800100100",
+    "name": "Ebonyi State Independent Electoral Commission"
+  },
+  {
+    "mdaCode": "012400000000",
+    "name": "Ministry of Internal Security and  Border, Peace "
+  },
+  {
+    "mdaCode": "012400100100",
+    "name": "Ministry of Internal Security and  Border, Peace "
+  },
+  {
+    "mdaCode": "020000000000",
+    "name": "Economic Sector"
+  },
+  {
+    "mdaCode": "021500000000",
+    "name": "Ministry of Agriculture and Natural Resources"
+  },
+  {
+    "mdaCode": "021500100100",
+    "name": "Ministry of Agriculture and Natural Resources"
+  },
+  {
+    "mdaCode": "021510200100",
+    "name": "Ebonyi State Agric. Dev. Programme"
+  },
+  {
+    "mdaCode": "021510200200",
+    "name": "FADAMA"
+  },
+  {
+    "mdaCode": "021511000100",
+    "name": "Ebonyi State Fertilizer and Chemical Co. Ltd."
+  },
+  {
+    "mdaCode": "022000000000",
+    "name": "Ministry of Finance and Economic Development"
+  },
+  {
+    "mdaCode": "022000100100",
+    "name": "Ministry of Finance and Economic Development"
+  },
+  {
+    "mdaCode": "022000300100",
+    "name": "Department of Budget, Planning, Research & Monitoring"
+  },
+  {
+    "mdaCode": "022000700100",
+    "name": "Office of the Accountant General"
+  },
+  {
+    "mdaCode": "022000800100",
+    "name": "Internal Revenue Board"
+  },
+  {
+    "mdaCode": "022000800200",
+    "name": "Revenue Appeal Commission"
+  },
+
+  {
+    "mdaCode": "022200000000",
+    "name": "Ministry of Commerce and Industry"
+  },
+  {
+    "mdaCode": "022200100100",
+    "name": "Ministry of Commerce and Industry"
+  },
+  {
+    "mdaCode": "022200200100",
+    "name": "Ebonyi State Pipes Production Limited"
+  },
+  {
+    "mdaCode": "022200400100",
+    "name": "Ebonyi Building Material Ind. Ltd"
+  },
+  {
+    "mdaCode": "022700000000",
+    "name": "Ministry of Human Capital Dev. and Monitoring"
+  },
+  {
+    "mdaCode": "022700100100",
+    "name": "Ministry of Human Capital Dev. and Monitoring"
+  },
+  {
+    "mdaCode": "023400000000",
+    "name": "Ministry of Works and Transport"
+  },
+  {
+    "mdaCode": "023400100100",
+    "name": "Ministry of Works and Transport"
+  },
+  {
+    "mdaCode": "023400400100",
+    "name": "Ebonyi State Road Maintenance Agency (EBROMA)"
+  },
+  {
+    "mdaCode": "023600000000",
+    "name": "Ministry of Culture and Tourism"
+  },
+  {
+    "mdaCode": "023600100100",
+    "name": "Ministry of Culture and Tourism"
+  },
+  {
+    "mdaCode": "023600400100",
+    "name": "Ebonyi State Council for Arts and Culture"
+  },
+  {
+    "mdaCode": "025000000000",
+    "name": "Fiscal Responsibility Commission"
+  },
+  {
+    "mdaCode": "025000100100",
+    "name": "Fiscal Responsibility Commission"
+  },
+  {
+    "mdaCode": "025200000000",
+    "name": "Ministry of Water Resources"
+  },
+  {
+    "mdaCode": "025200100100",
+    "name": "Ministry of Water Resources"
+  },
+  {
+    "mdaCode": "025210300100",
+    "name": "EB-RUWASSA"
+  },
+  {
+    "mdaCode": "026000000000",
+    "name": "Ministry of Lands and Survey"
+  },
+  {
+    "mdaCode": "026000100100",
+    "name": "Ministry of Lands and Survey"
+  },
+  {
+    "mdaCode": "026000200100",
+    "name": "Office of the Surveyor-General"
+  },
+  {
+    "mdaCode": "026000300100",
+    "name": "Ebonyi State Land Information System (EBLIS)"
+  },
+  {
+    "mdaCode": "023100000000",
+    "name": "Ministry of Power and Energy"
+  },
+  {
+    "mdaCode": "023100100100",
+    "name": "Ministry of Power and Energy"
+  },
+  {
+    "mdaCode": "025300000000",
+    "name": "Ministry of Housing and Urban Development "
+  },
+  {
+    "mdaCode": "025300100100",
+    "name": "Ministry of Housing and Urban Development "
+  },
+  {
+    "mdaCode": "025302000100",
+    "name": "Ebonyi State Housing Corporation"
+  },
+  {
+    "mdaCode": "026600000000",
+    "name": "Ministry of Project Monitoring and Evaluation"
+  },
+  {
+    "mdaCode": "026600100100",
+    "name": "Ministry of Project Monitoring and Evaluation"
+  },
+  {
+    "mdaCode": "026700000000",
+    "name": "Ministry of Infrastructural Development and Concession"
+  },
+  {
+    "mdaCode": "026700100100",
+    "name": "Ministry of Infrastructural Development and Concession"
+  },
+  {
+    "mdaCode": "026800000000",
+    "name": "Ministry of Business Development"
+  },
+  {
+    "mdaCode": "026800100100",
+    "name": "Ministry of Business Development"
+  },
+  {
+    "mdaCode": "026900000000",
+    "name": "Ministry of Market Development and Management"
+  },
+  {
+    "mdaCode": "026900100100",
+    "name": "Ministry of Market Development and Management"
+  },
+  {
+    "mdaCode": "027200000000",
+    "name": "Ministry of Solid Mineral Development Communities"
+  },
+  {
+    "mdaCode": "027200100100",
+    "name": "Ministry of Solid Mineral Development Communities"
+  },
+  {
+    "mdaCode": "027300000000",
+    "name": "Ministry of Trade and Investment"
+  },
+  {
+    "mdaCode": "027300100100",
+    "name": "Ministry of Trade and Investment"
+  },
+  {
+    "mdaCode": "027300300100",
+    "name": "Ebonyi State Investment and Property Ltd"
+  },
+  {
+    "mdaCode": "030000000000",
+    "name": "Law and Justice Sector"
+  },
+  {
+    "mdaCode": "031800000000",
+    "name": "The State Judiciary"
+  },
+  {
+    "mdaCode": "031801100100",
+    "name": "Judicial Service Commission"
+  },
+  {
+    "mdaCode": "031805100100",
+    "name": "State High Court"
+  },
+  {
+    "mdaCode": "031805200100",
+    "name": "Customary Court of Appeal"
+  },
+  {
+    "mdaCode": "032600000000",
+    "name": "Ministry of Justice"
+  },
+  {
+    "mdaCode": "032600100100",
+    "name": "Ministry of Justice"
+  },
+
+  {
+    "mdaCode": "040000000000",
+    "name": "Regional Sector"
+  },
+
+  {
+    "mdaCode": "043700000000",
+    "name": "Ministry of Capital City and Urban Development"
+  },
+  {
+    "mdaCode": "043700100100",
+    "name": "Ministry of Capital City and Urban Development"
+  },
+
+  {
+    "mdaCode": "050000000000",
+    "name": "Social  Sector"
+  },
+
+  {
+    "mdaCode": "053900000000",
+    "name": "Ministry of Youth Development and Sports"
+  },
+  {
+    "mdaCode": "053900100100",
+    "name": "Ministry of Youth Development and Sports"
+  },
+
+  {
+    "mdaCode": "053905100100",
+    "name": "Ebonyi State Sports Council"
+  },
+  {
+    "mdaCode": "051400000000",
+    "name": "Ministry of Women Affairs and Social Development"
+  },
+  {
+    "mdaCode": "051400100100",
+    "name": "Ministry of Women Affairs and Social Development"
+  },
+  {
+    "mdaCode": "051400200100",
+    "name": "Women Development Centre"
+  },
+  {
+    "mdaCode": "051700000000",
+    "name": "Ministry of Education"
+  },
+  {
+    "mdaCode": "051700100100",
+    "name": "Ministry of Education"
+  },
+  {
+    "mdaCode": "051700300100",
+    "name": "Ebonyi State Universal Basic Education Board"
+  },
+  {
+    "mdaCode": "051700800100",
+    "name": "Ebonyi State Library Board"
+  },
+  {
+    "mdaCode": "051700900100",
+    "name": "Examinations Development Centre"
+  },
+  {
+    "mdaCode": "051701000100",
+    "name": "Agency for Mass Literacy"
+  },
+  {
+    "mdaCode": "051701900100",
+    "name": "Ebonyi State College of Education, Ikwo"
+  },
+  {
+    "mdaCode": "051702100100",
+    "name": "Ebonyi State University"
+  },
+  {
+    "mdaCode": "051702100200",
+    "name": "David Umahi Federal University of Medical Sciences, Uburu"
+  },
+  {
+    "mdaCode": "051702100300",
+    "name": "Aeronautic University, Ezza"
+  },
+  {
+    "mdaCode": "051702100400",
+    "name": "ICT University, Izzi"
+  },
+  {
+    "mdaCode": "051702622400",
+    "name": "King David Gifted Children"
+  },
+  {
+    "mdaCode": "051702622500",
+    "name": "Ebonyi Vocational College"
+  },
+  {
+    "mdaCode": "051705100000",
+    "name": "Secondary Education Board"
+  },
+  {
+    "mdaCode": "052100000000",
+    "name": "Ministry of Health"
+  },
+  {
+    "mdaCode": "052100100100",
+    "name": "Ministry of Health"
+  },
+  {
+    "mdaCode": "052110600100",
+    "name": "School of Health Technology, Ngbo"
+  },
+  {
+    "mdaCode": "052110400100",
+    "name": "School of Nursing and Midwifery, Uburu"
+  },
+  {
+    "mdaCode": "052110200100",
+    "name": "Ebonyi Hospital Management Board"
+  },
+  {
+    "mdaCode": "052100300100",
+    "name": "Ebonyi State Primary Health Care Development Agency"
+  },
+  {
+    "mdaCode": "052100200100",
+    "name": "Ebonyi State Health Insurance Agency"
+  },
+  {
+    "mdaCode": "052111500100",
+    "name": "Ebonyi State Committee on Food and Nutrition"
+  },
+  {
+    "mdaCode": "052111700100",
+    "name": "David Umahi Federal University Teaching Hospital, Uburu"
+  },
+  {
+    "mdaCode": "053500000000",
+    "name": "Ministry of Environment, Grants and Donors"
+  },
+  {
+    "mdaCode": "053500100100",
+    "name": "Ministry of Environment, Grants and Donors"
+  },
+  {
+    "mdaCode": "055100000000",
+    "name": "Ministry of Local Government, Chieftaincy Matters and Rural Development"
+  },
+  {
+    "mdaCode": "055100100100",
+    "name": "Ministry of Local Government, Chieftaincy Matters and Rural Development"
+  }
+]

@@ -28,6 +28,8 @@
   "dependencies": {
     "@ctrl/react-adsense": "^1.7.0",
     "@emotion/react": "^11.11.1",
+    "@material-table/core": "^6.2.1",
+    "@material-table/exporters": "^1.1.0",
     "@nx/next": "^16.4.0",
     "@pdftron/webviewer": "^10.2.3",
     "@prisma/client": "^4.16.1",

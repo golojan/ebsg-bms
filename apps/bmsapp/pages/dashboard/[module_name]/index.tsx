@@ -7,13 +7,10 @@ import useModule from 'services/use-module';
 export type dashboardProps = {};
 
 export const ModuleDashboard: NextPage<dashboardProps> = (props) => {
-  const { appmodule, busy } = useModule();
   return (
     <Layout>
       <Row>
-        <Col className="tw-bg-red-500" xs={12} md={6} lg={6}>
-          {!busy && JSON.stringify(appmodule)}
-        </Col>
+        <Col className="tw-bg-red-500" xs={12} md={6} lg={6}></Col>
       </Row>
     </Layout>
   );

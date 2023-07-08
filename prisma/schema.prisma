@@ -25,6 +25,7 @@ model User {
   firstName String?
   lastName  String?
   email     String?   @unique
+  mobile    String?   @unique
   password  String?
   role      Role      @default(user)
   qrcode    String?   @unique

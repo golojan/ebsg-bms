@@ -5,17 +5,22 @@ const CrudMda = () => {
   return (
     <ul>
       <li>
-        <Link href="#">
-          <span className="link hide">List All MDAs</span>
+        <Link href="/dashboard/mdas/all-mdas">
+          <span className="link hide">Unregistered MDAs</span>
         </Link>
       </li>
       <li>
-        <Link href="#">
+        <Link href="/dashboard/mdas/list-mdas">
+          <span className="link hide">Registered MDAs</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="/dashboard/mdas/create-mdas">
           <span className="link hide">Create New MDA</span>
         </Link>
       </li>
       <li>
-        <Link href="#">
+        <Link href="/dashboard/mdas/reports-mdas">
           <span className="link hide">MDA Reports</span>
         </Link>
       </li>
@@ -27,8 +32,13 @@ const CrudAccount = () => {
   return (
     <ul>
       <li>
-        <Link href="#">
+        <Link href="/dashboard/accounts/list-accounts">
           <span className="link hide">List All Users</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="/dashboard/accounts/requested-accounts">
+          <span className="link hide">Signup Requests</span>
         </Link>
       </li>
     </ul>
