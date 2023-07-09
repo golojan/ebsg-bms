@@ -18,6 +18,7 @@ import {
   FaFirstdraft as LastPage,
   FaListAlt as ViewColumn,
 } from 'react-icons/fa';
+import Link from 'next/link';
 
 const tableIcons: Icons<MdaInfo> = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -101,16 +102,12 @@ export const ListMdasTable = (props: Props) => {
       field: 'action',
       render: (rowData: MdaInfo) => (
         <div className="tw-w-full tw-flex tw-justify-end">
-          <button
-            className="btn btn-primary tw-mx-1"
-            onClick={() => {
-              setView('disable');
-              setMDA(rowData);
-              setShowModal(true);
-            }}
+          <Link
+            className="btn btn-success tw-mx-1"
+            href={`/dashboard/mdas/view-mda/${rowData.mdaCode}`}
           >
-            Disable MDA
-          </button>
+            MDA Dashboard
+          </Link>
           <button
             className="btn btn-primary tw-mx-1"
             onClick={() => {

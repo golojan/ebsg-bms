@@ -9,17 +9,42 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TApiResult>
 ) {
+  const { id } = req.query;
+  const {
+    name,
+    personalTotal,
+    overheadTotal,
+    capitalTotal,
+    recurrentTotal,
+    expenditureTotal,
+  } = req.body;
+
   await prisma.mda
-    .findMany()
-    .then((mdas) => {
+    .update({
+      where: { mdaCode: id as string },
+      data: {
+        name: name as string,
+        personalTotal: parseFloat(personalTotal),
+        overheadTotal: parseFloat(overheadTotal),
+        capitalTotal: parseFloat(capitalTotal),
+        recurrentTotal: parseFloat(recurrentTotal),
+        expenditureTotal: parseFloat(expenditureTotal),
+      },
+    })
+    .then((mda) => {
+      console.log(mda);
       return res.status(200).json({
-        status: ApiStatus.MDA_FOUND,
-        data: mdas,
-        error: `USER_FOUND:${ApiStatus.USER_FOUND}`,
+        status: ApiStatus.MDA_UPDATED,
+        data: mda,
+        error: `MDA_UPDATED:${ApiStatus.MDA_UPDATED}`,
       });
     })
     .catch((error) => {
-      return res.status(500).json({ status: ApiStatus.MDA_NOT_FOUND });
+      console.log(error);
+      return res.status(500).json({
+        status: ApiStatus.MDA_NOT_UPDATED,
+        error: `MDA_NOT_UPDATED:${ApiStatus.MDA_NOT_UPDATED}`,
+      });
     })
     .finally(() => {
       prisma.$disconnect();

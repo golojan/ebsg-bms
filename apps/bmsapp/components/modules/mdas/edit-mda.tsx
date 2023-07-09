@@ -5,7 +5,6 @@ import CurrencyInput from 'react-currency-input-field';
 import { toFiat } from 'libs/monify';
 import { ApiStatus } from 'types/api-status';
 import swal from 'sweetalert';
-import MdaType from '@prisma/client';
 
 type Props = {
   mda: MdaInfo;
@@ -57,12 +56,13 @@ const ModuleEditMda: React.FC<Props> = (props: Props) => {
       );
       return;
     }
-    const data = await fetch(`/api/mdas/${mda.mdaCode}/register`, {
+    const data = await fetch(`/api/mdas/${mda.mdaCode}/update`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        name: mdaData.name,
         personalTotal: mdaData.personalTotal,
         overheadTotal: mdaData.overheadTotal,
         capitalTotal: mdaData.capitalTotal,
@@ -71,7 +71,7 @@ const ModuleEditMda: React.FC<Props> = (props: Props) => {
       }),
     });
     const { status } = await data.json();
-    if (status === ApiStatus.MDA_REGISTERED) {
+    if (status === ApiStatus.MDA_UPDATED) {
       swal(
         'Update Successful',
         `The MDA ${mda.name} has been updated in the system.`,
@@ -106,19 +106,6 @@ const ModuleEditMda: React.FC<Props> = (props: Props) => {
               }}
             />
           </Form.Group>
-          <Form.Group controlId="mdaType" className="tw-mt-2">
-            <Form.Label>Type of MDA</Form.Label>
-            <Form.Check name="mdaType" value={MdaType.MINISTRY}>
-              Ministry
-            </Form.Check>
-            <Form.Check name="mdaType" value={MdaType.DEPARTMENT}>
-              Department
-            </Form.Check>
-            <Form.Check name="mdaType" value={MdaType.AGENCY}>
-              Agency
-            </Form.Check>
-          </Form.Group>
-          <hr />
           <Form.Group controlId="personalTotal" className="tw-mt-2">
             <Form.Label>Personal Expenses</Form.Label>
             <CurrencyInput

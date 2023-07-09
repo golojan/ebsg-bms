@@ -34,4 +34,6 @@ export enum ApiStatus {
   MODULE_NOT_FOUND = 31,
   MDA_REGISTERED = 32,
   MDA_NOT_REGISTERED = 33,
+  MDA_UPDATED = 34,
+  MDA_NOT_UPDATED = 35,
 }
