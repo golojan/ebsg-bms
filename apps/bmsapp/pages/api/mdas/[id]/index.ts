@@ -9,17 +9,25 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TApiResult>
 ) {
+  const id = req.query.id as string;
   await prisma.mda
-    .findMany()
+    .findUnique({
+      where: {
+        mdaCode: id,
+      },
+    })
     .then((mdas) => {
       return res.status(200).json({
         status: ApiStatus.MDA_FOUND,
         data: mdas,
-        error: `USER_FOUND:${ApiStatus.USER_FOUND}`,
+        error: `MDA_FOUND:${ApiStatus.MDA_FOUND}`,
       });
     })
     .catch((error) => {
-      return res.status(500).json({ status: ApiStatus.MDA_NOT_FOUND });
+      return res.status(500).json({
+        status: ApiStatus.MDA_NOT_FOUND,
+        error: error,
+      });
     })
     .finally(() => {
       prisma.$disconnect();

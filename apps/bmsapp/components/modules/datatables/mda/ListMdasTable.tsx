@@ -53,6 +53,7 @@ type Props = {
 import ViewModal from 'components/modals';
 import ModuleEditMda from 'components/modules/mdas/edit-mda';
 import { toFiat } from 'libs/monify';
+import { encrypt } from 'libs/crypt';
 
 export const ListMdasTable = (props: Props) => {
   const { title, data, loading } = props;
@@ -104,7 +105,7 @@ export const ListMdasTable = (props: Props) => {
         <div className="tw-w-full tw-flex tw-justify-end">
           <Link
             className="btn btn-success tw-mx-1"
-            href={`/dashboard/mdas/view-mda/${rowData.mdaCode}`}
+            href={`/dashboard/mdas/analytics?_mda_=${rowData.mdaCode}`}
           >
             MDA Dashboard
           </Link>
