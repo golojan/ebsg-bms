@@ -4,6 +4,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import CurrencyInput from 'react-currency-input-field';
 import { toFiat } from 'libs/monify';
 import { ApiStatus } from 'types/api-status';
+import swal from 'sweetalert';
 
 type Props = {
   mda: MdaInfo;
@@ -41,6 +42,18 @@ const ModuleRegisterMda: React.FC<Props> = (props: Props) => {
 
   const handleForm = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+    if (
+      mdaData.personalTotal === 0 ||
+      mdaData.overheadTotal === 0 ||
+      mdaData.capitalTotal === 0
+    ) {
+      swal(
+        'Empty Values',
+        'Please enter a valid amount for at least one of the fields',
+        'error'
+      );
+      return;
+    }
     const data = await fetch(`/api/mdas/${mda.mdaCode}/register`, {
       method: 'POST',
       headers: {
@@ -56,9 +69,14 @@ const ModuleRegisterMda: React.FC<Props> = (props: Props) => {
     });
     const { status } = await data.json();
     if (status === ApiStatus.MDA_REGISTERED) {
+      swal(
+        'Registration Successful',
+        `The MDA ${mda.name} has been registered into the system. Data will now be available on the dashboard.`,
+        'success'
+      );
       toggleModal();
     } else {
-      alert('MDA Registration Failed');
+      swal('MDA Registration Failed', '', 'error');
     }
   };
 

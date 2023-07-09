@@ -1,0 +1,5 @@
+-- CreateEnum
+CREATE TYPE "MdaType" AS ENUM ('MINISTRY', 'DEPARTMENT', 'AGENCY');
+
+-- AlterTable
+ALTER TABLE "Mda" ADD COLUMN     "MdaType" "MdaType" NOT NULL DEFAULT 'DEPARTMENT';

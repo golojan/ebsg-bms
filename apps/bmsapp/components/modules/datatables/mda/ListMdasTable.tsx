@@ -1,11 +1,6 @@
 /* eslint-disable react/display-name */
 import React, { forwardRef, useState } from 'react';
-import MaterialTable, {
-  Icons,
-  Column,
-  MTableToolbar,
-  MTableBodyRow,
-} from '@material-table/core';
+import MaterialTable, { Icons, Column } from '@material-table/core';
 import {
   FaPlus as AddBox,
   FaCheck as Check,
@@ -56,16 +51,19 @@ type Props = {
 
 import ViewModal from 'components/modals';
 import ModuleEditMda from 'components/modules/mdas/edit-mda';
-import ModuleUnregisterMda from 'components/modules/mdas/unregister-mda';
+import { toFiat } from 'libs/monify';
 
 export const ListMdasTable = (props: Props) => {
   const { title, data, loading } = props;
+  // Modal Settings
   const [showModal, setShowModal] = useState<boolean>(false);
   const toggleModal = () => {
     setShowModal(!showModal);
   };
-  const [mda, setMDA] = useState<string | null>(null);
-  const [view, setView] = useState<string>('edit-mda');
+  const [selectedMda, setSelectedMda] = useState<string | null>(null);
+  const [mda, setMDA] = useState<MdaInfo>({} as MdaInfo);
+  const [view, setView] = useState<string>('edit');
+  // Modal Settings
 
   const columns: Column<MdaInfo>[] = [
     {
@@ -79,10 +77,24 @@ export const ListMdasTable = (props: Props) => {
     {
       title: 'Total.Recurrent',
       field: 'recurrentTotal',
+      render: (rowData: MdaInfo) => (
+        <div>
+          {toFiat(
+            Number(rowData?.recurrentTotal ? rowData?.recurrentTotal : 0)
+          )}
+        </div>
+      ),
     },
     {
       title: 'Total.Expenditure',
       field: 'expenditureTotal',
+      render: (rowData: MdaInfo) => (
+        <div>
+          {toFiat(
+            Number(rowData?.expenditureTotal ? rowData?.expenditureTotal : 0)
+          )}
+        </div>
+      ),
     },
     {
       title: '-',
@@ -92,29 +104,23 @@ export const ListMdasTable = (props: Props) => {
           <button
             className="btn btn-primary tw-mx-1"
             onClick={() => {
-              setView('unregister-mda');
+              setView('disable');
+              setMDA(rowData);
               setShowModal(true);
             }}
           >
-            Unregister
+            Disable MDA
           </button>
           <button
             className="btn btn-primary tw-mx-1"
             onClick={() => {
-              setView('edit-mda');
+              setView('edit');
+              setMDA(rowData);
               setShowModal(true);
             }}
           >
-            Edit
+            Edit MDA
           </button>
-          <ViewModal show={showModal} toggleModal={toggleModal}>
-            {view === 'edit-mda' && (
-              <ModuleEditMda mda={rowData} toggleModal={toggleModal} />
-            )}
-            {view === 'unregister-mda' && (
-              <ModuleUnregisterMda mda={rowData} toggleModal={toggleModal} />
-            )}
-          </ViewModal>
         </div>
       ),
     },
@@ -152,37 +158,30 @@ export const ListMdasTable = (props: Props) => {
       color: '#ffffff',
     },
     rowStyle: (rowData: MdaInfo) => ({
-      backgroundColor: mda === rowData.mdaCode ? '#e4e2f5' : '#ffffff',
+      backgroundColor: selectedMda === rowData.mdaCode ? '#e4e2f5' : '#ffffff',
     }),
   };
 
   return (
-    <MaterialTable
-      title={title}
-      isLoading={loading}
-      data={data}
-      options={options}
-      columns={columns}
-      icons={tableIcons}
-      onRowClick={(evt, row) => {
-        setMDA(row?.mdaCode ?? null);
-      }}
-      localization={localization}
-      components={{
-        Toolbar: (props) => (
-          <div>
-            <MTableToolbar {...props} />
-          </div>
-        ),
-        Row: (props) => (
-          <MTableBodyRow
-            id={props.index}
-            {...props}
-            className={props.index % 2 === 0 ? 'row-even' : 'row-odd'}
-          />
-        ),
-      }}
-    />
+    <>
+      <MaterialTable
+        title={title}
+        isLoading={loading}
+        data={data}
+        options={options}
+        columns={columns}
+        icons={tableIcons}
+        onRowClick={(evt, row) => {
+          setSelectedMda(row?.mdaCode ?? null);
+        }}
+        localization={localization}
+      />
+      <ViewModal show={showModal} toggleModal={toggleModal}>
+        {view === 'edit' && (
+          <ModuleEditMda mda={mda} toggleModal={toggleModal} />
+        )}
+      </ViewModal>
+    </>
   );
 };
 

@@ -22,11 +22,12 @@ export default async function handler(
     .update({
       where: { mdaCode: id as string },
       data: {
-        personalTotal: personalTotal,
-        overheadTotal: overheadTotal,
-        capitalTotal: capitalTotal,
-        recurrentTotal: recurrentTotal,
-        expenditureTotal: expenditureTotal,
+        personalTotal: parseFloat(personalTotal),
+        overheadTotal: parseFloat(overheadTotal),
+        capitalTotal: parseFloat(capitalTotal),
+        recurrentTotal: parseFloat(recurrentTotal),
+        expenditureTotal: parseFloat(expenditureTotal),
+        registered: true,
       },
     })
     .then((mda) => {
@@ -38,6 +39,7 @@ export default async function handler(
       });
     })
     .catch((error) => {
+      console.log(error);
       return res.status(500).json({
         status: ApiStatus.MDA_NOT_REGISTERED,
         error: `MDA_REGISTERED:${ApiStatus.MDA_REGISTERED}`,
