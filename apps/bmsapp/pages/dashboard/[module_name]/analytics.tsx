@@ -7,7 +7,6 @@ import { Row, Col } from 'react-bootstrap';
 import { ClipLoader } from 'react-spinners';
 import { ApiStatus } from 'types/api-status';
 
-
 export const MdaAnalitics = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { mda } = props;
   return (
