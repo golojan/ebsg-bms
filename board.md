@@ -65,8 +65,6 @@ to add interractivity to the top when app is loading
 /api/logs/create = create log (unsigned)
 
 
-
-
 # Push Notifications
 https://www.npmjs.com/package/react-push-notification
 
@@ -94,3 +92,6 @@ https://www.youtube.com/watch?v=ss-_S1Vyxa0
 
 # Document viewer 
 https://codesandbox.io/s/docxtemplater-with-nextjs-o1nqo?file=/pages/index.js
+
+# Currency Input Field
+https://www.npmjs.com/package/react-currency-input-field

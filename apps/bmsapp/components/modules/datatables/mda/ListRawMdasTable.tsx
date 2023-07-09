@@ -59,7 +59,8 @@ export const ListRawMdasTable = (props: Props) => {
   const toggleModal = () => {
     setShowModal(!showModal);
   };
-  const [mda, setMDA] = useState<string | null>(null);
+  const [selectedMda, setSelectedMda] = useState<string | null>(null);
+  const [mda, setMDA] = useState<MdaInfo>({} as MdaInfo);
   // Modal Settings
 
   const columns: Column<MdaInfo>[] = [
@@ -75,19 +76,19 @@ export const ListRawMdasTable = (props: Props) => {
       title: '-',
       field: 'action',
       render: (rowData: MdaInfo) => (
-        <div className="tw-w-full tw-flex tw-justify-end">
-          <button
-            className="btn btn-primary tw-mx-1 tw-float-right"
-            onClick={() => {
-              setShowModal(true);
-            }}
-          >
-            Register this MDA
-          </button>
-          <ViewModal show={showModal} toggleModal={toggleModal}>
-            <ModuleRegisterMda mda={rowData} toggleModal={toggleModal} />
-          </ViewModal>
-        </div>
+        <>
+          <div className="tw-w-full tw-flex tw-justify-end">
+            <button
+              className="btn btn-primary tw-mx-1 tw-float-right"
+              onClick={() => {
+                setMDA(rowData);
+                setShowModal(true);
+              }}
+            >
+              Register this MDA
+            </button>
+          </div>
+        </>
       ),
     },
   ];
@@ -127,39 +128,28 @@ export const ListRawMdasTable = (props: Props) => {
       cursor: 'pointer',
     },
     rowStyle: (rowData: MdaInfo) => ({
-      backgroundColor: mda === rowData.mdaCode ? '#e4e2f5' : '#ffffff',
+      backgroundColor: selectedMda === rowData.mdaCode ? '#e4e2f5' : '#ffffff',
     }),
-    exportCsv: (columns: Column<MdaInfo>[], data: MdaInfo[]) => {
-      const csvData = data.map((item) => {
-        return {
-          mdaCode: item.mdaCode,
-          name: item.name,
-        };
-      });
-      const csvColumns = columns.map((item) => {
-        return {
-          title: item.title,
-          field: item.field,
-        };
-      });
-      const csv = [csvColumns, ...csvData];
-      return csv;
-    },
   };
 
   return (
-    <MaterialTable
-      title={title}
-      isLoading={loading}
-      data={data}
-      options={options}
-      columns={columns}
-      icons={tableIcons}
-      onRowClick={(evt, row) => {
-        setMDA(row?.mdaCode ?? null);
-      }}
-      localization={localization}
-    />
+    <>
+      <MaterialTable
+        title={title}
+        isLoading={loading}
+        data={data}
+        options={options}
+        columns={columns}
+        icons={tableIcons}
+        onRowClick={(evt, row) => {
+          setSelectedMda(row?.mdaCode ?? null);
+        }}
+        localization={localization}
+      />
+      <ViewModal show={showModal} toggleModal={toggleModal}>
+        <ModuleRegisterMda mda={mda} toggleModal={toggleModal} />
+      </ViewModal>
+    </>
   );
 };
 

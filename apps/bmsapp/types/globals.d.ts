@@ -19,6 +19,12 @@ type MdaInfo = {
   id?: number;
   mdaCode?: string;
   name?: string;
+  registered?: boolean;
+  personalTotal?: number;
+  overheadTotal?: number;
+  capitalTotal?: number;
+  recurrentTotal?: number;
+  expenditureTotal?: number;
 };
 
 type UserHook = {
