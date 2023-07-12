@@ -2,7 +2,7 @@ import styles from './layout.module.scss';
 import React, { useEffect } from 'react';
 import Header from './header';
 // import Footer from './footer';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Alert } from 'react-bootstrap';
 import LayoutNavBar from './navbar';
 import Link from 'next/link';
 import { FaTerminal } from 'react-icons/fa';
@@ -48,11 +48,14 @@ export const Layout = ({ children }: LayoutProps) => {
               </>
             )}
           </h1>
-          <div className="text tw-mb-5 tw-w-full alert alert-primary tw-text-xl">
-            <strong>NOTICE:</strong> This portal is in demo mode. Do not present
-            for official use. All data used during this demo are dummy data,
-            secure and might be deleted by the end of the demo.
-          </div>
+          <Alert
+            className="text tw-mb-5 tw-w-full tw-text-xl"
+            variant="success"
+          >
+            <Alert.Heading>NOTICE:</Alert.Heading> This portal is in demo mode.
+            Do not present for official use. All data used during this demo are
+            dummy data, secure and might be deleted by the end of the demo.
+          </Alert>
           <Row>
             <Col xs={12} md={12} lg={12} xl={12} xxl={12} className="tw-mb-5">
               {children}
