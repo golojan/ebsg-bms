@@ -38,21 +38,6 @@ export const LayoutNavBar = () => {
                 <span className="link hide">Dashboard</span>
               </Link>
             </li>
-            <li>
-              <Link href="/dashboard/mdas">
-                <span className="link hide">Manage MDAs</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/dashboard/accounts">
-                <span className="link hide">Users & Accounts</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/dashboard/roles">
-                <span className="link hide">Access & Roles</span>
-              </Link>
-            </li>
           </ul>
           <h4 className="hide">Documents</h4>
           <ul>
@@ -90,6 +75,21 @@ export const LayoutNavBar = () => {
           <h4 className="hide">Settings</h4>
           <ul>
             <div className="active-tab" />
+            <li>
+              <Link href="/dashboard/mdas">
+                <span className="link hide">Manage MDAs</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/dashboard/accounts">
+                <span className="link hide">Users & Accounts</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/dashboard/roles">
+                <span className="link hide">Access & Roles</span>
+              </Link>
+            </li>
             <li>
               <Link href="/dashboard/settings/profile">
                 <span className="link">Profile Manage</span>
