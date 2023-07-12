@@ -1,0 +1,7 @@
+.indicator{
+  @apply tw-max-h-[210px] tw-rounded-xl tw-bg-white tw-h-full tw-w-full tw-mb-4 tw-shadow-md;
+
+  .indicator__btn{
+    @apply tw-text-blue-300 hover:tw-text-blue-900 tw-decoration-transparent tw-no-underline;
+  }
+}

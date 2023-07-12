@@ -8,10 +8,14 @@ type TApiResult = {
 
 type UserInfo = {
   id: number;
-  hasOtp: boolean;
+  hasOtp?: boolean;
   email?: string;
+  mobile?: string;
   firstName?: string;
   lastName?: string;
+  mdaId?: number;
+  isNew?: boolean;
+  enableOtp?: boolean;
   role?: Role;
 };
 
@@ -25,6 +29,27 @@ type MdaInfo = {
   capitalTotal?: number;
   recurrentTotal?: number;
   expenditureTotal?: number;
+
+  fullYearActual_2020?: number;
+  fullYearActual_2021?: number;
+  fullYearActual_2022?: number;
+  fullYearActual_2023?: number;
+  fullYearActual_2024?: number;
+  fullYearActual_2025?: number;
+
+  approvedBudget_2020?: number;
+  approvedBudget_2021?: number;
+  approvedBudget_2022?: number;
+  approvedBudget_2023?: number;
+  approvedBudget_2024?: number;
+  approvedBudget_2025?: number;
+
+  performanceBudget_2020?: number;
+  performanceBudget_2021?: number;
+  performanceBudget_2022?: number;
+  performanceBudget_2023?: number;
+  performanceBudget_2024?: number;
+  performanceBudget_2025?: number;
 };
 
 type UserHook = {

@@ -29,7 +29,8 @@ model User {
   password  String?
   role      Role      @default(USER)
   qrcode    String?   @unique
-  enableOtp Boolean?  @default(true)
+  enableOtp Boolean?  @default(false)
+  isNew     Boolean?  @default(false)
   Mda       Mda?      @relation(fields: [mdaId], references: [id])
   mdaId     Int?
   logs      Log[]
@@ -40,19 +41,72 @@ model User {
 }
 
 model Mda {
-  id               Int      @id @default(autoincrement())
-  name             String   @unique
-  mdaCode          String   @unique
-  registered       Boolean  @default(false)
-  MdaType          MdaType  @default(DEPARTMENT)
-  personalTotal    Float    @default(0)
-  overheadTotal    Float    @default(0)
-  capitalTotal     Float    @default(0)
-  recurrentTotal   Float    @default(0)
-  expenditureTotal Float    @default(0)
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  User             User[]
+  id         Int     @id @default(autoincrement())
+  name       String  @unique
+  mdaCode    String  @unique
+  registered Boolean @default(false)
+  MdaType    MdaType @default(DEPARTMENT)
+
+  personalTotal    Float @default(0.00)
+  overheadTotal    Float @default(0.00)
+  capitalTotal     Float @default(0.00)
+  recurrentTotal   Float @default(0.00)
+  expenditureTotal Float @default(0.00)
+
+  fullYearActual_2020 Float @default(0.00)
+  fullYearActual_2021 Float @default(0.00)
+  fullYearActual_2022 Float @default(0.00)
+  fullYearActual_2023 Float @default(0.00)
+  fullYearActual_2024 Float @default(0.00)
+  fullYearActual_2025 Float @default(0.00)
+
+  approvedBudget_2020 Float @default(0.00)
+  approvedBudget_2021 Float @default(0.00)
+  approvedBudget_2022 Float @default(0.00)
+  approvedBudget_2023 Float @default(0.00)
+  approvedBudget_2024 Float @default(0.00)
+  approvedBudget_2025 Float @default(0.00)
+
+  performanceBudget_2020 Float @default(0.00)
+  performanceBudget_2021 Float @default(0.00)
+  performanceBudget_2022 Float @default(0.00)
+  performanceBudget_2023 Float @default(0.00)
+  performanceBudget_2024 Float @default(0.00)
+  performanceBudget_2025 Float @default(0.00)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User[]
+}
+
+model Budget {
+  id          Int          @id @default(autoincrement())
+  code        String       @unique
+  name        String?
+  description String?
+  year        Int          @default(2023)
+  startDate   DateTime?
+  endDate     DateTime?
+  status      BudgetStatus @default(REFERENCE)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+enum BudgetStatus {
+  ACTUAL
+  APPROVED
+  REFERENCE
+  PERFORMANCE
+}
+
+model BudgetItem {
+  id          Int      @id @default(autoincrement())
+  code        String   @unique
+  name        String?
+  description String?
+  year        Int      @default(2023)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model RolePermissions {
@@ -90,6 +144,25 @@ model Document {
   storageName String   @unique
   mimeType    String?
   description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model StateFundSource {
+  id          Int      @id @default(autoincrement())
+  code        String   @unique
+  name        String   @unique
+  year        Int      @default(2023)
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Expenditure {
+  id          Int      @id @default(autoincrement())
+  code        String   @unique
+  description String?
+  amont       Float    @default(0.00)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

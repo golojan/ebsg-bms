@@ -31,8 +31,6 @@ export default withSessionRoute(async function handler(
           error: `USER_NOT_FOUND:${ApiStatus.USER_NOT_FOUND}`,
         });
       } else {
-        // const isPasswordValid = Boolean(password === user.password);
-        // console.log(isPasswordValid);
         const isPasswordValid = bcryptjs.compareSync(
           password,
           user.password as string

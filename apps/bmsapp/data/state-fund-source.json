@@ -1,0 +1,74 @@
+[
+  {
+    "code": "01",
+    "name": "FEDERATION ACCOUNT"
+  },
+  {
+    "code": "011",
+    "name": "FAAC DIRECT ALLOCATION"
+  },
+  {
+    "code": "01101",
+    "name": "FAAC DIRECT ALLOCATION"
+  },
+  {
+    "code": "02",
+    "name": "CONSOLIDATED REVENUE FUND"
+  },
+  {
+    "code": "021",
+    "name": "MAIN ENVELOP"
+  },
+  {
+    "code": "02101",
+    "name": "MAIN ENVELOP - BUDGETARY ALLOCATION"
+  },
+  {
+    "code": "03",
+    "name": "CAPITAL DEVELOPMENT FUND"
+  },
+  {
+    "code": "031",
+    "name": "CDF MAIN"
+  },
+  {
+    "code": "03101",
+    "name": "CAPITAL DEVELOPMENT FUND"
+  },
+  {
+    "code": "08",
+    "name": "AIDS AND GRANTS"
+  },
+  {
+    "code": "081",
+    "name": "MULTILATERAL AIDS AND GRANTS"
+  },
+  {
+    "code": "08115",
+    "name": "NIGERIA TRUST FUND"
+  },
+  {
+    "code": "083",
+    "name": "LOCAL AIDS AND GRANTS"
+  },
+  {
+    "code": "08303",
+    "name": "DONATION BY LOCAL GOVERNMENTS"
+  },
+  {
+    "code": "08304",
+    "name": "DONATIONS BY FED. GOVERNMENT OWNED COMPANIES "
+  },
+  {
+    "code": "09",
+    "name": "LOANS/DEBTS"
+  },
+  {
+    "code": "091",
+    "name": "MULTILATERAL LOANS/DEBTS"
+  },
+  {
+    "code": "09109",
+    "name": "IDA - AFRICAN FACILITY"
+  }
+]

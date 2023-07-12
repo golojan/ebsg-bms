@@ -1,5 +1,5 @@
 import styles from './layout.module.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './header';
 // import Footer from './footer';
 import { Row, Col } from 'react-bootstrap';
@@ -10,12 +10,25 @@ import ModuleNavBar from './module';
 import TerminalNavBar from './terminal';
 import useModule from 'services/use-module';
 import { DotLoader } from 'react-spinners';
+import ViewModal from 'components/modals';
+import ModuleSetupOtp from 'components/modules/dashboard/setup-otp';
 
+import { useUser } from 'services';
 type LayoutProps = {
   children?: React.ReactNode;
 };
 export const Layout = ({ children }: LayoutProps) => {
   const { hasModule, appmodule, busy } = useModule();
+  const { user } = useUser();
+  const [showModal, setShowModal] = React.useState(false);
+  const toggleModal = () => setShowModal(!showModal);
+
+  useEffect(() => {
+    if (user && user.isNew) {
+      setShowModal(true);
+    }
+  }, [user]);
+
   return (
     <>
       <Header />
@@ -51,6 +64,13 @@ export const Layout = ({ children }: LayoutProps) => {
         </main>
         {/* <TerminalNavBar /> */}
       </div>
+      <ViewModal
+        show={showModal}
+        toggleModal={toggleModal}
+        key={user ? user.id : 0}
+      >
+        <ModuleSetupOtp user={user as UserInfo} toggleModal={toggleModal} />
+      </ViewModal>
     </>
   );
 };

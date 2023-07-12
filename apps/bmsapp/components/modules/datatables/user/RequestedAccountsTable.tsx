@@ -19,6 +19,9 @@ import {
   FaListAlt as ViewColumn,
 } from 'react-icons/fa';
 
+import ViewModal from 'components/modals';
+import ModuleApproveAccount from 'components/modules/accounts/approve-account';
+
 const tableIcons: Icons<UserInfo> = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
   Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -52,6 +55,13 @@ type Props = {
 export const RequestedAccountsTable = (props: Props) => {
   const { title, data, loading } = props;
   const [accid, setAccid] = useState<number | null>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [view, setView] = useState<string>('approve');
+  const [user, setUser] = useState<UserInfo>({} as UserInfo);
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
   const columns: Column<UserInfo>[] = [
     {
       title: 'ID',
@@ -68,6 +78,24 @@ export const RequestedAccountsTable = (props: Props) => {
     {
       title: 'Last Seen',
       field: 'lastLogin',
+    },
+    {
+      title: '-',
+      field: 'action',
+      render: (rowData: MdaInfo) => (
+        <div className="tw-w-full tw-flex tw-justify-end">
+          <button
+            className="btn btn-primary tw-mx-1"
+            onClick={() => {
+              setView('approve');
+              setUser(rowData as UserInfo);
+              setShowModal(true);
+            }}
+          >
+            Approve Account
+          </button>
+        </div>
+      ),
     },
   ];
 
@@ -92,21 +120,30 @@ export const RequestedAccountsTable = (props: Props) => {
   };
 
   return (
-    <MaterialTable
-      title={title}
-      isLoading={loading}
-      data={data}
-      options={options}
-      columns={columns}
-      icons={tableIcons}
-      onRowClick={(evt, row) => {
-        setAccid(row?.id ?? null);
-      }}
-      onRowDoubleClick={(e: any) => {
-        e.preventDefault();
-        return false;
-      }}
-    />
+    <>
+      <MaterialTable
+        title={title}
+        isLoading={loading}
+        data={data}
+        options={options}
+        columns={columns}
+        icons={tableIcons}
+        onRowClick={(evt, row) => {
+          setAccid(row?.id ?? null);
+        }}
+        onRowDoubleClick={(e: any) => {
+          e.preventDefault();
+          return false;
+        }}
+      />
+      <ViewModal show={showModal} toggleModal={toggleModal}>
+        {view === 'approve' && (
+          <>
+            <ModuleApproveAccount user={user} toggleModal={toggleModal} />
+          </>
+        )}
+      </ViewModal>
+    </>
   );
 };
 

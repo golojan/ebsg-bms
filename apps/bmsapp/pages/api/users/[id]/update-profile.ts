@@ -9,28 +9,33 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TApiResult>
 ) {
-  const { approved } = req.query;
-  const isNew = (approved === 'true' ? true : false) as boolean;
-
+  const { id } = req.query;
+  const { firstName, lastName, email, mobile } = req.body;
   await prisma.user
-    .findMany({
+    .update({
       where: {
-        isNew: isNew,
+        id: Number(id),
+      },
+      data: {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        mobile: mobile,
+      },
+      select: {
+        id: true,
       },
     })
-    .then((users) => {
+    .then((user) => {
       return res.status(200).json({
-        status: ApiStatus.USER_FOUND,
-        data: users,
-        error: `USER_FOUND:${ApiStatus.USER_FOUND}`,
+        status: ApiStatus.USER_UPDATED,
+        data: user,
       });
     })
     .catch((error) => {
-      return res.status(500).json({
-        status: ApiStatus.USER_NOT_FOUND,
-        data: null,
-        error: `USER_NOT_FOUND:${ApiStatus.USER_NOT_FOUND}`,
-      });
+      return res
+        .status(500)
+        .json({ status: ApiStatus.USER_NOT_UPDATED, error: error });
     })
     .finally(() => {
       prisma.$disconnect();

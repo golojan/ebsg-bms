@@ -91,17 +91,17 @@ export const LayoutNavBar = () => {
           <ul>
             <div className="active-tab" />
             <li>
-              <Link href="/dashboard/profile">
+              <Link href="/dashboard/settings/profile">
                 <span className="link">Profile Manage</span>
               </Link>
             </li>
             <li>
-              <Link href="/dashboard/settings">
+              <Link href="/dashboard/settings/config">
                 <span className="link hide">App Settings</span>
               </Link>
             </li>
             <li>
-              <Link href="/dashboard/security">
+              <Link href="/dashboard/settings/securities">
                 <span className="link hide">Securities</span>
               </Link>
             </li>
@@ -110,12 +110,12 @@ export const LayoutNavBar = () => {
           <h4 className="hide">Activities</h4>
           <ul>
             <li>
-              <Link href="/dashboard/conversations">
+              <Link href="/dashboard/activities/conversations">
                 <span className="link hide">Chats & Conversations</span>
               </Link>
             </li>
             <li>
-              <Link href="#ai">
+              <Link href="/dashboard/activities/ai-tools">
                 <span className="link hide">AI Tools</span>
               </Link>
             </li>

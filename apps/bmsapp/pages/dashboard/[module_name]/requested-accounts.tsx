@@ -10,7 +10,7 @@ export const RequestedAccounts: NextPage = (props) => {
     data: result,
     isLoading,
     isValidating,
-  } = useSWR<TApiResult>('/api/users', fetcher);
+  } = useSWR<TApiResult>('/api/users?approved=false', fetcher);
   const busy = isLoading || isValidating;
   return (
     <Layout>

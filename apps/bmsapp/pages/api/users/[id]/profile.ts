@@ -11,13 +11,11 @@ export default withSessionRoute(async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const user = req.session.user;
-  if (!user) return res.status(200).send({ status: ApiStatus.USER_NOT_FOUND });
-  const hasOtp = Boolean(user.hasOtp) || false;
+  const { id } = req.query;
   await prisma.user
     .findUnique({
       where: {
-        id: Number(user?.accid),
+        id: Number(id),
       },
       select: {
         id: true,
@@ -25,22 +23,19 @@ export default withSessionRoute(async function handler(
         lastName: true,
         email: true,
         mobile: true,
-        isNew: true,
-        enableOtp: true,
         createdAt: true,
         updatedAt: true,
       },
     })
     .then((userData) => {
       return res.status(200).send({
-        data: { ...userData, hasOtp },
+        data: { userData },
         status: ApiStatus.USER_FOUND,
       });
     })
     .catch((error) => {
       return res.status(200).send({
         status: ApiStatus.USER_NOT_FOUND,
-        data: null,
         error: error,
       });
     });

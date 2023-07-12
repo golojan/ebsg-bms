@@ -2,10 +2,8 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ApiStatus } from 'types/api-status';
-import { authenticator } from 'otplib';
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
-import bcryptjs from 'bcryptjs';
 
 export default async function handler(
   req: NextApiRequest,
@@ -18,17 +16,12 @@ export default async function handler(
       error: `USER_NOT_CREATED:${ApiStatus.USER_NOT_CREATED}`,
     });
   }
-
-  const password = bcryptjs.hashSync('admin', 10);
-  const qrcode = authenticator.generateSecret();
   await prisma.user
     .create({
       data: {
         firstName,
         lastName,
         email,
-        qrcode,
-        password,
         Mda: {
           connect: {
             id: Mda,

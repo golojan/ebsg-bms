@@ -18,6 +18,7 @@ import {
   FaFirstdraft as LastPage,
   FaListAlt as ViewColumn,
 } from 'react-icons/fa';
+import Link from 'next/link';
 
 const tableIcons: Icons<UserInfo> = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),

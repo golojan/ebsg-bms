@@ -13,18 +13,20 @@ export default withSessionRoute(async function handler(
 ) {
   const user = req.session.user;
   if (!user) return res.status(200).send({ status: ApiStatus.USER_NOT_FOUND });
+  const newQrcode = authenticator.generateSecret();
 
   await prisma.user
-    .findUnique({
+    .update({
       where: {
         id: Number(user?.accid),
       },
+      data: {
+        qrcode: newQrcode,
+      },
       select: {
         id: true,
-        firstName: true,
-        lastName: true,
-        email: true,
         qrcode: true,
+        email: true,
       },
     })
     .then(async (userData) => {
@@ -33,7 +35,7 @@ export default withSessionRoute(async function handler(
           .status(200)
           .send({ data: null, status: ApiStatus.USER_NOT_FOUND });
       }
-      const user = `EBSG(${userData.id})`;
+      const user = `EBSG(${userData.id})-${userData.email}`;
       const service = 'BMS';
       const secret = String(userData.qrcode);
       const otpauth = authenticator.keyuri(user, service, secret);
@@ -47,7 +49,7 @@ export default withSessionRoute(async function handler(
           });
         }
         return res.status(200).send({
-          status: ApiStatus.USER_FOUND,
+          status: ApiStatus.USER_UPDATED,
           data: {
             qrcode: userData ? userData.qrcode : null,
             qrimage: imageUrl,
@@ -57,8 +59,7 @@ export default withSessionRoute(async function handler(
     })
     .catch((error) => {
       return res.status(200).send({
-        status: ApiStatus.USER_NOT_FOUND,
-        data: null,
+        status: ApiStatus.USER_NOT_UPDATED,
         error: error,
       });
     });

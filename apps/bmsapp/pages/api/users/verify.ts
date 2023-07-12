@@ -1,19 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import qrcode from 'qrcode';
-import { authenticator } from 'otplib';
-import { ApiStatus } from 'types/api-status';
+import { authenticator } from '@otplib/preset-default';
 import { withSessionRoute } from 'libs/session';
-
+import { ApiStatus } from 'types/api-status';
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default withSessionRoute(async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<TApiResult>
+  res: NextApiResponse
 ) {
+  const { token } = req.body;
   const user = req.session.user;
   if (!user) return res.status(200).send({ status: ApiStatus.USER_NOT_FOUND });
-
   await prisma.user
     .findUnique({
       where: {
@@ -21,9 +19,6 @@ export default withSessionRoute(async function handler(
       },
       select: {
         id: true,
-        firstName: true,
-        lastName: true,
-        email: true,
         qrcode: true,
       },
     })
@@ -33,27 +28,36 @@ export default withSessionRoute(async function handler(
           .status(200)
           .send({ data: null, status: ApiStatus.USER_NOT_FOUND });
       }
-      const user = `EBSG(${userData.id})`;
-      const service = 'BMS';
       const secret = String(userData.qrcode);
-      const otpauth = authenticator.keyuri(user, service, secret);
-      await qrcode.toDataURL(otpauth, (err, imageUrl) => {
-        if (err) {
-          console.log('Error with QRCode', err);
-          return res.status(200).send({
-            data: null,
-            status: ApiStatus.USER_NOT_FOUND,
-            error: err,
-          });
-        }
-        return res.status(200).send({
-          status: ApiStatus.USER_FOUND,
+      const isValid = Boolean(authenticator.check(token, secret));
+      if (isValid) {
+        // remove isNew from user record in DB
+        await prisma.user.update({
+          where: {
+            id: Number(user?.accid),
+          },
           data: {
-            qrcode: userData ? userData.qrcode : null,
-            qrimage: imageUrl,
+            isNew: false,
           },
         });
-      });
+
+        // remove session qrcode|hasOtp
+        req.session.user = {
+          ...user,
+          hasOtp: false,
+        };
+        await req.session.save();
+        return res.status(200).send({
+          status: ApiStatus.QRCODE_VALID,
+          data: userData,
+        });
+      } else {
+        return res.status(200).send({
+          status: ApiStatus.QRCODE_INVALID,
+          data: null,
+          error: `QRCODE_INVALID:${ApiStatus.QRCODE_INVALID}`,
+        });
+      }
     })
     .catch((error) => {
       return res.status(200).send({
