@@ -72,9 +72,6 @@ export const ListRootAccountsTable = (props: Props) => {
     {
       title: 'Last Seen',
       field: 'lastLogin',
-      render: (rowData) => {
-        return timeAgo(rowData.lastLogin as Date);
-      },
     },
     {
       title: 'Actions',
