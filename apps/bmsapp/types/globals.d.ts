@@ -52,6 +52,9 @@ type MdaInfo = {
   performanceBudget_2023?: number;
   performanceBudget_2024?: number;
   performanceBudget_2025?: number;
+
+  createdAt?: Date;
+  updatedAt?: Date;
 };
 
 type UserHook = {
