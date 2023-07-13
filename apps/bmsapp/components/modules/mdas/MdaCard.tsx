@@ -73,6 +73,24 @@ export const MdaCard: React.FC<CardProps> = (props: CardProps) => {
         }}
       >
         <Typography className="tw-text-2xl">{mda.name}</Typography>
+        <Row>
+          <Col>
+            <Form.Group controlId="approvedBudget_2023" className="tw-mt-2">
+              <Form.Label>Approved Budget (2023)</Form.Label>
+              <Typography className="tw-text-xl tw-text-green-500">
+                {toFiat(Number(mda.approvedBudget_2023))}
+              </Typography>
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group controlId="expenditureTotal" className="tw-mt-2">
+              <Form.Label>Total Expenditure</Form.Label>
+              <Typography className="tw-text-xl tw-text-red-500">
+                {toFiat(Number(mda.expenditureTotal))}
+              </Typography>
+            </Form.Group>
+          </Col>
+        </Row>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add">
@@ -115,12 +133,6 @@ export const MdaCard: React.FC<CardProps> = (props: CardProps) => {
                   {toFiat(Number(mda.performanceBudget_2022))}
                 </Typography>
               </Form.Group>
-              <Form.Group controlId="approvedBudget_2023" className="tw-mt-2">
-                <Form.Label>Approved Budget (2023)</Form.Label>
-                <Typography className="tw-text-xl">
-                  {toFiat(Number(mda.approvedBudget_2023))}
-                </Typography>
-              </Form.Group>
             </Col>
 
             <Col>
@@ -146,12 +158,6 @@ export const MdaCard: React.FC<CardProps> = (props: CardProps) => {
                 <Form.Label>Capital Expenditure</Form.Label>
                 <Typography className="tw-text-xl">
                   {toFiat(Number(mda.capitalTotal))}
-                </Typography>
-              </Form.Group>
-              <Form.Group controlId="expenditureTotal" className="tw-mt-2">
-                <Form.Label>Total Expenditure</Form.Label>
-                <Typography className="tw-text-xl tw-text-red-500">
-                  {toFiat(Number(mda.expenditureTotal))}
                 </Typography>
               </Form.Group>
             </Col>
