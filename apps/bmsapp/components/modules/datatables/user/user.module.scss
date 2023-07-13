@@ -1,0 +1,28 @@
+
+  .wrapper {
+    margin: 1rem;
+    position: 'relative';
+    display: 'flex';
+    align-items: 'center';
+  }
+  .buttonSuccess {
+    @apply tw-bg-green-500 ;
+    &:hover {
+      @apply tw-bg-green-700 ;
+    }
+  }
+  .fabProgress {
+    @apply tw-bg-green-500 ;
+    position: 'absolute';
+    top: 6px;
+    left: 6;
+    z-index: 1;
+  }
+  .buttonProgress {
+    @apply tw-bg-green-500 ;
+    position: 'absolute';
+    top: '50%';
+    left: '50%';
+    margin-top: -12;
+    margin-left: -12;
+  }

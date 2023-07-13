@@ -86,12 +86,16 @@ const ModuleSetupOtp: React.FC<Props> = (props: Props) => {
     if (status === ApiStatus.QRCODE_VALID) {
       swal(
         'OTP Setup Successful',
-        `Congratulations ${user.firstName}, you have successfully activated OTPon your account.`,
+        `Congratulations ${user.firstName}, you have successfully activated OTP on your account.`,
         'success'
       );
       toggleModal();
     } else {
-      swal('MDA Registration Failed', '', 'error');
+      swal(
+        'OTP Setup Failed',
+        `Sorry ${user.firstName}, it seemed there was an issue setting up your OPT on Google Authenticator`,
+        'error'
+      );
     }
   };
 

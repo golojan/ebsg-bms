@@ -38,6 +38,7 @@ export default withSessionRoute(async function handler(
           },
           data: {
             isNew: false,
+            enableOtp: true,
           },
         });
 

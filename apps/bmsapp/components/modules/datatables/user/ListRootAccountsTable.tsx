@@ -17,10 +17,10 @@ import {
   SaveAlt,
   Search,
   ViewColumn,
+  BlockRounded,
 } from '@mui/icons-material';
-
-import ViewModal from 'components/modals';
-import ModuleApproveAccount from 'components/modules/accounts/approve-account';
+import { IconButton } from '@mui/material';
+import { timeAgo } from 'libs/datetime';
 
 const tableIcons: Icons<UserInfo> = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -52,15 +52,9 @@ type Props = {
   loading: boolean;
 };
 
-export const RequestedAccountsTable = (props: Props) => {
+export const ListRootAccountsTable = (props: Props) => {
   const { title, data, loading } = props;
   const [accid, setAccid] = useState<number | null>(null);
-  const [showModal, setShowModal] = useState(false);
-  const [view, setView] = useState<string>('approve');
-  const [user, setUser] = useState<UserInfo>({} as UserInfo);
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
 
   const columns: Column<UserInfo>[] = [
     {
@@ -78,24 +72,42 @@ export const RequestedAccountsTable = (props: Props) => {
     {
       title: 'Last Seen',
       field: 'lastLogin',
+      render: (rowData) => {
+        return timeAgo(rowData.lastLogin as Date);
+      },
     },
     {
-      title: '-',
-      field: 'action',
-      render: (rowData: MdaInfo) => (
-        <div className="tw-w-full tw-flex tw-justify-end">
-          <button
-            className="btn btn-primary tw-mx-1"
-            onClick={() => {
-              setView('approve');
-              setUser(rowData as UserInfo);
-              setShowModal(true);
-            }}
-          >
-            Approve Account
-          </button>
-        </div>
-      ),
+      title: 'Actions',
+      render: (rowData) => {
+        return (
+          <div>
+            <IconButton
+              aria-label="edit"
+              disabled={accid === rowData.id}
+              onClick={() => {
+                setAccid(rowData.id);
+                setTimeout(() => {
+                  setAccid(-1);
+                }, 5000);
+              }}
+            >
+              <Edit />
+            </IconButton>
+            <IconButton
+              aria-label="delete"
+              disabled={accid === rowData.id}
+              onClick={() => {
+                setAccid(rowData.id);
+                setTimeout(() => {
+                  setAccid(-1);
+                }, 5000);
+              }}
+            >
+              <BlockRounded />
+            </IconButton>
+          </div>
+        );
+      },
     },
   ];
 
@@ -113,38 +125,25 @@ export const RequestedAccountsTable = (props: Props) => {
       fontWeight: 'bold',
       backgroundColor: '#495057',
       color: '#ffffff',
+      lineHeight: '1.5rem',
     },
     rowStyle: (rowData: UserInfo) => ({
-      backgroundColor: accid === rowData.id ? '#e4e2f5' : '#ffffff',
+      backgroundColor: rowData.isNew === true ? '#c57b7a' : '#ffffff',
     }),
   };
-
   return (
-    <>
-      <MaterialTable
-        title={title}
-        isLoading={loading}
-        data={data}
-        options={options}
-        columns={columns}
-        icons={tableIcons}
-        onRowClick={(evt, row) => {
-          setAccid(row?.id ?? null);
-        }}
-        onRowDoubleClick={(e: any) => {
-          e.preventDefault();
-          return false;
-        }}
-      />
-      <ViewModal show={showModal} toggleModal={toggleModal}>
-        {view === 'approve' && (
-          <>
-            <ModuleApproveAccount user={user} toggleModal={toggleModal} />
-          </>
-        )}
-      </ViewModal>
-    </>
+    <MaterialTable
+      title={title}
+      isLoading={loading}
+      data={data}
+      options={options}
+      columns={columns}
+      icons={tableIcons}
+      onRowClick={(evt, row) => {
+        setAccid(row?.id ?? null);
+      }}
+    />
   );
 };
 
-export default RequestedAccountsTable;
+export default ListRootAccountsTable;

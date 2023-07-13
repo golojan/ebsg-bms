@@ -16,6 +16,8 @@ type UserInfo = {
   mdaId?: number;
   isNew?: boolean;
   enableOtp?: boolean;
+  lastLogin?: Date;
+  lastSeen?: Date;
   role?: Role;
 };
 

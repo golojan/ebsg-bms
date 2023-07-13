@@ -2,23 +2,22 @@
 import React, { forwardRef, useState } from 'react';
 import MaterialTable, { Icons, Column } from '@material-table/core';
 import {
-  FaPlus as AddBox,
-  FaCheck as Check,
-  FaChevronRight as ChevronRight,
-  FaChevronLeft as ChevronLeft,
-  FaEdit as Edit,
-  FaTrash as DeleteOutline,
-  FaSave as SaveAlt,
-  FaFilter as FilterList,
-  FaSearch as Search,
-  FaArrowDown as ArrowDownward,
-  FaTimes as Clear,
-  FaRegTrashAlt as Remove,
-  FaFirstdraft as FirstPage,
-  FaFirstdraft as LastPage,
-  FaListAlt as ViewColumn,
-} from 'react-icons/fa';
-import Link from 'next/link';
+  AddBox,
+  ArrowDownward,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Clear,
+  DeleteOutline,
+  Edit,
+  FilterList,
+  FirstPage,
+  LastPage,
+  Remove,
+  SaveAlt,
+  Search,
+  ViewColumn,
+} from '@mui/icons-material';
 
 const tableIcons: Icons<UserInfo> = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),

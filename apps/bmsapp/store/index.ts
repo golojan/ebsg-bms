@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { atom } from 'jotai';
 
+export const workingAtom = atom(false);
+
 export const store = configureStore({
   reducer: {
     // counter: counterReducer,

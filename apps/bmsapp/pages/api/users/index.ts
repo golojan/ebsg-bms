@@ -10,14 +10,19 @@ export default async function handler(
   res: NextApiResponse<TApiResult>
 ) {
   const { approved } = req.query;
-  const isNew = (approved === 'true' ? true : false) as boolean;
+  const isNew = (approved === 'true' ? false : true) as boolean;
 
-  await prisma.user
-    .findMany({
+  let clause = {};
+
+  if (approved) {
+    clause = {
       where: {
         isNew: isNew,
       },
-    })
+    };
+  }
+  await prisma.user
+    .findMany(clause)
     .then((users) => {
       return res.status(200).json({
         status: ApiStatus.USER_FOUND,
