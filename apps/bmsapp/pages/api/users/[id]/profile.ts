@@ -23,6 +23,7 @@ export default withSessionRoute(async function handler(
         lastName: true,
         email: true,
         mobile: true,
+        avatar: true,
         createdAt: true,
         updatedAt: true,
       },

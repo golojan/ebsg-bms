@@ -18,8 +18,8 @@ import {
   Search,
   ViewColumn,
 } from '@mui/icons-material';
-
 import Link from 'next/link';
+import { getMdasByPage, myAxios } from 'libs/fetcher';
 
 const tableIcons: Icons<MdaInfo> = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -45,19 +45,13 @@ const tableIcons: Icons<MdaInfo> = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
-type Props = {
-  title: string;
-  data: MdaInfo[];
-  loading: boolean;
-};
-
 import ViewModal from 'components/modals';
 import ModuleEditMda from 'components/modules/mdas/edit-mda';
 import { toFiat } from 'libs/monify';
-import { encrypt } from 'libs/crypt';
+import { useQueryClient, useQuery } from '@tanstack/react-query';
+import { getMdas } from 'libs/fetcher';
 
-export const ListMdasTable = (props: Props) => {
-  const { title, data, loading } = props;
+export const ListMdasTable = () => {
   // Modal Settings
   const [showModal, setShowModal] = useState<boolean>(false);
   const toggleModal = () => {
@@ -65,9 +59,23 @@ export const ListMdasTable = (props: Props) => {
   };
   const [selectedMda, setSelectedMda] = useState<string | null>(null);
   const [mda, setMDA] = useState<MdaInfo>({} as MdaInfo);
+  const [mdas, setMDAs] = useState<MdaInfo[]>([]);
   const [view, setView] = useState<string>('edit');
   // Modal Settings
+  const [page, setPage] = useState<number>(1);
 
+  const queryClient = useQueryClient();
+  const { isLoading, isFetching } = useQuery(
+    ['mdas'],
+    () => queryClient.getQueryData(['mdas']) ?? getMdasByPage(),
+    {
+      onSuccess: (result: TApiResult) => {
+        setMDAs(result?.data ?? []);
+      },
+    }
+  );
+
+  const busy = isLoading || isFetching;
   const columns: Column<MdaInfo>[] = [
     {
       title: 'MDA Code',
@@ -164,9 +172,9 @@ export const ListMdasTable = (props: Props) => {
   return (
     <>
       <MaterialTable
-        title={title}
-        isLoading={loading}
-        data={data}
+        title={'Ministries. Departments  & Agencies (MDAs)'}
+        isLoading={busy}
+        data={mdas}
         options={options}
         columns={columns}
         icons={tableIcons}
@@ -174,6 +182,7 @@ export const ListMdasTable = (props: Props) => {
           setSelectedMda(row?.mdaCode ?? null);
         }}
         localization={localization}
+        style={{ boxShadow: 'none', width: '100%' }}
       />
       <ViewModal show={showModal} toggleModal={toggleModal}>
         {view === 'edit' && (

@@ -15,7 +15,6 @@ export default async function handler(
         registered: true,
       },
       _sum: {
-        personalTotal: true,
         overheadTotal: true,
         capitalTotal: true,
         recurrentTotal: true,

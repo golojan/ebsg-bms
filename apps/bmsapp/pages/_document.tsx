@@ -1,12 +1,15 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import Script from 'next/script';
+import { dataLayoutModeAtom } from 'store';
+import { useAtom } from 'jotai';
 
-// props: DocumentContext
-
-const MyDocument = () => {
+export const MyDocument = () => {
+  const [dataLayoutMode] = useAtom(dataLayoutModeAtom);
   return (
-    <Html lang="en-US" data-theme={'dark'} className="no-js">
+    <Html lang="en-US" className="no-js">
       <Head />
       <meta charSet="UTF-8" />
+      <base href="/" />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -88,14 +91,22 @@ const MyDocument = () => {
       />
       <meta name="theme-color" content="#ffffff" />
 
-      <body>
+      <body data-mode={dataLayoutMode}>
         <Main />
         <NextScript />
-        <script
-          async
-          custom-element="amp-ad"
-          src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
-        ></script>
+        <Script
+          src="/assets/js/jquery-3.6.0.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script src="/assets/js/slick.min.js" strategy="lazyOnload" />
+        <Script src="/assets/js/quill.min.js" strategy="lazyOnload" />
+        <Script src="/assets/js/chart.js" strategy="lazyOnload" />
+        <Script src="/assets/js/flatpickr.js" strategy="lazyOnload" />
+        <Script
+          src="/assets/datatable/datatables.min.js"
+          strategy="afterInteractive"
+        />
+        <Script src="/assets/js/main.js" strategy="lazyOnload" />
       </body>
     </Html>
   );

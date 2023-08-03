@@ -12,7 +12,6 @@ type Props = {
 };
 const ModuleEditMda: React.FC<Props> = (props: Props) => {
   const { mda, toggleModal } = props;
-
   const [mdaData, setMdaData] = React.useState<{
     name: string;
     personalTotal: number;

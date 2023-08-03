@@ -3,6 +3,7 @@ type Theme = 'light' | 'dark';
 type TApiResult = {
   status: ApiStatus;
   data?: object | object[] | null | any;
+  count?: number;
   error?: object | string | object[];
 };
 
@@ -13,48 +14,70 @@ type UserInfo = {
   mobile?: string;
   firstName?: string;
   lastName?: string;
+  avatar?: string;
+  Mda?: MdaInfo;
   mdaId?: number;
   isNew?: boolean;
   enableOtp?: boolean;
   lastLogin?: Date;
   lastSeen?: Date;
   role?: Role;
+  smsNotix?: boolean;
+  emailNotix?: boolean;
+  pushNotix?: boolean;
+  inboxNotix?: boolean;
+  loginNotix?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 };
 
-type MdaInfo = {
+type BudgetInfo = {
   id?: number;
-  mdaCode?: string;
-  name?: string;
-  registered?: boolean;
+
+  year?: number;
+  startDate?: Date;
+  endDate?: Date;
+
   personalTotal?: number;
   overheadTotal?: number;
   capitalTotal?: number;
   recurrentTotal?: number;
   expenditureTotal?: number;
+  approvedBudget?: number;
+  performanceBudget?: number;
+  fullYearActual?: number;
 
-  fullYearActual_2020?: number;
-  fullYearActual_2021?: number;
-  fullYearActual_2022?: number;
-  fullYearActual_2023?: number;
-  fullYearActual_2024?: number;
-  fullYearActual_2025?: number;
-
-  approvedBudget_2020?: number;
-  approvedBudget_2021?: number;
-  approvedBudget_2022?: number;
-  approvedBudget_2023?: number;
-  approvedBudget_2024?: number;
-  approvedBudget_2025?: number;
-
-  performanceBudget_2020?: number;
-  performanceBudget_2021?: number;
-  performanceBudget_2022?: number;
-  performanceBudget_2023?: number;
-  performanceBudget_2024?: number;
-  performanceBudget_2025?: number;
+  Mda?: MdaInfo;
+  mdaId?: number;
 
   createdAt?: Date;
   updatedAt?: Date;
+};
+
+type MdaInfo = {
+  id?: number;
+  name?: string;
+  mdaCode?: string;
+  MdaType?: string;
+  registered?: boolean;
+  Users?: UserInfo[];
+  Resources?: TResource[];
+  Requests?: TRequests[];
+  Budgets?: BudgetInfo[];
+  createdAt?: Date;
+  updatedAt?: Date;
+};
+
+type TMdaData = {
+  year?: number;
+  MdaType?: string;
+  mdaCode?: string;
+  personalTotal?: number;
+  overheadTotal?: number;
+  capitalTotal?: number;
+  recurrentTotal?: number;
+  expenditureTotal?: number;
+  approvedBudget?: number;
 };
 
 type UserHook = {
@@ -97,7 +120,20 @@ type TCrud = {
 };
 
 type ModalProps = {
+  busy?: boolean;
   show: boolean;
   toggleModal: () => void;
   children: React.ReactNode;
+  screens?: string['sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl'];
+};
+
+type TRequests = {
+  id?: number;
+  name?: string;
+  description?: string;
+  status?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  createdBy?: number;
+  updatedBy?: number;
 };

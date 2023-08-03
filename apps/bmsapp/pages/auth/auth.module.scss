@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @apply tw-bg-gray-400 tw-bg-opacity-30;
+  @apply bg-gray-400 bg-opacity-30;
   overflow: hidden !important;
   background-image: './img/governor.jpg';
   background-size: cover;
@@ -15,6 +15,6 @@
   .card {
     min-width: 400px;
     margin: 0 auto;
-    @apply tw-bg-white tw-rounded-lg tw-shadow-lg tw-overflow-hidden;
+    @apply bg-white rounded-lg shadow-lg overflow-hidden;
   }
 }

@@ -10,8 +10,9 @@ export const refStop = async (
     }
     const thisButton = ref.current;
     thisButton.disabled = false;
+    thisButton.classList.remove('disabled');
     thisButton.textContent = text;
-  }, 2000);
+  }, 5000);
 };
 
 export const refRun = async (
@@ -23,5 +24,6 @@ export const refRun = async (
   }
   const thisButton = ref.current;
   thisButton.disabled = true;
+  thisButton.classList.add('disabled');
   thisButton.textContent = text;
 };

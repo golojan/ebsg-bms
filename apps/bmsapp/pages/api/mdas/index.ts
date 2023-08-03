@@ -9,12 +9,19 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TApiResult>
 ) {
-  const { registered } = req.query;
-  const isRegistered = registered === 'true' ? true : false;
+  const budgetYear = req.query.year ? req.query.year : new Date().getFullYear();
+
   await prisma.mda
     .findMany({
-      where: {
-        registered: isRegistered,
+      include: {
+        Budgets: {
+          where: {
+            year: Number(budgetYear),
+          },
+        },
+      },
+      orderBy: {
+        registered: 'desc',
       },
     })
     .then((mdas) => {

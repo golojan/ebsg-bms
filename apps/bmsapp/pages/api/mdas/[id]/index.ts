@@ -10,16 +10,26 @@ export default async function handler(
   res: NextApiResponse<TApiResult>
 ) {
   const id = req.query.id as string;
+  const budgetYear = req.query.year ? req.query.year : new Date().getFullYear();
+
+  //find by mdaCode or id or name
   await prisma.mda
     .findUnique({
       where: {
-        mdaCode: id,
+        id: parseInt(id),
+      },
+      include: {
+        Budgets: {
+          where: {
+            year: Number(budgetYear),
+          },
+        },
       },
     })
-    .then((mdas) => {
+    .then((mda) => {
       return res.status(200).json({
         status: ApiStatus.MDA_FOUND,
-        data: mdas,
+        data: mda,
         error: `MDA_FOUND:${ApiStatus.MDA_FOUND}`,
       });
     })

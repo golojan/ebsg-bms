@@ -4,6 +4,11 @@ export const toMoney = (x: number) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
+// Return Currency Symbol
+export const getNGN = () => {
+  return '₦';
+};
+
 // Monify a number
 export const toFiat = (amount: number) => {
   // format number to Indian rupee

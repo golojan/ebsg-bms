@@ -1,6 +1,5 @@
 import styles from './layout.module.scss';
 import React, { useEffect } from 'react';
-import Header from './header';
 // import Footer from './footer';
 import { Row, Col } from 'react-bootstrap';
 import Alert from '@mui/material/Alert';
@@ -43,7 +42,6 @@ export const Layout = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <Header />
       <div className={styles.container}>
         <LayoutNavBar />
         <ModuleNavBar />

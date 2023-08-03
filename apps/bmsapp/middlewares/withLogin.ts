@@ -7,7 +7,7 @@ import { MiddlewareFactory } from './types';
 export const withLogging: MiddlewareFactory = (next) => {
   return async (request: NextRequest, _next: NextFetchEvent) => {
     const { pathname } = request.nextUrl;
-    const protectedPaths = ['/dashboard'];
+    const protectedPaths = ['/dashboard', '/mda', '/admin'];
 
     // Auth paths
     const authPath = '/auth';
@@ -30,7 +30,7 @@ export const withLogging: MiddlewareFactory = (next) => {
         if (hasOtp) {
           const url = new URL(`/otp`, request.url);
           url.searchParams.set('callbackUrl', encodeURI(request.url));
-          
+
           return NextResponse.redirect(url);
         }
       } else {
@@ -47,7 +47,7 @@ export const withLogging: MiddlewareFactory = (next) => {
         if (hasOtp) {
           return next(request, _next);
         } else {
-          const url = new URL(`/dashboard`, request.url);
+          const url = new URL(`/mda`, request.url);
           return NextResponse.redirect(url);
         }
       } else {
@@ -65,7 +65,7 @@ export const withLogging: MiddlewareFactory = (next) => {
           url.searchParams.set('callbackUrl', encodeURI(request.url));
           return NextResponse.redirect(url);
         } else {
-          const url = new URL(`/dashboard`, request.url);
+          const url = new URL(`/mda`, request.url);
           return NextResponse.redirect(url);
         }
       }

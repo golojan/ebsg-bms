@@ -10,86 +10,170 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Log {
-  id        Int      @id @default(autoincrement())
-  level     String   @default("info")
-  log       String
-  User      User?    @relation(fields: [userId], references: [id])
-  userId    Int?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+enum ResourceType {
+  file
+  folder
 }
 
-model User {
+enum LogLevel {
+  info
+  error
+  warning
+  debug
+}
+
+enum LogAction {
+  create
+  update
+  delete
+  read
+  login
+  logout
+  otp
+  reset
+  forgot
+  change
+  register
+  verify
+  resend
+  upload
+  download
+  share
+  move
+  copy
+  rename
+  restore
+  empty
+  lock
+  unlock
+  approve
+  reject
+  approveAll
+  rejectAll
+  appro
+}
+
+enum LogTarget {
+  system
+  user
+  mda
+  request
+  resources
+  budget
+  budgetItem
+  project
+  expenditure
+  stateFundSource
+  integration
+  module
+}
+
+model Log {
   id        Int       @id @default(autoincrement())
-  firstName String?
-  lastName  String?
-  email     String?   @unique
-  mobile    String?   @unique
-  password  String?
-  role      Role      @default(USER)
-  qrcode    String?   @unique
-  enableOtp Boolean?  @default(false)
-  isNew     Boolean?  @default(false)
-  Mda       Mda?      @relation(fields: [mdaId], references: [id])
-  mdaId     Int?
-  logs      Log[]
-  lastLogin DateTime? @default(now())
-  lastSeen  DateTime? @default(now())
+  action    LogLevel  @default(info)
+  target    LogTarget @default(system)
+  log       String?   @default("")
+  level     LogLevel  @default(info)
+  dump      String?
+  User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
 
-model Mda {
-  id         Int     @id @default(autoincrement())
-  name       String  @unique
-  mdaCode    String  @unique
-  registered Boolean @default(false)
-  MdaType    MdaType @default(DEPARTMENT)
+model User {
+  id         Int        @id @default(autoincrement())
+  firstName  String?
+  lastName   String?
+  email      String?    @unique
+  mobile     String?    @unique
+  password   String?
+  role       Role       @default(USER)
+  avatar     String?    @default("/img/avatar.png")
+  qrcode     String?    @unique
+  enableOtp  Boolean?   @default(false)
+  isNew      Boolean?   @default(false)
+  Mda        Mda?       @relation(fields: [mdaId], references: [id])
+  mdaId      Int?
+  logs       Log[]
+  lastLogin  DateTime?  @default(now())
+  lastSeen   DateTime?  @default(now())
+  smsNotix   Boolean?   @default(false)
+  emailNotix Boolean?   @default(false)
+  pushNotix  Boolean?   @default(false)
+  inboxNotix Boolean?   @default(false)
+  loginNotix Boolean?   @default(false)
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  Resources  Resource[]
+  Requests   Request[]
+}
 
-  personalTotal    Float @default(0.00)
-  overheadTotal    Float @default(0.00)
-  capitalTotal     Float @default(0.00)
-  recurrentTotal   Float @default(0.00)
-  expenditureTotal Float @default(0.00)
+model Request {
+  id          String  @id @default(uuid())
+  projectCode String?
+  amount      Float   @default(0.00)
 
-  fullYearActual_2020 Float @default(0.00)
-  fullYearActual_2021 Float @default(0.00)
-  fullYearActual_2022 Float @default(0.00)
-  fullYearActual_2023 Float @default(0.00)
-  fullYearActual_2024 Float @default(0.00)
-  fullYearActual_2025 Float @default(0.00)
+  project   Project? @relation(fields: [projectId], references: [id])
+  projectId Int?
 
-  approvedBudget_2020 Float @default(0.00)
-  approvedBudget_2021 Float @default(0.00)
-  approvedBudget_2022 Float @default(0.00)
-  approvedBudget_2023 Float @default(0.00)
-  approvedBudget_2024 Float @default(0.00)
-  approvedBudget_2025 Float @default(0.00)
+  fromUser   User? @relation(fields: [fromUserId], references: [id])
+  fromUserId Int?
+  fromMda    Mda?  @relation(fields: [fromMdaId], references: [id])
+  fromMdaId  Int?
 
-  performanceBudget_2020 Float @default(0.00)
-  performanceBudget_2021 Float @default(0.00)
-  performanceBudget_2022 Float @default(0.00)
-  performanceBudget_2023 Float @default(0.00)
-  performanceBudget_2024 Float @default(0.00)
-  performanceBudget_2025 Float @default(0.00)
-
-  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  User      User[]
+  createdAt DateTime @default(now())
+}
+
+model Project {
+  id          Int       @id @default(autoincrement())
+  code        String    @unique
+  name        String?
+  description String?
+  year        Int       @default(2023)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  Request     Request[]
+}
+
+model Mda {
+  id           Int        @id @default(autoincrement())
+  name         String     @unique
+  mdaCode      String     @unique
+  MdaType      MdaType    @default(DEPARTMENT)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  Users        User[]
+  Resources    Resource[]
+  Requests     Request[]
+  registered   Boolean    @default(false)
+  registeredAt DateTime?
+  Budgets      Budget[]
 }
 
 model Budget {
-  id          Int          @id @default(autoincrement())
-  code        String       @unique
-  name        String?
-  description String?
-  year        Int          @default(2023)
-  startDate   DateTime?
-  endDate     DateTime?
-  status      BudgetStatus @default(REFERENCE)
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  id   Int @id @default(autoincrement())
+  year Int @default(2023)
+
+  startDate DateTime?
+  endDate   DateTime?
+
+  personalTotal     Float @default(0.00)
+  overheadTotal     Float @default(0.00)
+  capitalTotal      Float @default(0.00)
+  recurrentTotal    Float @default(0.00)
+  expenditureTotal  Float @default(0.00)
+  fullYearActual    Float @default(0.00)
+  approvedBudget    Float @default(0.00)
+  performanceBudget Float @default(0.00)
+
+  // Reference back to the Mda model
+  Mda   Mda? @relation(fields: [mdaId], references: [id])
+  mdaId Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum BudgetStatus {
@@ -130,6 +214,14 @@ enum MdaType {
   AGENCY
 }
 
+model Integrations {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 model Module {
   id          Int      @id @default(autoincrement())
   name        String   @unique
@@ -138,14 +230,23 @@ model Module {
   updatedAt   DateTime @updatedAt
 }
 
-model Document {
-  id          Int      @id @default(autoincrement())
-  name        String   @unique
-  storageName String   @unique
-  mimeType    String?
-  description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Resource {
+  id           String     @id @default(uuid())
+  name         String
+  resourceType String     @default("folder")
+  mimeType     String?    @default("application/octet-stream")
+  size         Int        @default(0)
+  parent       Resource?  @relation("ParentResource", fields: [parentId], references: [id])
+  parentId     String?    @map("parent")
+  resources    Resource[] @relation("ParentResource")
+  mda          Mda?       @relation(fields: [mdaId], references: [id])
+  mdaId        Int?
+  user         User?      @relation(fields: [userId], references: [id])
+  userId       Int?
+  storageName  String?
+  description  String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
 }
 
 model StateFundSource {

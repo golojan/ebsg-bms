@@ -2,8 +2,8 @@ import React from 'react';
 import { NextPage } from 'next';
 import Login from './auth/login';
 
-export const index: NextPage = () => {
+export const Tdndex: NextPage = (props) => {
   return <Login />;
 };
 
-export default index;
+export default Tdndex;

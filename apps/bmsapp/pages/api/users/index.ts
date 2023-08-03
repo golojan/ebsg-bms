@@ -9,24 +9,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TApiResult>
 ) {
-  const { approved } = req.query;
-  const isNew = (approved === 'true' ? false : true) as boolean;
-
-  let clause = {};
-
-  if (approved) {
-    clause = {
-      where: {
-        isNew: isNew,
-      },
-    };
-  }
-  await prisma.user
-    .findMany(clause)
+  await prisma
+    .$transaction([prisma.user.findMany(), prisma.user.count()])
     .then((users) => {
       return res.status(200).json({
         status: ApiStatus.USER_FOUND,
-        data: users,
+        data: users[0],
+        count: users[1],
         error: `USER_FOUND:${ApiStatus.USER_FOUND}`,
       });
     })
@@ -34,7 +23,7 @@ export default async function handler(
       return res.status(500).json({
         status: ApiStatus.USER_NOT_FOUND,
         data: null,
-        error: `USER_NOT_FOUND:${ApiStatus.USER_NOT_FOUND}`,
+        error: `USER_NOT_FOUND:${ApiStatus.USER_NOT_FOUND}:${error}`,
       });
     })
     .finally(() => {

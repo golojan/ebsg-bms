@@ -6,7 +6,7 @@ nx init
 
 # Create a new application NextJs
 
-npx nx generate @nx/next:application bmsapp --directory=apps --no-appDir --e2eTestRunner=none --style=scss --unitTestRunner=none --no-interactive
+npx nx generate @nx/next:application website --directory=apps --no-appDir --e2eTestRunner=none --style=scss --unitTestRunner=none --no-interactive
 
 # Create a new React Component 
 nx g @nx/reaxt:component --name=board --project=board --directory=board --style=scss --export
@@ -95,3 +95,9 @@ https://codesandbox.io/s/docxtemplater-with-nextjs-o1nqo?file=/pages/index.js
 
 # Currency Input Field
 https://www.npmjs.com/package/react-currency-input-field
+
+
+# https://preview.themeforest.net/item/bankco-tailwind-css-admin-templates/full_screen_preview/44959824?_ga=2.171827104.1210365981.1689914240-187394503.1687126359
+
+# @tanstack/react-query
+# Tanstack.com
