@@ -3,7 +3,6 @@ import React from 'react';
 import Head from 'next/head';
 import '@mui/material/styles';
 import '../public/assets/css/flatpickr.min.css';
-import '../public/assets/datatable/datatables.min.css';
 import '../styles/global.scss';
 import { Provider as JootaiProvider } from 'jotai';
 import NextTopLoader from 'nextjs-toploader';
@@ -23,7 +22,7 @@ const queryClient = new QueryClient({
   },
 });
 
-export const CustomApp = (props:AppProps ) => {
+export const CustomApp = (props: AppProps) => {
   const { Component, pageProps } = props;
   return (
     <>
