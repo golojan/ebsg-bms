@@ -22,7 +22,7 @@ const queryClient = new QueryClient({
   },
 });
 
-export const CustomApp = (props) => {
+export const CustomApp = (props:AppProps) => {
   const { Component, pageProps } = props;
   return (
     <>
