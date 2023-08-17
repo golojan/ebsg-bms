@@ -19,7 +19,7 @@ import {
   ViewColumn,
 } from '@mui/icons-material';
 
-import ViewModal from 'components/modals';
+import { ViewModal } from 'components/modals';
 import ModuleApproveAccount from 'components/modules/accounts/approve-account';
 
 const tableIcons: Icons<UserInfo> = {
