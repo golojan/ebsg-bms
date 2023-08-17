@@ -24,11 +24,11 @@ export default async function handler(
       where: { mdaCode: id as string },
       data: {
         name: name as string,
-        personalTotal: parseFloat(personalTotal),
-        overheadTotal: parseFloat(overheadTotal),
-        capitalTotal: parseFloat(capitalTotal),
-        recurrentTotal: parseFloat(recurrentTotal),
-        expenditureTotal: parseFloat(expenditureTotal),
+        // personalTotal: parseFloat(personalTotal),
+        // overheadTotal: parseFloat(overheadTotal),
+        // capitalTotal: parseFloat(capitalTotal),
+        // recurrentTotal: parseFloat(recurrentTotal),
+        // expenditureTotal: parseFloat(expenditureTotal),
       },
     })
     .then((mda) => {
