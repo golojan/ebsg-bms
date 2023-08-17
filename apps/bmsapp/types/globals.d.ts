@@ -66,6 +66,16 @@ type MdaInfo = {
   Budgets?: BudgetInfo[];
   createdAt?: Date;
   updatedAt?: Date;
+
+  year?: number;
+  MdaType?: string;
+  mdaCode?: string;
+  personalTotal?: number;
+  overheadTotal?: number;
+  capitalTotal?: number;
+  recurrentTotal?: number;
+  expenditureTotal?: number;
+  approvedBudget?: number;
 };
 
 type TMdaData = {

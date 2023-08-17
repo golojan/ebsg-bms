@@ -78,7 +78,7 @@ export const MdaCard: React.FC<CardProps> = (props: CardProps) => {
             <Form.Group controlId="approvedBudget_2023" className="tw-mt-2">
               <Form.Label>Approved Budget (2023)</Form.Label>
               <Typography className="tw-text-xl tw-text-green-500">
-                {toFiat(Number(mda.approvedBudget_2023))}
+                {toFiat(Number(mda.approvedBudget))}
               </Typography>
             </Form.Group>
           </Col>
@@ -115,13 +115,13 @@ export const MdaCard: React.FC<CardProps> = (props: CardProps) => {
               <Form.Group controlId="fullYearActual_2021" className="tw-mt-2">
                 <Form.Label>Full Year Actuals (2021)</Form.Label>
                 <Typography className="tw-text-xl">
-                  {toFiat(Number(mda.fullYearActual_2021))}
+                  {toFiat(Number(mda.expenditureTotal))}
                 </Typography>
               </Form.Group>
               <Form.Group controlId="approvedBudget_2022" className="tw-mt-2">
                 <Form.Label>Approved Budget (2022)</Form.Label>
                 <Typography className="tw-text-xl">
-                  {toFiat(Number(mda.approvedBudget_2022))}
+                  {toFiat(Number(mda.approvedBudget))}
                 </Typography>
               </Form.Group>
               <Form.Group
@@ -130,7 +130,7 @@ export const MdaCard: React.FC<CardProps> = (props: CardProps) => {
               >
                 <Form.Label>Performance (2022) Jan-Sep</Form.Label>
                 <Typography className="tw-text-xl">
-                  {toFiat(Number(mda.performanceBudget_2022))}
+                  {toFiat(Number(mda.expenditureTotal))}
                 </Typography>
               </Form.Group>
             </Col>
