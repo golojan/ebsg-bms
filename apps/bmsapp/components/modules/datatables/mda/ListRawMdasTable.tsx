@@ -43,7 +43,7 @@ const tableIcons: Icons<MdaInfo> = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
-import ViewModal from 'components/modals';
+import {ViewModal} from 'components/modals';
 import ModuleRegisterMda from 'components/modules/mdas/register-mda';
 
 type Props = {

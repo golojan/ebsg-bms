@@ -45,7 +45,7 @@ const tableIcons: Icons<MdaInfo> = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
-import ViewModal from 'components/modals';
+import {ViewModal} from 'components/modals';
 import ModuleEditMda from 'components/modules/mdas/edit-mda';
 import { toFiat } from 'libs/monify';
 import { useQueryClient, useQuery } from '@tanstack/react-query';
