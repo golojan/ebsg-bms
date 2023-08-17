@@ -85,19 +85,19 @@ $(function () {
   ModalExist();
 });
 
-$(function () {
-  if ($('#Datatable').length) {
-    $('#Datatable').DataTable({
-      responsive: true,
-      lengthMenu: [
-        [10, 25, 50, -1],
-        [10, 25, 50, 'All'],
-      ],
-      dom: 'Bfrtip',
-      buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-    });
-  }
-});
+// $(function () {
+//   if ($('#Datatable').length) {
+//     $('#Datatable').DataTable({
+//       responsive: true,
+//       lengthMenu: [
+//         [10, 25, 50, -1],
+//         [10, 25, 50, 'All'],
+//       ],
+//       dom: 'Bfrtip',
+//       buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+//     });
+//   }
+// });
 
 $(function () {
   function initModeSetting() {

@@ -101,10 +101,10 @@ export const MyDocument = () => {
         <Script src="/assets/js/quill.min.js" strategy="lazyOnload" />
         <Script src="/assets/js/chart.js" strategy="lazyOnload" />
         <Script src="/assets/js/flatpickr.js" strategy="lazyOnload" />
-        <Script
+        {/* <Script
           src="/assets/datatable/datatables.min.js"
           strategy="afterInteractive"
-        />
+        /> */}
         <Script src="/assets/js/main.js" strategy="lazyOnload" />
       </body>
     </Html>
