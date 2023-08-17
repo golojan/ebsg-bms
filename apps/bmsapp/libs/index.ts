@@ -1,3 +1,4 @@
+export * from './fetcher';
 export * from './fetcher/fetcher';
 export * from './iron-config';
 export * from './number-to-words';
