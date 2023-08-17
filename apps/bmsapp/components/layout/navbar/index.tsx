@@ -21,7 +21,7 @@ export const LayoutNavBar = () => {
           >
             <FaListAlt color="#fffff" size={35} />
           </Link>
-          <Image src={_IMAGES.LOGO} width={50} className="logo" alt="" />
+          <Image src={_IMAGES.logoColor} width={50} className="logo" alt="" />
           <h3 className="hide">eBudget</h3>
         </div>
 
