@@ -43,3 +43,5 @@ export function DisplayModal(props: ModalProps) {
     </StaleHolder>
   );
 }
+
+export default DisplayModal;

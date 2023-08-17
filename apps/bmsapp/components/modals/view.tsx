@@ -62,3 +62,5 @@ export function ViewModal(props: ModalProps) {
     </>
   );
 }
+
+export default ViewModal;
