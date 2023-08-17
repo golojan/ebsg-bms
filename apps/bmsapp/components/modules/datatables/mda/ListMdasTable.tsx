@@ -45,7 +45,7 @@ const tableIcons: Icons<MdaInfo> = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
-import {ViewModal} from 'components/modals';
+import { ViewModal } from 'components/modals';
 import ModuleEditMda from 'components/modules/mdas/edit-mda';
 import { toFiat } from 'libs/monify';
 import { useQueryClient, useQuery } from '@tanstack/react-query';
@@ -67,7 +67,7 @@ export const ListMdasTable = () => {
   const queryClient = useQueryClient();
   const { isLoading, isFetching } = useQuery(
     ['mdas'],
-    () => queryClient.getQueryData(['mdas']) ?? getMdasByPage(),
+    () => queryClient.getQueryData(['mdas']) ?? getMdas(),
     {
       onSuccess: (result: TApiResult) => {
         setMDAs(result?.data ?? []);
@@ -88,7 +88,7 @@ export const ListMdasTable = () => {
     {
       title: 'Total.Recurrent',
       field: 'recurrentTotal',
-      render: (rowData: MdaInfo) => (
+      render: (rowData: TMdaData) => (
         <div>
           {toFiat(
             Number(rowData?.recurrentTotal ? rowData?.recurrentTotal : 0)
@@ -99,7 +99,7 @@ export const ListMdasTable = () => {
     {
       title: 'Total.Expenditure',
       field: 'expenditureTotal',
-      render: (rowData: MdaInfo) => (
+      render: (rowData: TMdaData) => (
         <div>
           {toFiat(
             Number(rowData?.expenditureTotal ? rowData?.expenditureTotal : 0)

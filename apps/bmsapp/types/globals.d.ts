@@ -69,6 +69,18 @@ type MdaInfo = {
 };
 
 type TMdaData = {
+  id?: number;
+  name?: string;
+  mdaCode?: string;
+  MdaType?: string;
+  registered?: boolean;
+  Users?: UserInfo[];
+  Resources?: TResource[];
+  Requests?: TRequests[];
+  Budgets?: BudgetInfo[];
+  createdAt?: Date;
+  updatedAt?: Date;
+
   year?: number;
   MdaType?: string;
   mdaCode?: string;
