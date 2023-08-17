@@ -7,6 +7,7 @@ import { MiddlewareFactory } from './types';
 export const withSession: MiddlewareFactory = (next) => {
   return async (request: NextRequest, _next: NextFetchEvent) => {
     const response = (await next(request, _next)) as NextResponse;
+    
     // const session = await getIronSession(request, response, ironOptions);
     // const user = session.user;
     // console.log(user);

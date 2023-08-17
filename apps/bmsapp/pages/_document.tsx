@@ -90,7 +90,6 @@ export const MyDocument = () => {
         content="/icons/ms-icon-144x144.png"
       />
       <meta name="theme-color" content="#ffffff" />
-
       <body data-mode={dataLayoutMode}>
         <Main />
         <NextScript />

@@ -1,5 +1,6 @@
 // middleware.ts
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
+
 import { getIronSession } from 'iron-session/edge';
 import ironOptions from 'libs/iron-config';
 import { MiddlewareFactory } from './types';
