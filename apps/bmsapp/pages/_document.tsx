@@ -5,11 +5,12 @@ import { useAtom } from 'jotai';
 
 export const MyDocument = () => {
   const [dataLayoutMode] = useAtom(dataLayoutModeAtom);
+  const domain = process.env.NEXT_PUBLIC_DOMAIN;
   return (
     <Html lang="en-US" className="no-js">
       <Head />
       <meta charSet="UTF-8" />
-      <base href="https://ebsg-bms.vercel.app/" />
+      <base href={domain} />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"

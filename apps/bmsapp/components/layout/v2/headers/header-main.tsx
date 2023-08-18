@@ -23,7 +23,7 @@ export const HeaderMain = () => {
   const processSearch = (e: any) => {
     const targetEl = e.target as HTMLInputElement;
     // has focus
-    const hasFocus: boolean = targetEl === document.activeElement;
+    const hasFocus: boolean = targetEl.matches(':focus');
     const value = e.target.value.toString();
     if (value.length > 0 && hasFocus) {
       setQuery(value);
@@ -151,6 +151,8 @@ export const HeaderMain = () => {
                     spellCheck="false"
                     ref={searchRef}
                     onChange={(e) => processSearch(e)}
+                    onBlur={(e) => processSearch(e)}
+                    onFocus={(e) => processSearch(e)}
                     placeholder="Search..."
                     className="search-input w-full bg-none border-none bg-bgray-50 px-0 focus:outline-none focus:ring-0 placeholder:text-sm text-bgray-600 tracking-wide placeholder:font-semibold dark:placeholder:text-bgray-500 dark:bg-darkblack-500 text-xl"
                   />
