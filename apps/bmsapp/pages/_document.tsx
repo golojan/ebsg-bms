@@ -3,13 +3,13 @@ import Script from 'next/script';
 import { dataLayoutModeAtom } from 'store';
 import { useAtom } from 'jotai';
 
-export const MyDocument = () => {
+export const MyDocument = (props) => {
   const [dataLayoutMode] = useAtom(dataLayoutModeAtom);
   return (
     <Html lang="en-US" className="no-js">
       <Head />
       <meta charSet="UTF-8" />
-      <base href="/" />
+      <base href="https://ebsg-bms.vercel.app/" />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
