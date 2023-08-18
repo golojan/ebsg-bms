@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { dataLayoutModeAtom } from 'store';
 import { useAtom } from 'jotai';
 
-export const MyDocument = (props) => {
+export const MyDocument = () => {
   const [dataLayoutMode] = useAtom(dataLayoutModeAtom);
   return (
     <Html lang="en-US" className="no-js">
