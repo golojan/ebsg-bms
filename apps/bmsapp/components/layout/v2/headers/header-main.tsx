@@ -21,8 +21,11 @@ export const HeaderMain = () => {
   const searchRef = React.useRef<HTMLInputElement>(null);
 
   const processSearch = (e: any) => {
+    const targetEl = e.target as HTMLInputElement;
+    // has focus
+    const hasFocus: boolean = targetEl === document.activeElement;
     const value = e.target.value.toString();
-    if (value.length > 0) {
+    if (value.length > 0 && hasFocus) {
       setQuery(value);
       setShowSearchTray(true);
     } else {
